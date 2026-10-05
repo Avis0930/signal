@@ -267,6 +267,14 @@
   .ref-tags { margin-top: 6px; }
   .wtag-cnt { font-size: 10px; opacity: .65; font-weight: 400; margin-left: 2px; }
   .wtag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin: 0; }
+  /* .wtag / .trow 有自己的 display，必須用 !important 壓過才藏得住 */
+  [hidden] { display: none !important; }
+  .morebtn {
+    background: var(--surf2); color: var(--muted); border: 1px solid var(--border);
+    border-radius: 20px; padding: 4px 12px; font-size: 12px; cursor: pointer;
+  }
+  .morebtn:hover { color: var(--text); border-color: var(--accent); }
+  .tbars .morebtn { align-self: flex-start; margin-top: 2px; }
   .wtag-g { background: #dcfce7; color: var(--green); border: 1px solid #86efac; }
   .wtag-r { background: #fee2e2; color: var(--red);   border: 1px solid #fca5a5; }
   .wtag-y { background: #fef3c7; color: var(--yellow);border: 1px solid #fcd34d; }
@@ -907,6 +915,40 @@ function renderResult(rec) {
     </div>`;
 }
 
+// ── 儀表板顯示門檻（想調鬆緊改這裡就好）──────────────────────────────────────
+const MT_WINDOW_DAYS     = 30;   // 中期趨勢視窗
+const MT_MIN_MENTIONS    = 3;    // 視窗內至少被提到幾次才納入
+const MT_MIN_DIRECTIONAL = 2;    // 至少要有幾次多／空表態才判方向（neutral 不算）
+const MT_STRONG_RATIO    = 0.7;  // 持續看好／持續壓制門檻
+const MT_TURN_LO         = 0.4;  // 開始轉向區間下限
+const MT_TURN_HI         = 0.6;  // 開始轉向區間上限
+const MT_VISIBLE         = 10;   // 中期趨勢每個區塊預設顯示幾個
+const FREQ_TOP           = 20;   // 標的出現頻率取前幾名
+const FREQ_VISIBLE       = 10;   // 其中預設顯示幾個
+const CROSS_VISIBLE      = 15;   // 交集個股預設顯示幾個
+
+// ── 可展開清單 ───────────────────────────────────────────────────────────────
+// 超過 visible 的項目先掛 hidden，按鈕切換。render(item, attrs) 要把 attrs 放進標籤裡。
+let _clpSeq = 0;
+function collapsible(items, visible, render, unit) {
+  if (items.length <= visible) return items.map(it => render(it, '')).join('');
+  const id   = 'clp' + (++_clpSeq);
+  const rest = items.length - visible;
+  return items.slice(0, visible).map(it => render(it, '')).join('')
+    + items.slice(visible).map(it => render(it, ' data-clp="' + id + '" hidden')).join('')
+    + '<button class="morebtn" id="btn-' + id + '" onclick="toggleCollapsed(\'' + id + '\',' + rest + ',\'' + (unit || '個') + '\')">'
+    + '還有 ' + rest + ' ' + (unit || '個') + ' ▾</button>';
+}
+
+function toggleCollapsed(id, rest, unit) {
+  const els = document.querySelectorAll('[data-clp="' + id + '"]');
+  if (!els.length) return;
+  const willShow = els[0].hidden;
+  els.forEach(e => { e.hidden = !willShow; });
+  const btn = document.getElementById('btn-' + id);
+  if (btn) btn.textContent = willShow ? '收合 ▴' : '還有 ' + rest + ' ' + unit + ' ▾';
+}
+
 // ── Dashboard ─────────────────────────────────────────────────────────────────
 async function buildDash() {
   const el = document.getElementById('dcontent');
@@ -952,12 +994,8 @@ function buildDashAll(el, pods, inds, idx) {
       <h3>交集個股</h3>
       <div class="csub">同時在 Podcast 和產業研究都出現過的個股，依總次數排序（已排除「族群／廠商／概念股」等族群類提法，並合併「欣興 / 3037 / 欣興 3037」等不同寫法）</div>
       <div class="tbars">
-        ${crossTk.length ? crossTk.map(tk => `
-          <div class="trow">
-            <span class="tn">${h(tk.display)}</span>
-            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%"></div></div>
-            <span class="tcnt">${tk.count}</span>
-          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無交集個股，繼續累積筆記</div>'}
+        ${crossTk.length ? collapsible(crossTk, CROSS_VISIBLE, barRowHtml(maxTk), '檔')
+                         : '<div style="color:var(--faint);font-size:13px">尚無交集個股，繼續累積筆記</div>'}
       </div>
     </div>
 
@@ -986,7 +1024,7 @@ function buildDashPodcast(el, pods, idx) {
   const trend  = linReg(scores);
 
   const { total, latCls, latest, wp } = podcastStats(pods);
-  const topTk  = topTickers(pods, 12, idx);
+  const topTk  = topTickers(pods, FREQ_TOP, idx);
   const maxTk  = topTk[0]?.count || 1;
   const watchData = buildWatchData(pods, idx);
 
@@ -1008,15 +1046,11 @@ function buildDashPodcast(el, pods, idx) {
     </div>
 
     <div class="ccrd">
-      <h3>標的出現頻率 Top 12</h3>
-      <div class="csub">已合併同一標的的不同寫法</div>
+      <h3>標的出現頻率 Top ${FREQ_TOP}</h3>
+      <div class="csub">已合併同一標的的不同寫法；先列前 ${FREQ_VISIBLE} 名</div>
       <div class="tbars">
-        ${topTk.length ? topTk.map(tk => `
-          <div class="trow">
-            <span class="tn">${h(tk.display)}</span>
-            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%"></div></div>
-            <span class="tcnt">${tk.count}</span>
-          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
+        ${topTk.length ? collapsible(topTk, FREQ_VISIBLE, barRowHtml(maxTk), '檔')
+                       : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
       </div>
     </div>
 
@@ -1071,7 +1105,7 @@ function buildDashIndustry(el, inds, idx) {
   if (!inds.length) { el.innerHTML = '<div class="dempty">尚無產業研究筆記<br><span style="font-size:13px">請在「輸入筆記」頁面選擇「產業研究筆記」類型後儲存</span></div>'; return; }
 
   const industries = [...new Set(inds.map(r => r.analysis?.industry).filter(Boolean))];
-  const topTk = topTickers(inds, 12, idx);
+  const topTk  = topTickers(inds, FREQ_TOP, idx);
   const maxTk = topTk[0]?.count || 1;
   const { total, latCls, latest } = podcastStats(inds);
 
@@ -1123,15 +1157,11 @@ function buildDashIndustry(el, inds, idx) {
     </div>
 
     <div class="ccrd">
-      <h3>標的出現頻率 Top 12</h3>
-      <div class="csub">所有產業研究筆記中的標的出現次數</div>
+      <h3>標的出現頻率 Top ${FREQ_TOP}</h3>
+      <div class="csub">所有產業研究筆記中的標的出現次數；先列前 ${FREQ_VISIBLE} 名</div>
       <div class="tbars">
-        ${topTk.length ? topTk.map(tk => `
-          <div class="trow">
-            <span class="tn">${h(tk.display)}</span>
-            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%;background:var(--purple);"></div></div>
-            <span class="tcnt">${tk.count}</span>
-          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
+        ${topTk.length ? collapsible(topTk, FREQ_VISIBLE, barRowHtml(maxTk, 'var(--purple)'), '檔')
+                       : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
       </div>
     </div>
 
@@ -1188,6 +1218,17 @@ function podcastStats(recs) {
   return { total, latest, latCls, wp };
 }
 
+// 長條列（交集個股 / 出現頻率共用）
+function barRowHtml(maxTk, color) {
+  return (tk, attrs) =>
+    '<div class="trow"' + attrs + '>'
+    + '<span class="tn">' + h(tk.display) + '</span>'
+    + '<div class="ttrack"><div class="tfill" style="width:' + Math.round(tk.count / maxTk * 100) + '%'
+    + (color ? ';background:' + color + ';' : '') + '"></div></div>'
+    + '<span class="tcnt">' + tk.count + '</span>'
+    + '</div>';
+}
+
 function topTickers(recs, n, idx) {
   idx = idx || buildTkIndex(recs);
   const tkMap = {};
@@ -1233,7 +1274,7 @@ function buildWatchData(recs, idx) {
   const posKw = /看好|看多|布局|加碼|機會|上漲|受惠|強勢|偏多|觀察買進|買進/;
   const buyKw = /繼續|加碼|分批|買入|買進|定投|持有|佈局|布局|觀察買進|觀察/;
   const now7  = new Date(Date.now() -  7 * 86400000);
-  const now30 = new Date(Date.now() - 30 * 86400000);
+  const now30 = new Date(Date.now() - MT_WINDOW_DAYS * 86400000);
 
   const isLev = (key, raw) => {
     const code = key.startsWith('tk:') ? key.slice(3).toLowerCase() : '';
@@ -1264,9 +1305,15 @@ function buildWatchData(recs, idx) {
       if (!r2 || r2.isGroup) return;          // 族群跟個股分開計算，watch 區只看個股
       if (isLev(r2.key, t.name)) return;
       const ctx = t.context || '';
-      let stance = 'neutral';
-      if (epSent === 'bullish' || posKw.test(ctx)) stance = 'bull';
+      // 以筆記裡該標的自己的 stance 為準；只有缺欄位時才退回「整集情緒＋關鍵字」推測。
+      // （用整集情緒推個股會把空方訊號抹平：整集 bearish 的集數很少，但個股 bearish 不少）
+      let stance;
+      if (t.stance === 'bullish')      stance = 'bull';
+      else if (t.stance === 'bearish') stance = 'bear';
+      else if (t.stance === 'neutral') stance = 'neutral';
+      else if (epSent === 'bullish' || posKw.test(ctx)) stance = 'bull';
       else if (epSent === 'bearish' || negKw.test(ctx)) stance = 'bear';
+      else stance = 'neutral';
       if (!tkSeries[r2.key]) tkSeries[r2.key] = { display: r2.display, mentions: [] };
       tkSeries[r2.key].mentions.push({ date: recDate, stance });
     });
@@ -1285,25 +1332,38 @@ function buildWatchData(recs, idx) {
     else                                 st.watch.push(d.display);
   });
 
+  // 中期趨勢：視窗內要夠常被提到，而且方向要夠一致才列進來。
+  // 比例的分母用「多＋空表態次數」而非總次數 —— neutral 只代表那集沒表態，
+  // 拿它稀釋比例會讓 6 多 1 空 2 中性（67%）這種明顯偏多的標的被 70% 門檻刷掉。
   const mt = { bull: [], bear: [], turn: [] };
   Object.entries(tkSeries).forEach(([key, d]) => {
     const name     = d.display;
     const lev      = isLev(key, name);
     const isAdvBuy = adviceBuySet.has(key);
     const w30      = d.mentions.filter(m => m.date >= now30);
-    const w7       = d.mentions.filter(m => m.date >= now7);
-    const older    = d.mentions.filter(m => m.date < now30);
-    if (w30.length >= 3) {
-      const bullN = w30.filter(m => m.stance === 'bull').length;
-      const bearN = w30.filter(m => m.stance === 'bear').length;
-      if (bullN > bearN)                             mt.bull.push({ key, name, bullN, bearN, total: w30.length });
-      else if (bearN > bullN && !lev && !isAdvBuy)   mt.bear.push({ name, bullN, bearN, total: w30.length });
-    } else if (older.length >= 2 && w7.length === 0) {
-      mt.turn.push(name);
+    if (w30.length < MT_MIN_MENTIONS) return;
+
+    const bullN = w30.filter(m => m.stance === 'bull').length;
+    const bearN = w30.filter(m => m.stance === 'bear').length;
+    const directional = bullN + bearN;
+    if (directional < MT_MIN_DIRECTIONAL) return;   // 表態太少，方向不可信
+
+    const bullR = bullN / directional;
+    const row   = { key, name, bullN, bearN, total: w30.length, bullR };
+
+    if (bullR >= MT_STRONG_RATIO) {
+      mt.bull.push(row);
+    } else if (1 - bullR >= MT_STRONG_RATIO && !lev && !isAdvBuy) {
+      mt.bear.push(row);
+    } else if (bullR >= MT_TURN_LO && bullR <= MT_TURN_HI) {
+      mt.turn.push(row);
     }
   });
-  mt.bull.sort((a, b) => b.bullN - a.bullN);
-  mt.bear.sort((a, b) => b.bearN - a.bearN);
+  // 一律按視窗內出現次數排序，次數相同再比方向強度
+  const byMentions = k => (a, b) => b.total - a.total || b[k] - a[k];
+  mt.bull.sort(byMentions('bullN'));
+  mt.bear.sort(byMentions('bearN'));
+  mt.turn.sort((a, b) => b.total - a.total);
 
   const mtBullKeys  = new Set(mt.bull.map(t => t.key));
   const stBullConf  = st.bull.filter(t => mtBullKeys.has(t.key));
@@ -1337,27 +1397,42 @@ function watchBlocksHtml({ st, mt, stBullConf, stBullOther }) {
       </div>
     </div>
     <div class="wblock">
-      <h3>📊 中期趨勢 <span>30 天內，出現 3 次以上</span></h3>
+      <h3>📊 中期趨勢 <span>${MT_WINDOW_DAYS} 天內出現 ${MT_MIN_MENTIONS} 次以上，各區塊先顯示次數最多的 ${MT_VISIBLE} 個</span></h3>
       <div class="wsub">
         <div class="wsub-label wtag-g-label">持續看好</div>
         <div class="wsub-tags">
-          ${mt.bull.length ? mt.bull.map(t=>`<span class="wtag wtag-g">${h(t.name)} <span class="wtag-cnt">${t.bullN}/${t.total}</span></span>`).join('') : '<span class="wempty">—</span>'}
+          ${mt.bull.length ? collapsible(mt.bull, MT_VISIBLE, mtTagHtml('wtag-g', 'bull'), '檔') : '<span class="wempty">—</span>'}
         </div>
       </div>
       <div class="wsub">
         <div class="wsub-label wtag-r-label">持續壓制</div>
         <div class="wsub-tags">
-          ${mt.bear.length ? mt.bear.map(t=>`<span class="wtag wtag-r">${h(t.name)} <span class="wtag-cnt">${t.bearN}/${t.total}</span></span>`).join('') : '<span class="wempty">—</span>'}
+          ${mt.bear.length ? collapsible(mt.bear, MT_VISIBLE, mtTagHtml('wtag-r', 'bear'), '檔') : '<span class="wempty">—</span>'}
         </div>
       </div>
       <div class="wsub">
         <div class="wsub-label wtag-b-label">開始轉向</div>
         <div class="wsub-tags">
-          ${mt.turn.length ? mt.turn.map(n=>`<span class="wtag wtag-b">${h(n)}</span>`).join('') : '<span class="wempty">—</span>'}
+          ${mt.turn.length ? collapsible(mt.turn, MT_VISIBLE, mtTagHtml('wtag-b', 'turn'), '檔') : '<span class="wempty">—</span>'}
         </div>
       </div>
     </div>
   </div>`;
+}
+
+// 標籤上的數字：看好＝多方次數/總次數、壓制＝空方次數/總次數、轉向＝多↑空↓
+function mtTagHtml(cls, kind) {
+  return (t, attrs) => {
+    const neu   = t.total - t.bullN - t.bearN;
+    const count = kind === 'bull' ? t.bullN + '/' + t.total
+                : kind === 'bear' ? t.bearN + '/' + t.total
+                : t.bullN + '↑' + t.bearN + '↓';
+    const tip = t.name + '：' + MT_WINDOW_DAYS + ' 天內 ' + t.total + ' 次提及（'
+              + t.bullN + ' 多 / ' + t.bearN + ' 空' + (neu ? ' / ' + neu + ' 中性' : '') + '）'
+              + '，多方佔表態數 ' + Math.round(t.bullR * 100) + '%';
+    return '<span class="wtag ' + cls + '" title="' + h(tip) + '"' + attrs + '>'
+         + h(t.name) + ' <span class="wtag-cnt">' + count + '</span></span>';
+  };
 }
 
 function recentAdviceHtml(recs) {

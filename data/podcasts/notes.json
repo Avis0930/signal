@@ -1,6 +1,266 @@
 {
   "records": [
     {
+      "id": 1791191426268,
+      "title": "股癌 EP695",
+      "created_at": "2026-10-05T09:10:26.268Z",
+      "analysis": {
+        "type": "podcast",
+        "episode": "EP695",
+        "date": "2026-09-09",
+        "source": "股癌",
+        "summary": [
+          "台股維持箱型震盪格局，搶快容易被教訓，建議高出低補的區間操作策略",
+          "Google Cloud在高盛會議揭露AI伺服器回收期不到兩年，自研TPU回本僅需一年，凸顯硬體投資的高報酬率",
+          "AI模型溢價正在收斂、逐漸商品化，算力CP值將成為競爭關鍵；模型商燒錢、雲商印鈔、晶片商賺扎實錢的風險結構已然成形，泡沫化週期可能拉長但終將重演"
+        ],
+        "tickers": [
+          {
+            "name": "聯發科",
+            "context": "若CSP自研晶片回收期再縮短，更有意願轉向ASIC，COT模式對台股IP/IC業者是強大利多，發哥依舊猛",
+            "stance": "bullish"
+          },
+          {
+            "name": "創意",
+            "context": "ASIC/COT模式受惠者，CSP自研晶片趨勢下的大型IC設計業者",
+            "stance": "bullish"
+          },
+          {
+            "name": "世芯",
+            "context": "ASIC/COT模式受惠者，CSP自研晶片趨勢下的大型IC設計業者",
+            "stance": "bullish"
+          },
+          {
+            "name": "Google (Alphabet)",
+            "context": "Google Cloud需求強勁，TPU回本速度快、採購力道加大；但轉型成水電業者式的雲端供應商，估值乘數可能下調，下跌時可視為防禦性類股",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "AI伺服器資本支出與回收期",
+          "ASIC/TPU自研晶片趨勢",
+          "AI模型商業模式風險結構",
+          "台股箱型震盪操作策略"
+        ],
+        "market_view": "大盤持續箱型震盪墊高，尚未出現明確突破訊號，操作上宜高出低補而非追價。AI硬體投資的回收期證明持續縮短，顯示產業仍處於擴張期而非泡沫頂點，但模型商的循環融資結構隱含長期風險，須持續觀察供需平衡是否被打破，在出現早期警訊前不宜過早看空。",
+        "sentiment": "bullish",
+        "sentiment_reason": "主持人對AI硬體（伺服器、ASIC/TPU）持續看多，認為回本速度加快驗證產業實質需求，並明確表示「持續看多，直到真的出現早期訊號再來跑」，對台股箱型格局則採區間操作而非悲觀看待",
+        "quotes": [
+          "孩子也是一面鏡子，告訴你什麼是對是錯",
+          "持續看多，直到真的出現早期訊號再來跑，即便從高點回檔一段，魚尾可能還是很大一段，避免被洗掉，多少要犧牲掉部分高點"
+        ],
+        "portfolio_advice": "觀察台股ASIC/IP供應鏈（聯發科、創意、世芯）作為AI硬體趨勢的主動投資標的，可於既有50萬可投資資金中小部位分批布局；核心0050與美股VOO/VTI部位維持不變，每月定期定額持續投入；台股大盤箱型震盪期間不追高，可利用拉回分批進場，避免追價搶快。",
+        "risks": [],
+        "source_url": "https://socialworkerdaily.com/notes-of-gooaye-ep-695/"
+      }
+    },
+    {
+      "id": 1791191408244,
+      "title": "股癌 EP694",
+      "created_at": "2026-10-05T09:10:08.244Z",
+      "analysis": {
+        "type": "podcast",
+        "episode": "EP694",
+        "date": "2026-09-05",
+        "source": "股癌",
+        "summary": [
+          "大盤處於震盪盤整階段，主持人選擇縮小槓桿部位觀望，待方向明確後再加大動作",
+          "博通財報顯示AI需求強勁，尤其來自OpenAI、Anthropic等前緣Lab的資本支出，MTK首次被提及顯示其地位提升",
+          "Snowflake財報顯示AI協作與資料治理需求上升，軟體業開始大量派遣Forward-Deployed Engineer搶占AI落地需求",
+          "操作上將聯發科加碼至最大倉位，南亞科逢低進場，捷敏-KY與晶技則停損出場"
+        ],
+        "tickers": [
+          {
+            "name": "聯發科 MTK",
+            "context": "博通財報首度提及MTK，顯示其在AI供應鏈中地位提升，主持人加碼至最大倉位",
+            "stance": "bullish"
+          },
+          {
+            "name": "南亞科",
+            "context": "股價大跌後出現不錯進場點位，殺盤動能減弱，逢低承接並加碼",
+            "stance": "bullish"
+          },
+          {
+            "name": "捷敏-KY",
+            "context": "操作上判斷錯誤，選擇清倉停損",
+            "stance": "bearish"
+          },
+          {
+            "name": "晶技",
+            "context": "操作上判斷錯誤，選擇清倉停損",
+            "stance": "bearish"
+          },
+          {
+            "name": "博通 AVGO",
+            "context": "財報顯示需求強勁，主要受惠於OpenAI、Anthropic等前緣AI Lab資本支出，與輝達共同扶持新創客戶",
+            "stance": "bullish"
+          },
+          {
+            "name": "Snowflake",
+            "context": "財報數字上調，AI協作與資料治理能力強，跟進派遣FDE搶占企業AI落地需求",
+            "stance": "bullish"
+          },
+          {
+            "name": "特斯拉 TSLA",
+            "context": "新引擎技術未使用稀土，供應鏈題材值得關注，但目前僅視為次要題材",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "AI資本支出與前緣Lab需求",
+          "軟體業AI落地與Forward-Deployed Engineer趨勢",
+          "台股大盤震盪與資金方向未明",
+          "內容信任與品質在AI時代的重要性"
+        ],
+        "market_view": "大盤目前處於震盪整理、多空不明的階段，主持人選擇降低槓桿觀望，等待明確訊號再行動。AI產業雖長期趨勢看好，但資本市場短期波動大，需有耐心佈局大型權值股；同時外圍題材與軟體股的AI落地應用，可能是AI主線橫盤時的資金去處。",
+        "sentiment": "neutral",
+        "sentiment_reason": "主持人對AI長期趨勢維持樂觀，但對短期大盤方向保持謹慎觀望態度，實際操作上縮小槓桿、等待明確訊號，呈現中性偏謹慎的立場",
+        "quotes": [
+          "現在進入非常講究信任的時代，信用毀掉，大概一輩子就毀掉了",
+          "不認為大量AI工具會導致內容通膨不值錢，反而好的內容會更加值錢",
+          "財務自由的關鍵是物慾被控制得怎麼樣，如果物慾很大，賺多少錢都不夠用",
+          "AI可能是一個像網路一樣非常長的趨勢，可是資本市場就會上上下下的，後面搞不好還有一個大的回調"
+        ],
+        "portfolio_advice": "本集內容以台股個股（聯發科、南亞科、博通、Snowflake等）短線操作與題材觀察為主，與美股VOO/VTI被動核心配置關聯度低，建議僅作產業趨勢參考（AI資本支出延續、軟體業FDE落地趨勢），核心0050與VOO/VTI部位維持不變，每月定期定額持續投入，不需因單集個股操作調整整體資產配置",
+        "risks": [],
+        "source_url": "https://socialworkerdaily.com/notes-of-gooaye-ep-694/"
+      }
+    },
+    {
+      "id": 1791191387591,
+      "title": "股癌 EP693",
+      "created_at": "2026-10-05T09:09:47.591Z",
+      "analysis": {
+        "type": "podcast",
+        "episode": "EP693",
+        "date": "2026-09-02",
+        "source": "股癌",
+        "summary": [
+          "盤勢維持震盪，主持人選擇不動等待淨值收復高點，動能股操作近期表現不佳",
+          "輝達以35億美元ECB可轉債投資聯發科，雙方深化XPU與AI平台合作，Alphabet也同步認購",
+          "輝達推出NVHBM特規規格，並透過綁定世芯、發哥、MRVL等ASIC廠商布局，意圖從博通的市占中分一杯羹，但博通競爭力仍強",
+          "操作紀錄：賣微星投控(微台)換聯發科，加碼欣興，減碼部分捷敏、晶技轉入欣興"
+        ],
+        "tickers": [
+          {
+            "name": "聯發科",
+            "context": "獲輝達與Alphabet投資ECB可轉債，深化XPU與AI platform合作，若發展成功可轉換股份，被視為長期有潛力的策略夥伴",
+            "stance": "bullish"
+          },
+          {
+            "name": "輝達 NVDA",
+            "context": "投資聯發科，推出NVHBM特規，持續從GPU賣家轉型為整體解決方案供應商，布局擴大XPU生態圈",
+            "stance": "bullish"
+          },
+          {
+            "name": "博通 AVGO",
+            "context": "面臨輝達與多家ASIC廠商挑戰，但設計與整合能力仍強，短線股價可能因市場情緒受衝擊，長線營收未必受損",
+            "stance": "neutral"
+          },
+          {
+            "name": "欣興",
+            "context": "主持人實際操作加碼買進，並由捷敏、晶技資金轉入",
+            "stance": "bullish"
+          },
+          {
+            "name": "捷敏",
+            "context": "主持人減碼部分部位轉入欣興",
+            "stance": "neutral"
+          },
+          {
+            "name": "晶技",
+            "context": "主持人減碼部分部位轉入欣興",
+            "stance": "neutral"
+          },
+          {
+            "name": "微星",
+            "context": "主持人賣出微星換成聯發科部位",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "AI供應鏈與ASIC/XPU發展",
+          "輝達生態圈擴張與異業投資策略",
+          "記憶體技術規格演進(NVHBM)",
+          "美股與台股部位風控差異",
+          "光通訊族群強勢"
+        ],
+        "market_view": "整體盤勢處於震盪格局，主持人認為不需躁動，淨值會逐步收復前高。AI供應鏈中輝達持續擴張版圖，透過投資與技術綁定強化生態系，XPU與ASIC市場雖分食GPGPU市佔，但整體市場規模(TAM)擴大，對產業仍偏正向看待，短線股價可能因競爭消息面波動但基本面未必受損。",
+        "sentiment": "bullish",
+        "sentiment_reason": "主持人對AI供應鏈(聯發科、輝達合作)及光通訊族群表達正向看法，並實際進行加碼操作(欣興)，整體論述偏向產業擴張邏輯而非悲觀看空",
+        "quotes": [
+          "不要去聚焦市佔率下降，ASIC出貨數一定會越來越高，但不代表輝達越賺越少，因為市場持續變大",
+          "大家要去挑戰博通不代表博通會掉東西",
+          "不要想去做動能，等到創高再來做動能機率比較高"
+        ],
+        "portfolio_advice": "個人核心資產維持0050長期持有不變；可投資資金部分可觀察聯發科與輝達後續XPU/NVHBM合作進展及Tape out時間點，作為台股主動投資參考標的，但須注意博通等既有廠商競爭力仍強，相關ASIC供應鏈消息面波動大，不宜重倉追高；美股部分持續以VOO/VTI被動佈局為主，不涉入個股博弈。",
+        "risks": [],
+        "source_url": "https://socialworkerdaily.com/notes-of-gooaye-ep-693/"
+      }
+    },
+    {
+      "id": 1791191367053,
+      "title": "股癌 EP692",
+      "created_at": "2026-10-05T09:09:27.053Z",
+      "analysis": {
+        "type": "podcast",
+        "episode": "EP692",
+        "date": "2026-08-29",
+        "source": "股癌",
+        "summary": [
+          "盤勢震盪但數據偏多，具備發展下一波多頭的條件",
+          "Anthropic 與 Salesforce 合作推出 Claudeforce，表面雙贏但背後存在數據與護城河的長期競爭風險",
+          "Marvell 上修財務預期，XPU 與光通訊業務強勁，可能成為光通概念股續漲催化劑",
+          "OpenAI 的 Jalapeño 推論晶片表現優於 GB300，引發市場對輝達的短期質疑，但輝達長期在GPU市占與採購地位仍具優勢",
+          "輝達電話會議釋出正向訊號，CPU、通訊（光通）業務成長，GPU與ASIC同步搶料對台股供應鏈（光通、板材、伺服器零組件）為利多"
+        ],
+        "tickers": [
+          {
+            "name": "MRVL 邁威爾科技",
+            "context": "上修財務預期，XPU從Google拿到案子放量，光通Scale up交換晶片動能強，財報電話會議可能成為光通概念股催化劑",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "電話會議釋出正向訊號，CPU業務開始繳出營收，通訊/光通持續看好，GPU長期競爭優勢不會被ASIC取代，採購地位強大可擠壓競爭對手產能",
+            "stance": "bullish"
+          },
+          {
+            "name": "CRM Salesforce",
+            "context": "與Anthropic合作推出Claudeforce，掌握大量企業數據與法遵know-how，但主持人認為長期护城河可能被Anthropic技術侵蝕，存在數據外洩風險",
+            "stance": "neutral"
+          },
+          {
+            "name": "2327 國巨",
+            "context": "操作日記提及減碼轉台達電後國巨反而大漲，純記錄非建議",
+            "stance": "neutral"
+          },
+          {
+            "name": "2308 台達電",
+            "context": "操作日記提及加碼台達電，純記錄非建議",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "AI晶片供應鏈（GPU vs ASIC之爭）",
+          "光通訊族群動能",
+          "企業軟體與AI整合（Salesforce x Anthropic）",
+          "輝達護城河與競爭格局"
+        ],
+        "market_view": "整體盤勢震盪但數據偏多，具備發展下一波多頭的條件。AI相關供應鏈（光通、板材、伺服器零組件）在GPU與ASIC同步搶料的情況下將持續受惠，台股相關概念股有機會繼續走高。輝達雖面臨OpenAI自研晶片的挑戰，但長期在GPU生態與採購地位上仍具備強大優勢。",
+        "sentiment": "bullish",
+        "sentiment_reason": "主持人認為盤勢已具備發展下一波多頭的條件，且對光通、輝達供應鏈及台股相關受惠標的持正面態度，整體偏多觀點明顯",
+        "quotes": [
+          "誰有數據就是贏家，以前不知道怎麼用，現在有AI之後就懂得去用這些數據",
+          "長期來看，GPU還是有很強大的競爭優勢，並不會因為ASIC出現而就不行",
+          "若GPU跟ASIC都去搶料的話，台股市場就會有很多的機會，像是光通、板材、伺服器零組件就可以繼續漲下去"
+        ],
+        "portfolio_advice": "維持0050核心持倉不變；可投資資金中小部分配置於AI供應鏈相關台股（光通訊、伺服器零組件概念股）以參與GPU/ASIC搶料行情，但須留意短期波動；美股部分持續以VOO/VTI定期定額佈局，不追高輝達等單一個股，觀察NVDA與MRVL財報後續走勢作為加碼參考。",
+        "risks": [],
+        "source_url": "https://socialworkerdaily.com/notes-of-gooaye-ep-692/"
+      }
+    },
+    {
       "id": 1787812651196,
       "title": "股癌 EP691",
       "created_at": "2026-08-27T06:37:31.196Z",

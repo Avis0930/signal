@@ -1,0 +1,78 @@
+name: 匯入／刪除筆記
+
+# 由 Signal 網頁上的表單透過 GitHub API 觸發（workflow_dispatch）。
+# JSON 一律在這裡驗證過才寫檔，前端只負責收集內容。
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'save（新增／更新）或 delete（刪除）'
+        required: true
+        default: 'save'
+      note_type:
+        description: 'podcast 或 industry_research'
+        required: false
+        default: 'podcast'
+      title:
+        description: '筆記標題'
+        required: false
+        default: ''
+      raw:
+        description: 'Claude 回覆原文（含 JSON）'
+        required: false
+        default: ''
+      record_id:
+        description: '要刪除的紀錄 id'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: signal-data
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 安裝依賴（寄信用）
+        run: npm install --no-audit --no-fund
+
+      - name: 驗證並寫入
+        id: import
+        env:
+          ACTION: ${{ inputs.action }}
+          NOTE_TYPE: ${{ inputs.note_type }}
+          TITLE: ${{ inputs.title }}
+          RAW: ${{ inputs.raw }}
+          RECORD_ID: ${{ inputs.record_id }}
+        run: node scripts/import-note.mjs
+
+      - name: Commit 變更
+        if: steps.import.outputs.status == 'ok'
+        run: |
+          if [ -z "$(git status --porcelain data)" ]; then
+            echo "資料沒有變化，略過 commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "chore(data): ${{ inputs.action }} ${{ inputs.title || inputs.record_id }}"
+          git push
+
+      - name: 失敗時寄信通知
+        if: failure()
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+        run: node scripts/send-mail.mjs

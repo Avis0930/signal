@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:     #f0f4fb;
+    --surf:   #ffffff;
+    --surf2:  #eef2fa;
+    --surf3:  #e2e8f6;
+    --border: #d0d8ee;
+    --text:   #1a1d2e;
+    --muted:  #3d4666;
+    --faint:  #7880a0;
+    --accent: #3a6ef0;
+    --green:  #15803d;
+    --red:    #dc2626;
+    --yellow: #b45309;
+    --purple: #7c3aed;
+    --r:      11px;
+    --shadow: 0 1px 4px rgba(30,40,80,.08), 0 4px 16px rgba(30,40,80,.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background: var(--bg); color: var(--text);
+    font-size: 15px; line-height: 1.65; min-height: 100vh;
+  }
+  .shell { display: flex; flex-direction: column; min-height: 100vh; }
+
+  /* ── Header ── */
+  header {
+    background: var(--surf); border-bottom: 1px solid var(--border);
+    height: 54px; padding: 0 20px; display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 4px rgba(30,40,80,.06);
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-icon { font-size: 20px; }
+  .brand-name { font-size: 15px; font-weight: 800; color: var(--text); }
+  .htabs { display: flex; gap: 2px; margin-left: auto; }
+  .htab {
+    padding: 6px 14px; border: none; border-radius: 7px; background: none;
+    color: var(--faint); font-size: 14px; font-weight: 500; cursor: pointer; transition: all .15s;
+  }
+  .htab:hover { background: var(--surf2); color: var(--text); }
+  .htab.on { background: var(--accent); color: #fff; }
+
+  /* mobile history toggle */
+  .mob-hist-btn {
+    display: none; padding: 6px 12px; border: 1px solid var(--border);
+    border-radius: 7px; background: var(--surf); color: var(--muted);
+    font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+
+  .body { display: flex; flex: 1; }
+
+  /* ── Sidebar ── */
+  aside {
+    width: 260px; flex-shrink: 0; background: var(--surf);
+    border-right: 1px solid var(--border);
+    height: calc(100vh - 54px); position: sticky; top: 54px;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .aside-head {
+    padding: 12px 16px 10px; font-size: 12px; font-weight: 800; color: var(--faint);
+    text-transform: uppercase; letter-spacing: .08em;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .aside-cnt { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--faint); }
+  .hlist { flex: 1; overflow-y: auto; }
+  .hitem {
+    padding: 11px 16px; cursor: pointer; border-bottom: 1px solid var(--border);
+    transition: background .12s; display: flex; flex-direction: column; gap: 4px;
+  }
+  .hitem:hover { background: var(--surf2); }
+  .hitem.sel { background: #eef3ff; border-left: 3px solid var(--accent); padding-left: 13px; }
+  .hi-t { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hi-r { display: flex; justify-content: space-between; align-items: center; }
+  .hi-d { font-size: 12px; color: var(--faint); }
+  .badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+  .bb { background: #dcfce7; color: var(--green); }
+  .br { background: #fee2e2; color: var(--red); }
+  .by { background: #fef3c7; color: var(--yellow); }
+  .bx { background: var(--surf2); color: var(--faint); }
+  .bi { background: #ede9fe; color: var(--purple); }
+  .delbtn {
+    background: none; border: none; color: var(--faint); font-size: 13px;
+    cursor: pointer; padding: 2px 5px; opacity: 0; transition: opacity .12s; line-height: 1;
+  }
+  .hitem:hover .delbtn { opacity: 1; }
+  .hempty { padding: 28px 16px; text-align: center; color: var(--faint); font-size: 13px; }
+
+  /* mobile sidebar overlay */
+  .mob-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+  }
+  .mob-overlay.open { display: flex; }
+  .mob-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.3); }
+  .mob-drawer {
+    position: relative; width: 300px; max-width: 85vw; background: var(--surf);
+    height: 100%; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,.15);
+  }
+  .mob-drawer-head {
+    padding: 16px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .mob-drawer-title { font-size: 15px; font-weight: 700; }
+  .mob-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--faint); padding: 4px; }
+
+  /* ── Views ── */
+  .view { display: none; flex: 1; overflow-y: auto; }
+  .view.on { display: block; }
+
+  /* ── Input view ── */
+  .iview { max-width: 740px; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+  .card {
+    background: var(--surf); border: 1px solid var(--border);
+    border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow);
+  }
+  .chead { padding: 18px 20px 0; display: flex; align-items: flex-start; gap: 13px; }
+  .cicon { font-size: 22px; line-height: 1; margin-top: 2px; }
+  .ctitle { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .csub { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .cbody { padding: 16px 20px 20px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+  input[type=text], textarea, select {
+    width: 100%; background: var(--surf2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 13px; color: var(--text);
+    font-size: 14px; outline: none; font-family: inherit; line-height: 1.6;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus, textarea:focus, select:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(58,110,240,.12);
+  }
+  textarea { resize: vertical; }
+  select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237880a0' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  input::placeholder, textarea::placeholder { color: var(--faint); }
+  .mb14 { margin-bottom: 14px; }
+  .prompt-box {
+    background: var(--surf2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 13px 15px; font-size: 12.5px; color: var(--muted); line-height: 1.7;
+    white-space: pre-wrap; font-family: 'Menlo','Consolas',monospace;
+    max-height: 200px; overflow-y: auto;
+  }
+  .btnp {
+    padding: 10px 22px; background: var(--accent); color: #fff; border: none;
+    border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: opacity .15s, transform .1s; white-space: nowrap; box-shadow: 0 2px 8px rgba(58,110,240,.3);
+  }
+  .btnp:hover { opacity: .88; }
+  .btnp:active { transform: scale(.97); }
+  .btnp:disabled { background: var(--surf3); color: var(--faint); cursor: not-allowed; transform: none; box-shadow: none; }
+  .btng {
+    padding: 9px 16px; background: var(--surf); border: 1.5px solid var(--accent);
+    border-radius: 8px; font-size: 13px; font-weight: 700; color: var(--accent);
+    cursor: pointer; transition: all .15s; white-space: nowrap;
+  }
+  .btng:hover { background: #eef3ff; }
+  .btng.ok { color: var(--green); border-color: var(--green); background: #f0fdf4; }
+  .status { font-size: 13px; min-height: 20px; }
+  .status.err { color: var(--red); font-weight: 600; }
+  .status.ok  { color: var(--green); font-weight: 600; }
+  .spinner {
+    width: 14px; height: 14px; border: 2px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: spin .7s linear infinite; display: inline-block; vertical-align: middle; margin-right: 6px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Result card ── */
+  .rcard { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow); animation: up .25s ease; }
+  @keyframes up { from { opacity:0; transform:translateY(6px); } to { opacity:1; } }
+  .rhead { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .rtitle { font-size: 16px; font-weight: 800; flex: 1; min-width: 0; }
+  .rbody  { padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+  .slabel {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em;
+    color: var(--faint); margin-bottom: 9px; display: flex; align-items: center; gap: 7px;
+  }
+  .slabel::before { content:''; display:block; width:3px; height:13px; background:var(--accent); border-radius:2px; }
+  .sumlist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .sumlist li { padding: 11px 15px; background: var(--surf2); border-radius: 8px; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; }
+  .twrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tchip { background: var(--surf2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; position: relative; cursor: default; }
+  .tname { font-size: 14px; font-weight: 700; color: var(--accent); }
+  .tcat  { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: var(--surf3); color: var(--muted); display: inline-block; margin-bottom: 3px; }
+  .ttip {
+    display: none; position: absolute; bottom: calc(100% + 7px); left: 0;
+    background: var(--text); color: #fff; border-radius: 8px;
+    padding: 10px 12px; font-size: 12px; width: 230px; z-index: 20;
+    box-shadow: 0 6px 20px rgba(0,0,0,.2); line-height: 1.6;
+  }
+  .tchip:hover .ttip { display: block; }
+  .prose { padding: 12px 15px; background: var(--surf2); border-radius: 8px; font-size: 14px; line-height: 1.8; color: var(--text); }
+  .quote { padding: 12px 15px; background: #fffbeb; border-radius: 8px; border-left: 3px solid var(--yellow); font-size: 14px; font-style: italic; line-height: 1.75; color: var(--text); }
+  .quote::before { content:'"'; color:var(--yellow); font-size:20px; line-height:0; vertical-align:-5px; margin-right:4px; }
+  .advice { padding: 15px 17px; background: #eef3ff; border: 1px solid #c7d7fc; border-radius: 10px; font-size: 14px; line-height: 1.9; color: var(--text); }
+  .sb { padding: 4px 13px; border-radius: 20px; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .sb-bull { background: #dcfce7; color: var(--green); border: 1px solid #86efac; }
+  .sb-bear { background: #fee2e2; color: var(--red);   border: 1px solid #fca5a5; }
+  .sb-neu  { background: #fef3c7; color: var(--yellow);border: 1px solid #fcd34d; }
+  .sb-ir   { background: #ede9fe; color: var(--purple);border: 1px solid #c4b5fd; }
+  .risk-list { display: flex; flex-direction: column; gap: 6px; }
+  .risk-item { padding: 9px 14px; background: #fff1f2; border-radius: 8px; border-left: 3px solid var(--red); font-size: 13px; line-height: 1.6; }
+
+  /* ── Dashboard ── */
+  .dash-wrap { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+  .dtabs-bar {
+    padding: 12px 24px; background: var(--surf); border-bottom: 1px solid var(--border);
+    position: sticky; top: 54px; z-index: 40; display: flex; gap: 6px;
+  }
+  .dtab {
+    padding: 7px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+    background: var(--surf); color: var(--muted); font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all .15s;
+  }
+  .dtab:hover { border-color: var(--accent); color: var(--accent); }
+  .dtab.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .dview { padding: 24px; display: flex; flex-direction: column; gap: 20px; max-width: 960px; }
+  .dh { font-size: 18px; font-weight: 800; color: var(--text); }
+  .warn-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 9px; padding: 12px 16px; font-size: 13px; color: var(--yellow); line-height: 1.7; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  .stat { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); }
+  .slbl { font-size: 11px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 7px; }
+  .snum { font-size: 28px; font-weight: 800; line-height: 1; }
+  .ssub { font-size: 12px; color: var(--faint); margin-top: 4px; }
+  .cg { color: var(--green); } .cr { color: var(--red); } .cy { color: var(--yellow); } .ct { color: var(--text); } .cp { color: var(--purple); }
+  .ccrd { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; box-shadow: var(--shadow); }
+  .ccrd h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .ccrd .csub { font-size: 12px; color: var(--faint); margin-bottom: 14px; }
+  .cwrap { position: relative; height: 220px; }
+  .tbars { display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+  .trow { display: flex; align-items: center; gap: 10px; }
+  .tn { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 90px; }
+  .ttrack { flex: 1; background: var(--surf2); border-radius: 4px; height: 9px; overflow: hidden; }
+  .tfill { height: 100%; background: var(--accent); border-radius: 4px; opacity: .7; }
+  .tcnt { font-size: 12px; color: var(--faint); min-width: 20px; text-align: right; }
+
+  /* dual sentiment (全部 tab) */
+  .dual-sent { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sent-block { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); }
+  .sent-block-title { font-size: 12px; font-weight: 800; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .sent-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sent-mini .slbl { font-size: 10px; }
+  .sent-mini .snum { font-size: 20px; }
+
+  /* watch blocks */
+  .watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .wblock { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); }
+  .wblock h3 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 11px; display: flex; align-items: center; gap: 7px; }
+  .wblock h3 span { font-size: 11px; font-weight: 400; color: var(--faint); }
+  .wsub { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .wsub:last-child { margin-bottom: 0; }
+  .wsub-label { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; white-space: nowrap; margin-top: 3px; flex-shrink: 0; min-width: 56px; text-align: center; }
+  .wtag-g-label { background: #dcfce7; color: var(--green); }
+  .wtag-r-label { background: #fee2e2; color: var(--red); }
+  .wtag-y-label { background: #fef3c7; color: var(--yellow); }
+  .wtag-b-label { background: #eef3ff; color: var(--accent); }
+  .wsub-tags { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .ref-list { margin-top: 6px; }
+  .ref-list summary { font-size: 11px; color: var(--faint); cursor: pointer; user-select: none; padding: 2px 0; }
+  .ref-list summary:hover { color: var(--text); }
+  .ref-tags { margin-top: 6px; }
+  .wtag-cnt { font-size: 10px; opacity: .65; font-weight: 400; margin-left: 2px; }
+  .wtag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin: 0; }
+  .wtag-g { background: #dcfce7; color: var(--green); border: 1px solid #86efac; }
+  .wtag-r { background: #fee2e2; color: var(--red);   border: 1px solid #fca5a5; }
+  .wtag-y { background: #fef3c7; color: var(--yellow);border: 1px solid #fcd34d; }
+  .wtag-b { background: #eef3ff; color: var(--accent);border: 1px solid #c7d7fc; }
+  .wempty { font-size: 13px; color: var(--faint); }
+
+  /* action card */
+  .action-rows { display: flex; flex-direction: column; gap: 10px; }
+  .arow { display: flex; gap: 10px; align-items: flex-start; }
+  .atag { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; }
+  .atag-now   { background: #dcfce7; color: var(--green); }
+  .atag-watch { background: #fef3c7; color: var(--yellow); }
+  .atag-avoid { background: #fee2e2; color: var(--red); }
+  .atag-warn  { background: #fff1f2; color: var(--red); border: 1px solid #fca5a5; }
+  .atxt { font-size: 13px; line-height: 1.7; color: var(--text); }
+  .adivider { border: none; border-top: 1px solid var(--border); margin: 6px 0; }
+  .dempty { padding: 80px 20px; text-align: center; color: var(--faint); font-size: 14px; }
+
+  /* industry group view */
+  .ind-groups { display: flex; flex-direction: column; gap: 14px; }
+  .ind-group { background: var(--surf); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+  .ind-group-head { padding: 12px 18px; background: var(--surf2); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .ind-group-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .ind-group-cnt  { font-size: 12px; color: var(--faint); }
+  .ind-group-body { padding: 0; }
+  .ind-note-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .12s; }
+  .ind-note-row:last-child { border-bottom: none; }
+  .ind-note-row:hover { background: var(--surf2); }
+  .ind-note-meta { font-size: 11px; color: var(--faint); white-space: nowrap; margin-top: 2px; min-width: 60px; }
+  .ind-note-title { font-size: 13px; font-weight: 600; color: var(--text); flex: 1; }
+  .ind-tickers { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .ind-tk { font-size: 11px; background: var(--surf2); border: 1px solid var(--border); border-radius: 5px; padding: 2px 7px; color: var(--accent); font-weight: 600; }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    aside { display: none; }
+    .mob-hist-btn { display: block; }
+    .stat-grid { grid-template-columns: repeat(2,1fr); }
+    .watch-grid { grid-template-columns: 1fr; }
+    .dual-sent { grid-template-columns: 1fr; }
+    .iview, .dview { padding: 16px; gap: 16px; }
+    .cbody { padding: 14px 16px 16px; }
+    .chead { padding: 14px 16px 0; }
+    .cwrap { height: 180px; }
+    .brand-name { font-size: 14px; }
+    .htab { padding: 5px 10px; font-size: 13px; }
+    .dtabs-bar { padding: 10px 16px; }
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* 歸檔 / 設定 */
+  .hmore {
+    width: calc(100% - 16px); margin: 8px; padding: 8px; border-radius: 8px;
+    background: var(--surf2); color: var(--muted); border: 1px solid var(--border);
+    font-size: 12px; cursor: pointer;
+  }
+  .hmore:hover { color: var(--text); border-color: var(--accent); }
+  .gear {
+    background: var(--surf2); color: var(--muted); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 10px; font-size: 14px; cursor: pointer; margin-left: 8px;
+  }
+  .gear:hover { color: var(--text); }
+  .gear.warn { color: #f0b429; border-color: #f0b429; }
+  .modal-bg {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6);
+    z-index: 200; align-items: center; justify-content: center; padding: 16px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--surf); border: 1px solid var(--border); border-radius: 14px;
+    width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto; padding: 20px;
+  }
+  .modal h3 { font-size: 15px; margin: 0 0 4px; }
+  .modal .mhint { font-size: 12px; color: var(--faint); line-height: 1.7; margin-bottom: 14px; }
+  .modal .mrow { margin-bottom: 12px; }
+  .modal .mact { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+  .ro-banner {
+    background: rgba(240,180,41,.1); border: 1px solid rgba(240,180,41,.4);
+    color: #f0b429; border-radius: 10px; padding: 10px 12px; font-size: 12.5px;
+    line-height: 1.7; margin-bottom: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header>
+  <div class="brand"><span class="brand-icon">🎙</span><span class="brand-name">Signal</span></div>
+  <button class="mob-hist-btn" onclick="openDrawer()">歷史 ☰</button>
+  <nav class="htabs">
+    <button class="htab on"  onclick="gotoView('input',this)">輸入筆記</button>
+    <button class="htab"     onclick="gotoView('dash',this)">統計儀表板</button>
+    <button class="gear" id="gearbtn" onclick="openSettings()" title="GitHub 連線設定">⚙</button>
+  </nav>
+</header>
+
+<!-- mobile drawer -->
+<div class="mob-overlay" id="mob-overlay" onclick="closeDrawerOutside(event)">
+  <div class="mob-backdrop"></div>
+  <div class="mob-drawer">
+    <div class="mob-drawer-head">
+      <span class="mob-drawer-title">歷史紀錄</span>
+      <button class="mob-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="hlist" id="hlist-mob"></div>
+  </div>
+</div>
+
+<!-- GitHub 連線設定 -->
+<div class="modal-bg" id="settings-bg" onclick="if(event.target===this)closeSettings()">
+  <div class="modal">
+    <h3>GitHub 連線設定</h3>
+    <div class="mhint">
+      儲存／刪除筆記會觸發 GitHub Actions 代寫，需要一組 fine-grained PAT：<br>
+      權限只要 <b>Actions: Read and write</b>，Repository access 只勾這一個 repo。<br>
+      Token 只存在這台裝置的瀏覽器，不會上傳到任何地方。
+    </div>
+    <div class="mrow"><label>GitHub 帳號 (owner)</label>
+      <input type="text" id="cfg-owner" placeholder="例：rlaich" /></div>
+    <div class="mrow"><label>Repo 名稱</label>
+      <input type="text" id="cfg-repo" placeholder="signal" /></div>
+    <div class="mrow"><label>分支</label>
+      <input type="text" id="cfg-branch" placeholder="main" /></div>
+    <div class="mrow"><label>Personal Access Token</label>
+      <input type="password" id="cfg-token" placeholder="github_pat_…" autocomplete="off" /></div>
+    <div class="status" id="cfg-status"></div>
+    <div class="mact">
+      <button class="btng" onclick="testSettings()">測試連線</button>
+      <button class="btnp" onclick="saveSettings()">儲存</button>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <aside>
+    <div class="aside-head">歷史紀錄 <span class="aside-cnt" id="hcnt"></span></div>
+    <div class="hlist" id="hlist"></div>
+  </aside>
+
+  <!-- input view -->
+  <div class="view on" id="view-input">
+    <div class="iview">
+      <div class="ro-banner" id="ro-banner" style="display:none">
+        目前是唯讀模式：尚未設定 GitHub 連線，無法儲存或刪除筆記。
+        點右上角 <b>⚙</b> 填入 owner / repo / token 後即可在手機上直接存檔。
+      </div>
+
+      <div class="card">
+        <div class="chead"><div class="cicon">1️⃣</div>
+          <div>
+            <div class="ctitle" id="step1-title">複製 Prompt，到 claude.ai 分析</div>
+            <div class="csub" id="step1-sub">把筆記貼進 claude.ai，後面接上這段 prompt，讓 Claude 回傳結構化 JSON。</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="mb14">
+            <label>筆記類型</label>
+            <select id="type-sel" onchange="switchNoteType(this.value)">
+              <option value="podcast">Podcast 筆記（股癌、izaax 等）</option>
+              <option value="industry_research">產業研究筆記（手寫分析、深度報告）</option>
+            </select>
+          </div>
+          <div class="prompt-box mb14" id="prompt-box"></div>
+          <button class="btng" id="cpbtn" onclick="copyPrompt()">複製 Prompt</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="chead"><div class="cicon">2️⃣</div>
+          <div><div class="ctitle">把 Claude 的回覆貼到這裡</div>
+            <div class="csub">完整貼入即可，工具自動解析 JSON。</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="mb14"><label>筆記標題</label>
+            <input type="text" id="inp-title" placeholder="例：股癌 EP.645、AI 伺服器產業研究 2026Q2…" />
+          </div>
+          <div class="mb14"><label>貼上 Claude 的回覆</label>
+            <textarea id="inp-paste" rows="9" placeholder="把 Claude 回覆的完整內容貼在這裡…"></textarea>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:12px;align-items:center">
+            <div class="status" id="status"></div>
+            <button class="btnp" id="savebtn" onclick="saveRecord()">儲存分析</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="result-area"></div>
+    </div>
+  </div>
+
+  <!-- dashboard view -->
+  <div class="view" id="view-dash">
+    <div class="dash-wrap">
+      <div class="dtabs-bar">
+        <button class="dtab on"  onclick="switchDashFilter('all',this)">全部</button>
+        <button class="dtab"     onclick="switchDashFilter('podcast',this)">Podcast 筆記</button>
+        <button class="dtab"     onclick="switchDashFilter('industry_research',this)">產業研究</button>
+      </div>
+      <div class="dview" id="dcontent">
+        <div class="dempty">尚無資料，請先儲存幾集分析結果</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="prompts.js"></script>
+<script>
+const SENT_LABEL  = { bullish:'可以考慮 📈', bearish:'小心觀望 📉', neutral:'繼續觀察 ➡️' };
+const SENT_BADGE  = { bullish:'bb', bearish:'br', neutral:'by' };
+const SENT_SBCLS  = { bullish:'sb-bull', bearish:'sb-bear', neutral:'sb-neu' };
+
+// Prompts 定義見 prompts.js（前端與 Actions 共用）
+
+// ── 靜態資料路徑（GitHub Pages）─────────────────────────────────────────────
+const PATH = {
+  podcast:  'data/podcasts/notes.json',
+  archive:  'data/podcasts/archive/notes.json',
+  industry: 'data/industry-research/notes.json',
+};
+
+// ── GitHub 寫入設定（只存在本機瀏覽器 localStorage）────────────────────────
+const LS_KEY   = 'signal.gh';
+const WORKFLOW = 'import-note.yml';
+
+function ghCfg() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch { return {}; }
+}
+function ghReady() { const c = ghCfg(); return !!(c.owner && c.repo && c.token); }
+function ghHeaders() {
+  return {
+    Authorization: 'Bearer ' + ghCfg().token,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+}
+function ghApi(p) { const c = ghCfg(); return 'https://api.github.com/repos/' + c.owner + '/' + c.repo + p; }
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+function ghErrMsg(status, body) {
+  let m = 'GitHub API ' + status;
+  if (body && body.message) m += '：' + body.message;
+  if (status === 401) m += '（token 無效或已過期）';
+  if (status === 403) m += '（token 權限不足，需 Actions: Read and write）';
+  if (status === 404) m += '（owner／repo 有誤，或 workflow 尚未推上分支）';
+  if (status === 422) m += '（分支名稱有誤？）';
+  return m;
+}
+
+// 取目前最新一筆 import-note run 的 id，用來辨識我們剛觸發的那一次
+async function ghLatestRunId() {
+  try {
+    const res = await fetch(ghApi('/actions/workflows/' + WORKFLOW + '/runs?per_page=1'),
+      { headers: ghHeaders(), cache: 'no-store' });
+    if (!res.ok) return 0;
+    const j = await res.json();
+    return (j.workflow_runs && j.workflow_runs[0] && j.workflow_runs[0].id) || 0;
+  } catch { return 0; }
+}
+
+async function ghDispatch(inputs) {
+  if (!ghReady()) throw new Error('尚未設定 GitHub 連線，請點右上角 ⚙');
+  const res = await fetch(ghApi('/actions/workflows/' + WORKFLOW + '/dispatches'), {
+    method: 'POST',
+    headers: Object.assign({ 'Content-Type': 'application/json' }, ghHeaders()),
+    body: JSON.stringify({ ref: ghCfg().branch || 'main', inputs }),
+  });
+  if (res.status === 204) return;
+  let body = null; try { body = await res.json(); } catch (_) {}
+  throw new Error(ghErrMsg(res.status, body));
+}
+
+// 等 Actions 跑完（最多 ~2.5 分鐘）
+async function ghWaitRun(prevId, onTick) {
+  const deadline = Date.now() + 150000;
+  while (Date.now() < deadline) {
+    await sleep(5000);
+    try {
+      const res = await fetch(ghApi('/actions/workflows/' + WORKFLOW + '/runs?per_page=3'),
+        { headers: ghHeaders(), cache: 'no-store' });
+      if (res.ok) {
+        const j = await res.json();
+        const run = (j.workflow_runs || []).find(r => r.id > prevId);
+        if (run && run.status === 'completed') return run;
+        onTick(run ? run.status : 'queued');
+      }
+    } catch (_) { /* 網路抖動就再試一輪 */ }
+  }
+  return null;
+}
+
+// 送出一次寫入請求 → 等 Actions 跑完 → 等 Pages 真的更新 → 重新載入資料
+// verify(list) 回傳 true 表示新資料已經生效（GitHub Pages 推上去後還要幾十秒才會換）
+async function ghWrite(inputs, verb, verify) {
+  const prevId = await ghLatestRunId();
+  await ghDispatch(inputs);
+  setStatus('<span class="spinner"></span>已送出，等 Actions ' + verb + '…', '');
+
+  const run = await ghWaitRun(prevId, st => {
+    const label = st === 'queued' ? '排隊中' : st === 'in_progress' ? '執行中' : st;
+    setStatus('<span class="spinner"></span>Actions ' + label + '…', '');
+  });
+  if (!run) throw new Error('等待逾時，請稍後重新載入頁面確認結果（Actions 可能仍在執行）');
+  if (run.conclusion !== 'success') {
+    throw new Error('Actions ' + verb + '失敗（' + run.conclusion + '），詳見 ' + run.html_url);
+  }
+
+  for (let i = 0; i < 10; i++) {
+    await reloadAll();
+    if (!verify || verify([...recs, ...archiveRecs])) return;
+    setStatus('<span class="spinner"></span>Actions 完成，等 Pages 更新…（' + (i + 1) + '/10）', '');
+    await sleep(6000);
+  }
+  throw new Error('Actions 已成功，但頁面還沒拿到新資料（GitHub Pages 部署延遲），稍後重新整理即可');
+}
+
+async function reloadAll() {
+  await loadHistory();
+  if (archiveLoaded) { archiveLoaded = false; await ensureArchive(); }
+}
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let currentNoteType = 'podcast';
+let dashFilter = 'all';
+let chartLine = null;
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('prompt-box').textContent = PROMPT_PODCAST;
+  refreshGhState();
+  loadHistory();
+});
+
+function refreshGhState() {
+  const ready = ghReady();
+  const gear  = document.getElementById('gearbtn');
+  const ban   = document.getElementById('ro-banner');
+  if (gear) gear.classList.toggle('warn', !ready);
+  if (ban)  ban.style.display = ready ? 'none' : '';
+  const sb = document.getElementById('savebtn');
+  if (sb) sb.textContent = ready ? '儲存分析' : '儲存分析（需先設定 ⚙）';
+}
+
+// ── 設定視窗 ──────────────────────────────────────────────────────────────────
+function openSettings() {
+  const c = ghCfg();
+  document.getElementById('cfg-owner').value  = c.owner  || '';
+  document.getElementById('cfg-repo').value   = c.repo   || 'signal';
+  document.getElementById('cfg-branch').value = c.branch || 'main';
+  document.getElementById('cfg-token').value  = c.token  || '';
+  document.getElementById('cfg-status').innerHTML = '';
+  document.getElementById('settings-bg').classList.add('open');
+}
+function closeSettings() { document.getElementById('settings-bg').classList.remove('open'); }
+
+function readSettingsForm() {
+  return {
+    owner:  document.getElementById('cfg-owner').value.trim(),
+    repo:   document.getElementById('cfg-repo').value.trim(),
+    branch: document.getElementById('cfg-branch').value.trim() || 'main',
+    token:  document.getElementById('cfg-token').value.trim(),
+  };
+}
+function cfgStatus(msg, type) {
+  const el = document.getElementById('cfg-status');
+  el.className = 'status' + (type ? ' ' + type : '');
+  el.innerHTML = msg;
+}
+function saveSettings() {
+  const c = readSettingsForm();
+  if (!c.owner || !c.repo || !c.token) return cfgStatus('owner／repo／token 都要填', 'err');
+  try { localStorage.setItem(LS_KEY, JSON.stringify(c)); }
+  catch (_) { return cfgStatus('瀏覽器拒絕寫入 localStorage（無痕模式？）', 'err'); }
+  cfgStatus('✓ 已儲存', 'ok');
+  refreshGhState();
+  setTimeout(closeSettings, 700);
+}
+async function testSettings() {
+  const c = readSettingsForm();
+  if (!c.owner || !c.repo || !c.token) return cfgStatus('owner／repo／token 都要填', 'err');
+  cfgStatus('<span class="spinner"></span>測試中…', '');
+  try {
+    const url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/actions/workflows/' + WORKFLOW;
+    const res = await fetch(url, {
+      headers: {
+        Authorization: 'Bearer ' + c.token,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      cache: 'no-store',
+    });
+    if (!res.ok) {
+      let body = null; try { body = await res.json(); } catch (_) {}
+      return cfgStatus(ghErrMsg(res.status, body), 'err');
+    }
+    cfgStatus('✓ 連線正常，找得到 ' + WORKFLOW, 'ok');
+  } catch (e) { cfgStatus('連線失敗：' + e.message, 'err'); }
+}
+
+// ── Note type switching ───────────────────────────────────────────────────────
+function switchNoteType(type) {
+  currentNoteType = type;
+  const isPod = type === 'podcast';
+  document.getElementById('prompt-box').textContent = isPod ? PROMPT_PODCAST : PROMPT_INDUSTRY;
+  document.getElementById('step1-title').textContent = isPod
+    ? '複製 Prompt，到 claude.ai 分析'
+    : '複製 Prompt，到 claude.ai 整理';
+  document.getElementById('step1-sub').textContent = isPod
+    ? '把筆記貼進 claude.ai，後面接上這段 prompt，讓 Claude 回傳結構化 JSON。'
+    : '把手寫產業分析或報告貼進 claude.ai，讓 Claude 整理成結構化 JSON。';
+  const btn = document.getElementById('cpbtn');
+  btn.textContent = '複製 Prompt';
+  btn.classList.remove('ok');
+}
+
+// ── View ──────────────────────────────────────────────────────────────────────
+function gotoView(name, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.querySelectorAll('.htab').forEach(b => b.classList.remove('on'));
+  document.getElementById('view-' + name).classList.add('on');
+  btn.classList.add('on');
+  if (name === 'dash') buildDash();
+}
+
+// ── Dashboard filter tabs ─────────────────────────────────────────────────────
+function switchDashFilter(filter, btn) {
+  dashFilter = filter;
+  document.querySelectorAll('.dtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  buildDash();
+}
+
+// ── Mobile drawer ─────────────────────────────────────────────────────────────
+function openDrawer()  { document.getElementById('mob-overlay').classList.add('open'); }
+function closeDrawer() { document.getElementById('mob-overlay').classList.remove('open'); }
+function closeDrawerOutside(e) { if (e.target === e.currentTarget || e.target.classList.contains('mob-backdrop')) closeDrawer(); }
+
+// ── Copy prompt ───────────────────────────────────────────────────────────────
+function copyPrompt() {
+  const prompt = currentNoteType === 'industry_research' ? PROMPT_INDUSTRY : PROMPT_PODCAST;
+  navigator.clipboard.writeText(prompt).then(() => {
+    const b = document.getElementById('cpbtn');
+    b.textContent = '✓ 已複製！'; b.classList.add('ok');
+    setTimeout(() => { b.textContent = '複製 Prompt'; b.classList.remove('ok'); }, 2200);
+  });
+}
+
+// ── Save ──────────────────────────────────────────────────────────────────────
+async function saveRecord() {
+  const raw   = document.getElementById('inp-paste').value.trim();
+  const title = document.getElementById('inp-title').value.trim() || '未命名筆記';
+  if (!raw)       return setStatus('請貼上 Claude 的回覆', 'err');
+  if (!ghReady()) return setStatus('尚未設定 GitHub 連線，請點右上角 ⚙', 'err');
+  if (raw.length > 60000) return setStatus('內容過長（上限約 60KB），請分次儲存', 'err');
+  if (!/\{[\s\S]*\}/.test(raw)) return setStatus('看不到 JSON 內容，請確認貼上的是 Claude 回傳的 JSON', 'err');
+
+  const btn = document.getElementById('savebtn');
+  btn.disabled = true;
+  try {
+    await ghWrite({
+      action: 'save',
+      note_type: document.getElementById('type-sel').value,
+      title: title,
+      raw: raw,
+    }, '寫入', list => list.some(r => r.title === title));
+    setStatus('✓ 已儲存！', 'ok');
+    const saved = [...recs, ...archiveRecs].find(r => r.title === title);
+    if (saved) renderResult(saved);
+    document.getElementById('inp-paste').value = '';
+    document.getElementById('inp-title').value = '';
+  } catch (e) { setStatus(e.message, 'err'); }
+  finally { btn.disabled = false; refreshGhState(); }
+}
+
+// ── History ───────────────────────────────────────────────────────────────────
+let recs = [];
+
+let archiveRecs   = [];
+let archiveLoaded = false;
+let showArchive   = false;
+
+async function fetchRecords(url) {
+  try {
+    const res = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data.records) ? data.records : [];
+  } catch (_) { return []; }
+}
+
+const byNewest = (a, b) => new Date(b.created_at) - new Date(a.created_at);
+
+async function loadHistory() {
+  const [pods, inds] = await Promise.all([
+    fetchRecords(PATH.podcast),
+    fetchRecords(PATH.industry),
+  ]);
+  recs = [...pods, ...inds].sort(byNewest);
+  renderHist();
+}
+
+// 歸檔資料只在需要時才抓（儀表板統計、查看歷史）
+async function ensureArchive() {
+  if (archiveLoaded) return archiveRecs;
+  archiveRecs   = await fetchRecords(PATH.archive);
+  archiveLoaded = true;
+  return archiveRecs;
+}
+
+async function toggleArchive() {
+  if (!showArchive) {
+    document.querySelectorAll('.hmore').forEach(b => { b.textContent = '載入中…'; b.disabled = true; });
+    await ensureArchive();
+  }
+  showArchive = !showArchive;
+  renderHist();
+}
+
+function histItemHtml(r) {
+  const a   = r.analysis || {};
+  const isIR = a.type === 'industry_research';
+  const s   = a.sentiment || '';
+  const cls = isIR ? 'bi' : (SENT_BADGE[s] || 'bx');
+  const lbl = isIR
+    ? (a.industry || '產業研究')
+    : ({ bullish:'可以考慮', bearish:'小心觀望', neutral:'繼續觀察' }[s] || '—');
+  const dt  = fmtDate(a.date || r.created_at);
+  const src = a.source ? ` · ${a.source}` : '';
+  return `<div class="hitem" id="hi${r.id}" onclick="loadRec(${r.id})">
+    <div class="hi-t">${h(r.title)}</div>
+    <div class="hi-r">
+      <span class="hi-d">${dt}${src}</span>
+      <div style="display:flex;align-items:center;gap:5px">
+        <span class="badge ${cls}">${h(lbl)}</span>
+        <button class="delbtn" onclick="delRec(event,${r.id})">✕</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function visibleRecs() {
+  return showArchive ? [...recs, ...archiveRecs].sort(byNewest) : recs;
+}
+
+function renderHist() {
+  const list = visibleRecs();
+  document.getElementById('hcnt').textContent = list.length ? list.length + ' 筆' : '';
+  const items = list.length
+    ? list.map(histItemHtml).join('')
+    : '<div class="hempty">尚無紀錄</div>';
+  let more;
+  if (!showArchive) {
+    more = '<button class="hmore" onclick="toggleArchive()">查看歷史（已歸檔集數）</button>';
+  } else if (archiveRecs.length) {
+    more = '<button class="hmore" onclick="toggleArchive()">收起歸檔（' + archiveRecs.length + ' 筆）</button>';
+  } else {
+    more = '<div class="hempty" style="padding:8px">沒有更早的歸檔紀錄</div>'
+         + '<button class="hmore" onclick="toggleArchive()">收起</button>';
+  }
+  const html = items + more;
+  document.getElementById('hlist').innerHTML     = html;
+  document.getElementById('hlist-mob').innerHTML = html;
+}
+
+function loadRec(id) {
+  const rec = [...recs, ...archiveRecs].find(r => r.id === id);
+  if (!rec) return;
+  document.querySelectorAll('.hitem').forEach(e => e.classList.remove('sel'));
+  document.querySelectorAll('#hi' + id).forEach(e => e.classList.add('sel'));
+  closeDrawer();
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.querySelectorAll('.htab').forEach(b => b.classList.remove('on'));
+  document.getElementById('view-input').classList.add('on');
+  document.querySelector('.htab').classList.add('on');
+  renderResult(rec);
+}
+
+async function delRec(e, id) {
+  e.stopPropagation();
+  if (!ghReady()) return setStatus('尚未設定 GitHub 連線，無法刪除', 'err');
+  const rec = [...recs, ...archiveRecs].find(r => r.id === id);
+  if (!confirm('確定刪除「' + (rec ? rec.title : id) + '」？')) return;
+  try {
+    await ghWrite({ action: 'delete', record_id: String(id) }, '刪除',
+      list => !list.some(r => Number(r.id) === Number(id)));
+    setStatus('✓ 已刪除', 'ok');
+  } catch (err) { setStatus(err.message, 'err'); }
+}
+
+// ── Render result ─────────────────────────────────────────────────────────────
+function renderResult(rec) {
+  const a    = rec.analysis || {};
+  const isIR = a.type === 'industry_research';
+  const s    = a.sentiment || 'neutral';
+  const sbCls = isIR ? 'sb-ir' : (SENT_SBCLS[s] || 'sb-neu');
+  const sbLbl = isIR ? `產業研究${a.industry ? ' · ' + a.industry : ''}` : (SENT_LABEL[s] || s);
+
+  const sumH = (a.summary||[]).map(x => `<li>${h(x)}</li>`).join('');
+
+  const tkH = (a.tickers||[]).map(t => {
+    const catHtml = t.category ? `<div class="tcat">${h(t.category)}</div>` : '';
+    return `<div class="tchip">${catHtml}<div class="tname">${h(t.name)}</div><div class="ttip">${h(t.context||'')}</div></div>`;
+  }).join('');
+
+  const qtH  = (a.quotes||[]).map(q => `<div class="quote">${h(q)}</div>`).join('');
+  const riskH = (a.risks||[]).map(r => `<div class="risk-item">${h(r)}</div>`).join('');
+  const src  = a.source ? ` · ${h(a.source)}` : '';
+  const dt   = a.date   ? ` · ${a.date}` : '';
+
+  document.getElementById('result-area').innerHTML = `
+    <div class="rcard">
+      <div class="rhead">
+        <div class="rtitle">${h(rec.title)}</div>
+        <span style="font-size:12px;color:var(--faint)">${dt}${src}</span>
+        <span class="sb ${sbCls}">${sbLbl}</span>
+      </div>
+      <div class="rbody">
+        ${a.sentiment_reason ? `<div><div class="slabel">情緒依據</div><div class="prose" style="font-size:13px;color:var(--muted)">${h(a.sentiment_reason)}</div></div>` : ''}
+        ${sumH  ? `<div><div class="slabel">重點摘要</div><ul class="sumlist">${sumH}</ul></div>` : ''}
+        ${tkH   ? `<div><div class="slabel">標的 ／ 族群</div><div class="twrap">${tkH}</div></div>` : ''}
+        ${riskH ? `<div><div class="slabel">風險提醒</div><div class="risk-list">${riskH}</div></div>` : ''}
+        ${a.market_view ? `<div><div class="slabel">${isIR ? '產業觀點' : '市場觀點'}</div><div class="prose">${h(a.market_view)}</div></div>` : ''}
+        ${qtH   ? `<div><div class="slabel">金句</div><div style="display:flex;flex-direction:column;gap:8px">${qtH}</div></div>` : ''}
+        ${a.portfolio_advice ? `<div><div class="slabel">針對你的資產配置建議</div><div class="advice">${h(a.portfolio_advice).replace(/\n/g,'<br>')}</div></div>` : ''}
+        ${a.raw ? `<div><div class="slabel">原始回覆</div><div class="prose" style="white-space:pre-wrap;font-size:13px">${h(a.raw)}</div></div>` : ''}
+        <div style="font-size:12px;color:var(--faint);text-align:right">${new Date(rec.created_at).toLocaleString('zh-TW')}</div>
+      </div>
+    </div>`;
+}
+
+// ── Dashboard ─────────────────────────────────────────────────────────────────
+async function buildDash() {
+  const el = document.getElementById('dcontent');
+  if (!archiveLoaded) {
+    el.innerHTML = '<div class="dempty"><span class="spinner"></span>載入全部資料（含歸檔）…</div>';
+    await ensureArchive();
+  }
+  const all = [...recs, ...archiveRecs].sort(byNewest);
+
+  if (!all.length) { el.innerHTML = '<div class="dempty">尚無資料，請先儲存幾集分析結果</div>'; return; }
+
+  const pods = all.filter(r => r.analysis?.type !== 'industry_research');
+  const inds = all.filter(r => r.analysis?.type === 'industry_research');
+  const idx  = buildTkIndex(all);
+
+  if (dashFilter === 'all')              return buildDashAll(el, pods, inds, idx);
+  if (dashFilter === 'podcast')          return buildDashPodcast(el, pods, idx);
+  if (dashFilter === 'industry_research') return buildDashIndustry(el, inds, idx);
+}
+
+// ── Dashboard: 全部 ───────────────────────────────────────────────────────────
+function buildDashAll(el, pods, inds, idx) {
+  const podStats = sentStats(pods);
+  const irStats  = sentStats(inds);
+
+  // Intersection tickers (appear in both types) — 已排除族群／廠商／概念股等族群類提法
+  const crossTk  = intersectTickers(pods, inds, idx);
+  const maxTk    = crossTk[0]?.count || 1;
+
+  // Watch blocks from all records
+  const allRecs  = [...pods, ...inds];
+  const watchData = buildWatchData(allRecs, idx);
+
+  el.innerHTML = `
+    <div class="dh">全部筆記</div>
+
+    <div class="dual-sent">
+      ${sentBlockHtml('🎙 Podcast 筆記', podStats, pods.length, '--accent')}
+      ${sentBlockHtml('📋 產業研究筆記', irStats, inds.length, '--purple')}
+    </div>
+
+    <div class="ccrd">
+      <h3>交集個股</h3>
+      <div class="csub">同時在 Podcast 和產業研究都出現過的個股，依總次數排序（已排除「族群／廠商／概念股」等族群類提法，並合併「欣興 / 3037 / 欣興 3037」等不同寫法）</div>
+      <div class="tbars">
+        ${crossTk.length ? crossTk.map(tk => `
+          <div class="trow">
+            <span class="tn">${h(tk.display)}</span>
+            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%"></div></div>
+            <span class="tcnt">${tk.count}</span>
+          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無交集個股，繼續累積筆記</div>'}
+      </div>
+    </div>
+
+    ${watchBlocksHtml(watchData)}
+
+    ${recentAdviceHtml(allRecs)}`;
+}
+
+// ── Dashboard: Podcast 筆記 ───────────────────────────────────────────────────
+function buildDashPodcast(el, pods, idx) {
+  if (!pods.length) { el.innerHTML = '<div class="dempty">尚無 Podcast 筆記</div>'; return; }
+
+  const sorted = [...pods].sort((a, b) => {
+    const da = a.analysis?.date || a.created_at;
+    const db = b.analysis?.date || b.created_at;
+    return da < db ? -1 : 1;
+  });
+
+  const labels = sorted.map(r => {
+    const ep = extractEPNum(r.title);
+    return ep ? 'EP' + ep : fmtDate(r.analysis?.date || r.created_at);
+  });
+
+  const SCORE  = { bullish:1, neutral:0, bearish:-1 };
+  const scores = sorted.map(r => SCORE[r.analysis?.sentiment] ?? 0);
+  const trend  = linReg(scores);
+
+  const { total, latCls, latest, wp } = podcastStats(pods);
+  const topTk  = topTickers(pods, 12, idx);
+  const maxTk  = topTk[0]?.count || 1;
+  const watchData = buildWatchData(pods, idx);
+
+  el.innerHTML = `
+    ${total < 10 ? `<div class="warn-box">⚠️ 目前只有 ${total} 筆，建議累積 10 筆以上再看趨勢。</div>` : ''}
+    <div class="dh">Podcast 筆記</div>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="slbl">總筆數</div><div class="snum ct">${total}</div><div class="ssub">累計紀錄</div></div>
+      <div class="stat"><div class="slbl">最新情緒</div><div class="snum ${latCls}">${{bullish:'可以考慮',bearish:'小心觀望',neutral:'繼續觀察'}[latest]||'—'}</div></div>
+      <div class="stat"><div class="slbl">加權多頭比</div><div class="snum cg">${wp.b}%</div><div class="ssub">近期資料權重較高</div></div>
+      <div class="stat"><div class="slbl">加權空頭比</div><div class="snum cr">${wp.r}%</div><div class="ssub">中性 ${100-wp.b-wp.r}%</div></div>
+    </div>
+
+    <div class="ccrd">
+      <h3>情緒趨勢</h3>
+      <div class="csub">可以考慮=1 · 繼續觀察=0 · 小心觀望=−1 &nbsp;｜&nbsp; 虛線為趨勢方向</div>
+      <div class="cwrap"><canvas id="c-line"></canvas></div>
+    </div>
+
+    <div class="ccrd">
+      <h3>標的出現頻率 Top 12</h3>
+      <div class="csub">已合併同一標的的不同寫法</div>
+      <div class="tbars">
+        ${topTk.length ? topTk.map(tk => `
+          <div class="trow">
+            <span class="tn">${h(tk.display)}</span>
+            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%"></div></div>
+            <span class="tcnt">${tk.count}</span>
+          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
+      </div>
+    </div>
+
+    ${watchBlocksHtml(watchData)}
+
+    ${recentAdviceHtml(pods)}`;
+
+  // Chart
+  if (chartLine) { chartLine.destroy(); chartLine = null; }
+  chartLine = new Chart(document.getElementById('c-line').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: '情緒分數', data: scores,
+          borderColor: '#3a6ef0', backgroundColor: 'rgba(58,110,240,0.08)',
+          borderWidth: 2.5, pointRadius: 5, pointHoverRadius: 7,
+          pointBackgroundColor: scores.map(s => s===1?'#15803d':s===-1?'#dc2626':'#b45309'),
+          pointBorderColor: '#fff', pointBorderWidth: 2, tension: 0.3, fill: true,
+        },
+        {
+          label: '趨勢', data: trend,
+          borderColor: 'rgba(100,116,139,0.5)', borderWidth: 1.5, borderDash: [6,4],
+          pointRadius: 0, tension: 0, fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#3d4666', font: { size: 12 } } },
+        tooltip: { callbacks: { label: ctx => ' ' + ({1:'可以考慮',0:'繼續觀察','-1':'小心觀望'}[ctx.raw]||ctx.raw) } }
+      },
+      scales: {
+        x: { ticks: { color:'#7880a0', font:{size:11}, maxRotation:45 }, grid: { color:'#e2e8f6' } },
+        y: {
+          min: -1.4, max: 1.4,
+          ticks: {
+            color: '#7880a0', font: { size: 11 }, stepSize: 1,
+            callback: v => ({1:'可以考慮',0:'繼續觀察','-1':'小心觀望'}[v]||''),
+          },
+          grid: { color: '#e2e8f6' }
+        }
+      }
+    }
+  });
+}
+
+// ── Dashboard: 產業研究 ────────────────────────────────────────────────────────
+function buildDashIndustry(el, inds, idx) {
+  if (!inds.length) { el.innerHTML = '<div class="dempty">尚無產業研究筆記<br><span style="font-size:13px">請在「輸入筆記」頁面選擇「產業研究筆記」類型後儲存</span></div>'; return; }
+
+  const industries = [...new Set(inds.map(r => r.analysis?.industry).filter(Boolean))];
+  const topTk = topTickers(inds, 12, idx);
+  const maxTk = topTk[0]?.count || 1;
+  const { total, latCls, latest } = podcastStats(inds);
+
+  // Group by industry
+  const byInd = {};
+  inds.forEach(r => {
+    const ind = r.analysis?.industry || '未分類';
+    if (!byInd[ind]) byInd[ind] = [];
+    byInd[ind].push(r);
+  });
+
+  const indGroupsHtml = Object.entries(byInd)
+    .sort((a, b) => b[1].length - a[1].length)
+    .map(([ind, notes]) => {
+      const noteRows = notes.map(r => {
+        const a   = r.analysis || {};
+        const tks = (a.tickers || []).slice(0, 4).map(t =>
+          `<span class="ind-tk">${h(t.name)}</span>`
+        ).join('');
+        const sentCls = { bullish:'cg', bearish:'cr', neutral:'cy' }[a.sentiment] || '';
+        const sentLbl = { bullish:'看多', bearish:'看空', neutral:'中立' }[a.sentiment] || '';
+        return `<div class="ind-note-row" onclick="loadRec(${r.id})">
+          <div class="ind-note-meta">${fmtDate(a.date || r.created_at)}</div>
+          <div style="flex:1">
+            <div class="ind-note-title">${h(r.title)}
+              ${sentLbl ? `<span class="${sentCls}" style="font-size:11px;font-weight:700;margin-left:8px">${sentLbl}</span>` : ''}
+            </div>
+            ${tks ? `<div class="ind-tickers">${tks}</div>` : ''}
+          </div>
+        </div>`;
+      }).join('');
+      return `<div class="ind-group">
+        <div class="ind-group-head">
+          <span class="ind-group-name">${h(ind)}</span>
+          <span class="ind-group-cnt">${notes.length} 篇</span>
+        </div>
+        <div class="ind-group-body">${noteRows}</div>
+      </div>`;
+    }).join('');
+
+  el.innerHTML = `
+    <div class="dh">產業研究筆記</div>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="slbl">總筆數</div><div class="snum ct">${total}</div><div class="ssub">累計筆記</div></div>
+      <div class="stat"><div class="slbl">涵蓋產業</div><div class="snum cp">${industries.length}</div><div class="ssub">個產業</div></div>
+      <div class="stat"><div class="slbl">最新情緒</div><div class="snum ${latCls}">${{bullish:'看多',bearish:'看空',neutral:'中立'}[latest]||'—'}</div></div>
+      <div class="stat"><div class="slbl">最近更新</div><div class="snum ct" style="font-size:16px">${fmtDate(inds[0]?.analysis?.date || inds[0]?.created_at)}</div></div>
+    </div>
+
+    <div class="ccrd">
+      <h3>標的出現頻率 Top 12</h3>
+      <div class="csub">所有產業研究筆記中的標的出現次數</div>
+      <div class="tbars">
+        ${topTk.length ? topTk.map(tk => `
+          <div class="trow">
+            <span class="tn">${h(tk.display)}</span>
+            <div class="ttrack"><div class="tfill" style="width:${Math.round(tk.count/maxTk*100)}%;background:var(--purple);"></div></div>
+            <span class="tcnt">${tk.count}</span>
+          </div>`).join('') : '<div style="color:var(--faint);font-size:13px">尚無標的資料</div>'}
+      </div>
+    </div>
+
+    <div class="ccrd">
+      <h3>按產業分組</h3>
+      <div class="csub">點擊筆記列可查看完整內容</div>
+      <div class="ind-groups" style="margin-top:10px">${indGroupsHtml}</div>
+    </div>
+
+    ${recentAdviceHtml(inds)}`;
+}
+
+// ── Dashboard helpers ─────────────────────────────────────────────────────────
+function sentStats(recs) {
+  if (!recs.length) return null;
+  const latest = recs[0]?.analysis?.sentiment || 'neutral';
+  const bull   = recs.filter(r => r.analysis?.sentiment === 'bullish').length;
+  const bear   = recs.filter(r => r.analysis?.sentiment === 'bearish').length;
+  return { total: recs.length, latest, bull, bear };
+}
+
+function sentBlockHtml(title, stats, total, colorVar) {
+  if (!stats || !total) {
+    return `<div class="sent-block">
+      <div class="sent-block-title">${title}</div>
+      <div style="color:var(--faint);font-size:13px">尚無資料</div>
+    </div>`;
+  }
+  const latCls = { bullish:'cg', bearish:'cr', neutral:'cy' }[stats.latest] || 'ct';
+  const latLbl = { bullish:'看多', bearish:'看空', neutral:'中立' }[stats.latest] || '—';
+  return `<div class="sent-block">
+    <div class="sent-block-title">${title} <span style="font-weight:400;text-transform:none;letter-spacing:0">${stats.total} 筆</span></div>
+    <div class="sent-mini-grid">
+      <div class="sent-mini"><div class="slbl">最新情緒</div><div class="snum ${latCls}">${latLbl}</div></div>
+      <div class="sent-mini"><div class="slbl">多/空比</div><div class="snum cg" style="font-size:18px">${stats.bull} <span style="color:var(--faint);font-size:14px">/</span> <span class="cr">${stats.bear}</span></div></div>
+    </div>
+  </div>`;
+}
+
+function podcastStats(recs) {
+  const total  = recs.length;
+  const latest = recs[0]?.analysis?.sentiment || 'neutral';
+  const latCls = { bullish:'cg', bearish:'cr', neutral:'cy' }[latest] || 'ct';
+  const now    = Date.now();
+  let wb=0, wr=0, wt=0;
+  recs.forEach(r => {
+    const days = (now - new Date(r.analysis?.date || r.created_at).getTime()) / 86400000;
+    const w = 1 / (days + 1);
+    if (r.analysis?.sentiment === 'bullish') wb += w;
+    else if (r.analysis?.sentiment === 'bearish') wr += w;
+    wt += w;
+  });
+  const wp = wt ? { b: Math.round(wb/wt*100), r: Math.round(wr/wt*100) } : { b:0, r:0 };
+  return { total, latest, latCls, wp };
+}
+
+function topTickers(recs, n, idx) {
+  idx = idx || buildTkIndex(recs);
+  const tkMap = {};
+  recs.forEach(r => {
+    (r.analysis?.tickers || []).forEach(t => {
+      const r2 = tkResolve(t.name, idx);
+      if (!r2 || r2.isGroup) return;
+      if (!tkMap[r2.key]) tkMap[r2.key] = { display: r2.display, count: 0 };
+      tkMap[r2.key].count++;
+    });
+  });
+  return Object.values(tkMap).sort((a,b) => b.count - a.count).slice(0, n);
+}
+
+function intersectTickers(pods, inds, idx) {
+  idx = idx || buildTkIndex([...pods, ...inds]);
+  function buildMap(recs) {
+    const m = {};
+    recs.forEach(r => {
+      (r.analysis?.tickers || []).forEach(t => {
+        const r2 = tkResolve(t.name, idx);
+        if (!r2 || r2.isGroup) return;          // 排除族群／廠商／概念股…等族群類提法
+        if (!m[r2.key]) m[r2.key] = { display: r2.display, count: 0 };
+        m[r2.key].count++;
+      });
+    });
+    return m;
+  }
+  const a = buildMap(pods), b = buildMap(inds);
+  return Object.keys(a)
+    .filter(key => b[key])
+    .map(key => ({
+      display: a[key].display.length >= b[key].display.length ? a[key].display : b[key].display,
+      count: a[key].count + b[key].count,
+    }))
+    .sort((x, y) => y.count - x.count);
+}
+
+function buildWatchData(recs, idx) {
+  idx = idx || buildTkIndex(recs);
+  const LEVERAGE = new Set(['tqqq','sqqq','正2','00631l','00632r','upro','spxl','tecl','fngu','soxl','0050正2']);
+  const negKw = /壓制|風險|下跌|看空|擔心|地緣|戰爭|不確定|警示|避開|利空/;
+  const posKw = /看好|看多|布局|加碼|機會|上漲|受惠|強勢|偏多|觀察買進|買進/;
+  const buyKw = /繼續|加碼|分批|買入|買進|定投|持有|佈局|布局|觀察買進|觀察/;
+  const now7  = new Date(Date.now() -  7 * 86400000);
+  const now30 = new Date(Date.now() - 30 * 86400000);
+
+  const isLev = (key, raw) => {
+    const code = key.startsWith('tk:') ? key.slice(3).toLowerCase() : '';
+    return (code && LEVERAGE.has(code)) || LEVERAGE.has((raw || '').toLowerCase());
+  };
+
+  const adviceBuySet = new Set();
+  recs.forEach(r => {
+    const advice = r.analysis?.portfolio_advice || '';
+    if (!advice) return;
+    const lines = advice.split(/[\n。；;]+/);
+    (r.analysis?.tickers || []).forEach(t => {
+      const r2 = tkResolve(t.name, idx);
+      if (!r2) return;
+      const probe = (t.name || '').replace(/[\s　]/g, '').slice(0, 2);
+      if (!probe) return;
+      const matchLines = lines.filter(l => l.includes(probe));
+      if (matchLines.some(l => buyKw.test(l))) adviceBuySet.add(r2.key);
+    });
+  });
+
+  const tkSeries = {};
+  recs.forEach(r => {
+    const recDate = r.analysis?.date ? new Date(r.analysis.date) : new Date(r.created_at);
+    const epSent  = r.analysis?.sentiment || 'neutral';
+    (r.analysis?.tickers || []).forEach(t => {
+      const r2 = tkResolve(t.name, idx);
+      if (!r2 || r2.isGroup) return;          // 族群跟個股分開計算，watch 區只看個股
+      if (isLev(r2.key, t.name)) return;
+      const ctx = t.context || '';
+      let stance = 'neutral';
+      if (epSent === 'bullish' || posKw.test(ctx)) stance = 'bull';
+      else if (epSent === 'bearish' || negKw.test(ctx)) stance = 'bear';
+      if (!tkSeries[r2.key]) tkSeries[r2.key] = { display: r2.display, mentions: [] };
+      tkSeries[r2.key].mentions.push({ date: recDate, stance });
+    });
+  });
+
+  const st = { bull: [], bear: [], watch: [] };
+  Object.entries(tkSeries).forEach(([key, d]) => {
+    const w7 = d.mentions.filter(m => m.date >= now7);
+    if (!w7.length) return;
+    w7.sort((a, b) => b.date - a.date);
+    const bullN = w7.filter(m => m.stance === 'bull').length;
+    const bearN = w7.filter(m => m.stance === 'bear').length;
+    const isAdvBuy = adviceBuySet.has(key);
+    if (bullN > bearN)                   st.bull.push({ key, name: d.display });
+    else if (bearN > bullN && !isAdvBuy) st.bear.push(d.display);
+    else                                 st.watch.push(d.display);
+  });
+
+  const mt = { bull: [], bear: [], turn: [] };
+  Object.entries(tkSeries).forEach(([key, d]) => {
+    const name     = d.display;
+    const lev      = isLev(key, name);
+    const isAdvBuy = adviceBuySet.has(key);
+    const w30      = d.mentions.filter(m => m.date >= now30);
+    const w7       = d.mentions.filter(m => m.date >= now7);
+    const older    = d.mentions.filter(m => m.date < now30);
+    if (w30.length >= 3) {
+      const bullN = w30.filter(m => m.stance === 'bull').length;
+      const bearN = w30.filter(m => m.stance === 'bear').length;
+      if (bullN > bearN)                             mt.bull.push({ key, name, bullN, bearN, total: w30.length });
+      else if (bearN > bullN && !lev && !isAdvBuy)   mt.bear.push({ name, bullN, bearN, total: w30.length });
+    } else if (older.length >= 2 && w7.length === 0) {
+      mt.turn.push(name);
+    }
+  });
+  mt.bull.sort((a, b) => b.bullN - a.bullN);
+  mt.bear.sort((a, b) => b.bearN - a.bearN);
+
+  const mtBullKeys  = new Set(mt.bull.map(t => t.key));
+  const stBullConf  = st.bull.filter(t => mtBullKeys.has(t.key));
+  const stBullOther = st.bull.filter(t => !mtBullKeys.has(t.key));
+
+  return { st, mt, stBullConf, stBullOther };
+}
+
+function watchBlocksHtml({ st, mt, stBullConf, stBullOther }) {
+  return `<div class="watch-grid">
+    <div class="wblock">
+      <h3>⚡ 短期訊號 <span>7 天內，以最近一次 stance 為準</span></h3>
+      <div class="wsub">
+        <div class="wsub-label wtag-g-label">可以考慮</div>
+        <div class="wsub-tags">
+          ${stBullConf.length ? stBullConf.map(t=>`<span class="wtag wtag-g">${h(t.name)}</span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+        ${stBullOther.length ? `<details class="ref-list"><summary>參考清單（${stBullOther.length}）</summary><div class="wsub-tags ref-tags">${stBullOther.map(t=>`<span class="wtag wtag-y">${h(t.name)}</span>`).join('')}</div></details>` : ''}
+      </div>
+      <div class="wsub">
+        <div class="wsub-label wtag-y-label">觀察</div>
+        <div class="wsub-tags">
+          ${st.watch.length ? st.watch.map(n=>`<span class="wtag wtag-y">${h(n)}</span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+      </div>
+      <div class="wsub">
+        <div class="wsub-label wtag-r-label">小心觀望</div>
+        <div class="wsub-tags">
+          ${st.bear.length ? st.bear.map(n=>`<span class="wtag wtag-r">${h(n)}</span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+      </div>
+    </div>
+    <div class="wblock">
+      <h3>📊 中期趨勢 <span>30 天內，出現 3 次以上</span></h3>
+      <div class="wsub">
+        <div class="wsub-label wtag-g-label">持續看好</div>
+        <div class="wsub-tags">
+          ${mt.bull.length ? mt.bull.map(t=>`<span class="wtag wtag-g">${h(t.name)} <span class="wtag-cnt">${t.bullN}/${t.total}</span></span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+      </div>
+      <div class="wsub">
+        <div class="wsub-label wtag-r-label">持續壓制</div>
+        <div class="wsub-tags">
+          ${mt.bear.length ? mt.bear.map(t=>`<span class="wtag wtag-r">${h(t.name)} <span class="wtag-cnt">${t.bearN}/${t.total}</span></span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+      </div>
+      <div class="wsub">
+        <div class="wsub-label wtag-b-label">開始轉向</div>
+        <div class="wsub-tags">
+          ${mt.turn.length ? mt.turn.map(n=>`<span class="wtag wtag-b">${h(n)}</span>`).join('') : '<span class="wempty">—</span>'}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function recentAdviceHtml(recs) {
+  const recentAdvice = recs.slice(0, 1).filter(r => r.analysis?.portfolio_advice);
+  if (!recentAdvice.length) return '';
+  const buyKw = /繼續|持有|加碼|分批|定投|買入/;
+  return `<div class="ccrd">
+    <h3>近期行動建議</h3>
+    <div class="csub">來自最新一筆的 portfolio_advice</div>
+    <div class="action-rows">
+      ${recentAdvice.map(r => {
+        const lines = (r.analysis.portfolio_advice || '').split(/[\n。；;]+/).map(l=>l.trim()).filter(l=>l.length>3);
+        const dt = r.analysis?.date || fmtDate(r.created_at);
+        return `<div style="font-size:12px;color:var(--faint);margin-bottom:6px">${h(r.title)} · ${dt}</div>
+          ${lines.map(line => {
+            let cls='atag-watch', lbl='觀察';
+            if (buyKw.test(line))                     { cls='atag-now';   lbl='現在做'; }
+            else if (/不追|避開|減碼|出場|停利/.test(line)) { cls='atag-avoid'; lbl='不追';   }
+            else if (/警示|風險|注意|謹慎|小心/.test(line)) { cls='atag-warn';  lbl='警示';   }
+            return `<div class="arow"><span class="atag ${cls}">${lbl}</span><span class="atxt">${h(line)}</span></div>`;
+          }).join('')}`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+// 標的解析：把「欣興」「3037」「欣興 3037」「欣興3037」視為同一個 key。
+// 族群類提法（族群／概念股／類股／供應鏈…）用獨立 key，避免污染個股統計。
+const TK_GENERIC = new Set([
+  '美股','台股','大盤','市場','整體','全球','亞洲','中國','美國','台灣',
+  '科技股','成長股','個股','族群','廠務設備股','中小型股','新興市場',
+  '美國房地產','美股科技巨頭','電子零組件',
+]);
+const TK_GROUP_RE = /(族群|概念股|類股|供應鏈|產業鏈|題材|龍頭|生態系|供應商|廠商|大盤|指數)/;
+const TK_TW_RE    = /(?<![A-Za-z\d])\d{4,6}[A-Z]?(?![A-Za-z\d])/g;
+const TK_US_RE    = /(?<![A-Za-z])[A-Z]{2,5}(?![A-Za-z])/g;
+const TK_ZH_RE    = /[一-龥]+/g;
+const TK_EN_RE    = /[A-Z][a-z]{2,}/g;
+const ZH_NOISE    = new Set(['族群','類股','概念股','供應鏈','產業鏈','題材','龍頭','生態系','供應商','廠商','推測']);
+
+function parseTk(name) {
+  const raw = (name || '').trim();
+  if (!raw) return null;
+  // 保留括號內容（提供更多線索），只把括號換成空白；去掉「推測」等標註詞。
+  const noise = new RegExp([...ZH_NOISE].join('|'), 'g');
+  const cleaned = raw
+    .replace(/[（(]/g, ' ').replace(/[)）]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+  if (!cleaned) return null;
+  const isGroup = TK_GROUP_RE.test(cleaned);
+  const tw  = (cleaned.match(TK_TW_RE) || []).map(s => s.toUpperCase());
+  const us  = (cleaned.match(TK_US_RE) || []).map(s => s.toUpperCase());
+  const zh  = (cleaned.match(TK_ZH_RE) || [])
+                .map(s => s.replace(noise, '').trim())
+                .filter(s => s.length >= 2);
+  const en  = (cleaned.match(TK_EN_RE) || []).filter(s => !us.includes(s.toUpperCase()));
+  return { raw, cleaned, isGroup, tw, us, zh, en };
+}
+
+function buildTkIndex(recs) {
+  const zhToCode = {}, enToCode = {}, codeToZh = {}, codeToEn = {};
+  (recs || []).forEach(r => {
+    (r.analysis?.tickers || []).forEach(t => {
+      const p = parseTk(t.name);
+      if (!p || p.isGroup) return;
+      const code = p.tw[0] || p.us[0];
+      if (!code) return;
+      const zh = p.zh[0];
+      const en = p.en[0];
+      if (zh) {
+        if (!zhToCode[zh]) zhToCode[zh] = code;
+        if (!codeToZh[code]) codeToZh[code] = zh;
+      }
+      if (en) {
+        const k = en.toLowerCase();
+        if (!enToCode[k]) enToCode[k] = code;
+        if (!codeToEn[code]) codeToEn[code] = en;
+      }
+    });
+  });
+  return { zhToCode, enToCode, codeToZh, codeToEn };
+}
+
+function tkResolve(name, idx) {
+  const p = parseTk(name);
+  if (!p) return null;
+  if (p.cleaned.length < 2) return null;
+  if (TK_GENERIC.has(p.cleaned)) return null;
+
+  if (p.isGroup) {
+    const tag = p.cleaned.replace(/\s+/g, '');
+    return { key: 'group:' + tag, display: p.cleaned, isGroup: true };
+  }
+
+  // 優先順序：台股代號 → 用中文名查到的代號 → US 代號 → 用英文名查到的代號。
+  // 中文名查表優先於 US 代號，避免「信XX電(推測信昌電)」這種情況把 "XX" 誤判成代號。
+  let code = p.tw[0];
+  if (!code && p.zh[0] && idx && idx.zhToCode[p.zh[0]]) code = idx.zhToCode[p.zh[0]];
+  if (!code) code = p.us[0];
+  if (!code && p.en[0] && idx && idx.enToCode[p.en[0].toLowerCase()]) code = idx.enToCode[p.en[0].toLowerCase()];
+
+  const zh = p.zh[0] || (code && idx && idx.codeToZh[code]) || '';
+  const en = p.en[0] || (code && idx && idx.codeToEn[code]) || '';
+
+  if (code) {
+    const display = zh ? `${zh} ${code}` : (en ? `${en} ${code}` : code);
+    return { key: 'tk:' + code, display, isGroup: false };
+  }
+  if (zh) return { key: 'zh:' + zh, display: zh, isGroup: false };
+  if (en) return { key: 'en:' + en.toLowerCase(), display: en, isGroup: false };
+  return { key: 'raw:' + p.cleaned.toLowerCase(), display: p.cleaned, isGroup: false };
+}
+function extractEPNum(title) {
+  const m = title.match(/ep\.?\s*(\d+)/i) || title.match(/第\s*(\d+)\s*集/);
+  return m ? parseInt(m[1]) : null;
+}
+function linReg(ys) {
+  const n = ys.length;
+  if (n < 2) return ys.map(()=>0);
+  const sx=ys.reduce((_,__,i)=>_+i,0), sy=ys.reduce((s,v)=>s+v,0);
+  const sxy=ys.reduce((s,v,i)=>s+i*v,0), sx2=ys.reduce((s,_,i)=>s+i*i,0);
+  const slope=(n*sxy-sx*sy)/(n*sx2-sx*sx), inter=(sy-slope*sx)/n;
+  return ys.map((_,i)=>parseFloat((slope*i+inter).toFixed(3)));
+}
+function fmtDate(s) {
+  if (!s) return '';
+  try { return new Date(s).toLocaleDateString('zh-TW',{month:'numeric',day:'numeric'}); }
+  catch { return s.slice(0,10); }
+}
+function setStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.innerHTML = msg; el.className = 'status'+(type?' '+type:'');
+}
+function h(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

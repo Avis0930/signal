@@ -1,0 +1,77 @@
+name: 每日抓取股癌筆記
+
+on:
+  schedule:
+    # 00:00 UTC = 台灣時間早上 8 點
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      max_episodes:
+        description: '單次最多處理幾集（補檔時可調大，例如 20）'
+        required: false
+        default: '20'
+      dry_run:
+        description: '只抓網頁不呼叫 Claude API（驗證選擇器用）'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+
+permissions:
+  contents: write
+
+# 與手動匯入共用同一把鎖，避免兩個 workflow 同時 push 撞車
+concurrency:
+  group: signal-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 安裝依賴
+        run: npm install --no-audit --no-fund
+
+      - name: 抓取並分析
+        id: fetch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: claude-sonnet-5
+          MAX_TOKENS: '4000'
+          MAX_EPISODES: ${{ github.event_name == 'workflow_dispatch' && inputs.max_episodes || '3' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: node scripts/fetch-gooaye.mjs
+
+      - name: Commit 新資料
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain data)" ]; then
+            echo "沒有資料變更，略過 commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "chore(data): 自動抓取 ${{ steps.fetch.outputs.added || '股癌新集數' }}"
+          git push
+
+      - name: 寄送執行通知
+        if: always()
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_ONLY_ON_ERROR: ${{ vars.MAIL_ONLY_ON_ERROR }}
+        run: node scripts/send-mail.mjs
+
+      - name: 若抓取失敗則標記 workflow 失敗
+        if: always() && steps.fetch.outputs.status == 'error'
+        run: |
+          echo "抓取階段回報 error，標記為失敗"
+          exit 1

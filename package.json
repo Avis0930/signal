@@ -1,0 +1,17 @@
+{
+  "name": "signal",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Signal — 投資筆記分析工具（GitHub Pages 靜態站 + GitHub Actions 自動抓取股癌筆記）",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "fetch": "node scripts/fetch-gooaye.mjs",
+    "fetch:dry": "node scripts/fetch-gooaye.mjs --dry-run",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "cheerio": "^1.0.0",
+    "nodemailer": "^6.9.0"
+  }
+}

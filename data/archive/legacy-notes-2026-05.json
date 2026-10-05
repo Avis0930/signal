@@ -1,0 +1,2174 @@
+{
+  "records": [
+    {
+      "id": 1779071628326,
+      "title": "股癌 EP662",
+      "created_at": "2026-05-18T02:33:48.326Z",
+      "analysis": {
+        "episode": "EP662",
+        "date": "2026-05-16",
+        "source": "股癌",
+        "summary": [
+          "週五台股大跌但孟恭沒減碼,反而去撿跌停(疑似被動元件信X電)",
+          "盤面結構大變:老AI被殺,推估是籌碼面問題,資金轉去買台積電",
+          "投信改公發書要2-3個月甚至4-5個月,後續可能更多投信增持台積電",
+          "中小類股若投信持股占比高,有被停利去買台積電的風險",
+          "美股軟體股族群性出現,資安股創新高帶頭(CRWD),figma意外好成績",
+          "被動元件:電阻漲價三成,連帶電容電感更嚴重,SP-Cap聽說要漲三成",
+          "孟恭操作:群聯破鎖漲停價砍出、國巨減碼、健策抄底抄到大白鯊",
+          "暗示老AI跌深短期沒人解套,讓他盤整一段時間"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM 2330",
+            "context": "資金轉移目標,投信改公發書後可能更多投信增持,動能劇本還在",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨 2327",
+            "context": "孟恭本集減碼國巨,但被動元件大趨勢未變",
+            "stance": "neutral"
+          },
+          {
+            "name": "群聯 8299",
+            "context": "孟恭操作日記:破前面一字鎖漲停的位置砍出",
+            "stance": "bearish"
+          },
+          {
+            "name": "健策 3653",
+            "context": "孟恭操作日記:抄底抄到大白鯊(套牢中)",
+            "stance": "bearish"
+          },
+          {
+            "name": "CrowdStrike CRWD",
+            "context": "資安股創新高代表,軟體族群帶頭羊",
+            "stance": "bullish"
+          },
+          {
+            "name": "Figma",
+            "context": "意外開出好成績,軟體族群動能出現",
+            "stance": "bullish"
+          },
+          {
+            "name": "信XX電(推測信昌電)",
+            "context": "孟恭暗示週五撿跌停的被動元件標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "羅姆 Rohm",
+            "context": "功率半導體準備漲價,電源題材",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "資金大輪動:老AI→台積電",
+          "投信改公發書潮(2-5個月)",
+          "被動元件漲價擴散(電阻→電容→電感)",
+          "美股軟體股/資安股族群復甦",
+          "電源題材延燒",
+          "汰弱留強看誰先漲回"
+        ],
+        "market_view": "市場進入大輪動期,老AI殺得很重但孟恭判斷是迭代+籌碼面問題不是長線問題,資金明顯流向台積電。被動元件趨勢持續,孟恭甚至跌停去接。建議汰弱留強,看哪個族群先漲回來就是下一波老大",
+        "sentiment": "neutral",
+        "sentiment_reason": "整體仍偏多但盤面劇烈輪動,老AI重摔、孟恭自己也有套牢(健策)和砍倉(群聯)、減碼(國巨),操作明顯謹慎,但對被動元件和台積電仍積極",
+        "quotes": [
+          "不會去對跌深的東西有很高的興趣,反而會對漲多的東西比較有興趣",
+          "汰弱留強的機會:看哪個族群先漲回來的,就是下一波的老大",
+          "當你看到有人停止接單的時候,就知道要出大事了",
+          "個人認為老AI下殺幅度太大,短期不會有人想立刻幫他們解套",
+          "不想太FOMO的話,就可以等到回漲之後再來看"
+        ],
+        "portfolio_advice": "台積電動能劇本持續,可關注投信改公發書後的買盤。被動元件回檔可接(MLCC、鋁電容、SP-Cap),電阻漲價是訊號。美股可看軟體股/資安股創新高的標的(CRWD)。老AI跌深不急著抄底,等盤整完。中小類股若投信持股高要小心被停利賣壓"
+      }
+    },
+    {
+      "id": 1779071465884,
+      "title": "股癌 EP661",
+      "created_at": "2026-05-18T02:31:05.884Z",
+      "analysis": {
+        "episode": "EP661",
+        "date": "2026-05-13",
+        "source": "股癌",
+        "summary": [
+          "台股小回檔1%多,身邊朋友離成本太遠很少做調整",
+          "被動元件全面醒過來,從吐槽到追認,Vera Rubin換代用量超多導致供需失衡",
+          "MLCC最缺47UF高階品,掌握在日韓手上,國巨只能供22UF",
+          "鋁電容:Panasonic退出OS-CON,Nippon Chemi-Con承接但產能不夠,發起漲價",
+          "筆電手機晶圓代工確認偏向補庫存,消費性春燕還沒出現",
+          "廠務股目前疲弱,聖暉因non-TSMC表現較好,漢唐Q1毛利不錯但股價沒動",
+          "暗示修正可能:若IC設計、散熱族群轉弱可能是前兆,已找好避難標的",
+          "暗示台股光通可能跟上美股,記憶體和被動元件都是這樣的模式"
+        ],
+        "tickers": [
+          {
+            "name": "國巨 2327",
+            "context": "MLCC領頭羊,只能供22UF低階,跟上國際被動元件行情",
+            "stance": "bullish"
+          },
+          {
+            "name": "華新科 2492",
+            "context": "MLCC領頭羊之一,跟上國際情勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "信昌電 6173",
+            "context": "小型MLCC廠,跟上漲勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "立隆電 2472",
+            "context": "小型MLCC+電容廠,有相當程度表現",
+            "stance": "bullish"
+          },
+          {
+            "name": "金山電 8042",
+            "context": "電容廠,跟上國際情勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "鈺邦 6449",
+            "context": "電容廠,跟上國際情勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "世界先進 5347",
+            "context": "成熟製程新廠被包產能,屬需求驅動漲價",
+            "stance": "bullish"
+          },
+          {
+            "name": "聖暉 5536",
+            "context": "廠務股中表現較好,做non-TSMC的ODM廠房",
+            "stance": "bullish"
+          },
+          {
+            "name": "漢唐 2404",
+            "context": "Q1毛利不錯但股價沒動,PE10倍可作防守標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "Nichicon",
+            "context": "日本鋁電容廠,股價好但營收不佳獲利改善",
+            "stance": "bullish"
+          },
+          {
+            "name": "Nippon Chemi-Con",
+            "context": "承接Panasonic退出的OS-CON固態電容,產能不夠發起漲價",
+            "stance": "bullish"
+          },
+          {
+            "name": "國精化 4722",
+            "context": "QA提及樹脂概念股大家超愛",
+            "stance": "neutral"
+          },
+          {
+            "name": "雙鍵 4764",
+            "context": "QA提及樹脂概念股大家超愛",
+            "stance": "neutral"
+          },
+          {
+            "name": "高通 QCOM",
+            "context": "最近大噴跟AI建設有關,非AI PC",
+            "stance": "bullish"
+          },
+          {
+            "name": "光寶科 2301",
+            "context": "孟恭操作日記:鎖不住,砍了(EP660才買進,本集賣出)",
+            "stance": "bearish"
+          },
+          {
+            "name": "台股光通族群",
+            "context": "暗示若美股光通持續好,台股光通可能醒過來",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "被動元件供需失衡(Vera Rubin驅動)",
+          "鋁電容漲價(Panasonic退出)",
+          "廠務股低估值防守標的",
+          "光通族群跟漲預期",
+          "修正前兆警覺",
+          "樹脂概念股"
+        ],
+        "market_view": "台股小回檔但結構健康,被動元件全面噴發接棒,廠務股低估值可作防守。孟恭已找好避難標的,提醒若IC設計、散熱族群轉弱要警覺修正。光通族群有跟漲美股的機會",
+        "sentiment": "bullish",
+        "sentiment_reason": "整體仍多頭,被動元件動能強勁,但孟恭明顯轉趨謹慎,開始尋找避難標的並暗示修正可能,操作上連光寶科都認賠砍出",
+        "quotes": [
+          "如果沒有回檔,一定要加碼上去,不會在橫盤或小拉回去加大部位",
+          "若發現很多族群都在轉弱時,可能是修正的前兆",
+          "過往下大單就會有人跟,現在沒人跟著衝",
+          "若要進入防守性的話,可以立刻找到交易在PE10倍的東西,很難輸",
+          "若美股光通持續好的話,台股光通可能就會醒過來"
+        ],
+        "portfolio_advice": "被動元件族群(國巨、華新科、立隆電、金山電、鈺邦、信昌電)可關注,低階標準品後續也值得看。防守可看廠務股PE10倍的標的(漢唐)。光通族群觀察美股動向準備跟單。注意修正前兆訊號"
+      }
+    },
+    {
+      "id": 1779071388344,
+      "title": "股癌 EP660",
+      "created_at": "2026-05-18T02:29:48.344Z",
+      "analysis": {
+        "episode": "EP660",
+        "date": "2026-05-10",
+        "source": "股癌",
+        "summary": [
+          "台股繼續噴射，籌碼洗乾淨後續攻",
+          "散熱：改設計不用鍍金材料，CoWoS停線已復線，孟恭進入緘默期不報標的",
+          "消費性/工控/車用股價轉強，推測是下游怕記憶體漲價恐慌性提前拉貨補庫存",
+          "晴天收傘現象：券商被迫降槓桿，融資額度受限、抵押利率調升",
+          "被動元件全面噴出(MLCC、電容、電感),原預期2026下半到2027缺貨,提早作動",
+          "CPU類股看不懂後不再右側加碼,跌破五日線或黑K才減碼"
+        ],
+        "tickers": [
+          {
+            "name": "健策(推測)",
+            "context": "散熱族群,改設計不用鍍金,低點爆量換手,孟恭口氣暗示但未明說",
+            "stance": "neutral"
+          },
+          {
+            "name": "世界先進 5347",
+            "context": "新建廠房產能賣光,有拿到台積電技轉",
+            "stance": "bullish"
+          },
+          {
+            "name": "祥碩 5269",
+            "context": "孟恭操作日記:AMD都噴成這樣不買對不起自己",
+            "stance": "bullish"
+          },
+          {
+            "name": "光寶科 2301",
+            "context": "孟恭操作日記:盤整後大紅K突破,跟上打右側交易",
+            "stance": "bullish"
+          },
+          {
+            "name": "環球晶 6488",
+            "context": "上次法說感覺時機未到,但全球矽晶圓業者都轉強了",
+            "stance": "neutral"
+          },
+          {
+            "name": "Vishay VSH",
+            "context": "美股被動元件,跟著MLCC噴出",
+            "stance": "bullish"
+          },
+          {
+            "name": "Nichicon",
+            "context": "日本電容廠,跟著噴出",
+            "stance": "bullish"
+          },
+          {
+            "name": "美光 MU",
+            "context": "記憶體美國的已經射出去了,台股記憶體早早被洗掉",
+            "stance": "neutral"
+          },
+          {
+            "name": "聯發科 2454",
+            "context": "連續漲到進處置,流動性被抽掉",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "被動元件全面噴出",
+          "散熱族群緘默期",
+          "消費性復甦/恐慌補貨",
+          "晴天收傘融資受限",
+          "矽晶圓轉強"
+        ],
+        "market_view": "台股繼續噴射沒有要停的樣子,但位階已高,槓桿被迫降低後續推力存疑。被動元件、矽晶圓、消費性開始輪動,行情靠估值上修+漲價連鎖瘋狂噴射,基本面分析意義不大",
+        "sentiment": "bullish",
+        "sentiment_reason": "市場延續多頭,族群輪動健康(被動元件、消費性、矽晶圓接力),但孟恭提醒位階高、進入緘默期不報標的,顯示有警覺",
+        "quotes": [
+          "你沒有辦法進去台積電,可是你可以買台積電,你當股東",
+          "儘可能的要去找一些方法去參與整體經濟的成長",
+          "從沒有錢到有錢那個階段是最快樂的",
+          "現在行情做過多的基本面分析沒有太大的意義,反正就是一直噴",
+          "開始看不懂的時候,就不會再去右側加碼了"
+        ],
+        "portfolio_advice": "被動元件族群(陶瓷電容、鉭電容、鋁電容、電感)可關注觀察。CPU類股不加碼但抱著,跌破五日線或黑K才減碼。位階已高,新進場部位要小,留意散熱族群大修正時可偷買"
+      }
+    },
+    {
+      "id": 1778205319621,
+      "title": "股癌 EP659",
+      "created_at": "2026-05-08T01:55:19.621Z",
+      "analysis": {
+        "episode": "EP659",
+        "date": "2026-05-06",
+        "source": "股癌",
+        "summary": [
+          "被動元件轉強：信昌電交貨期拉長，鉭電容鋁電容MLCC供需吃緊，台系小弟等待2017敘事重演",
+          "CPU概念股：AMD法說年增35%，有信心拿下伺服器CPU市占超過五成，2027AI能見度高",
+          "ASIC：世芯3661漲停，創意3443跟著Google起飛，資金灌進伺服器ASIC CPU",
+          "聯發科：漲停太多根，預期打滿了，需要橫盤驗證小作文是否實踐",
+          "今天是降槓位置，但斜率過高後面會有盤整，等長黑K再調整"
+        ],
+        "tickers": [
+          {
+            "name": "被動元件族群",
+            "context": "信昌電交貨期拉長，供需吃緊，台系2017敘事等待全面啟動",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "被動元件族群持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "法說年增35%，伺服器CPU市占超五成，2027能見度高",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "法說呼應CPU成為市場核心",
+            "stance": "bullish"
+          },
+          {
+            "name": "嘉澤",
+            "context": "CPU socket，持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "世芯 3661",
+            "context": "漲停，AWS Trainium高度綁定，老飯新炒但還是買",
+            "stance": "bullish"
+          },
+          {
+            "name": "創意 3443",
+            "context": "跟著Google起飛，ASIC族群",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "預期打滿，橫盤驗證，不加碼",
+            "stance": "neutral"
+          },
+          {
+            "name": "PLTR Palantir",
+            "context": "財報財務數字好，後續觀察軟體股機會",
+            "stance": "bullish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "一軍軟屌後的二軍首選之一",
+            "stance": "bullish"
+          },
+          {
+            "name": "CRWD CrowdStrike",
+            "context": "一軍軟屌後的二軍首選之一",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "過去噴很兇，現在開始回檔",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "被動元件2017敘事",
+          "CPU ASIC資金灌入",
+          "聯發科預期打滿",
+          "降槓位置",
+          "軟體股下一波",
+          "光通回檔"
+        ],
+        "market_view": "資金瘋狂灌入CPU、ASIC、被動元件，斜率過高後面會有盤整。今天是降槓好位置，等長黑K再調整。光通開始回檔。軟體股PLTR、NET、CRWD是一軍橫盤後的下一個布局方向。",
+        "sentiment": "bullish",
+        "sentiment_reason": "CPU ASIC被動元件基本面支撐，且戰且走繼續搭車，但降槓意識開始出現",
+        "quotes": [
+          "大家都宣稱自己有傳說廚具，可是至今還沒有看到傳說料理的誕生",
+          "你沒有辦法很攏統的聽市場的某一種說法就把投資做好，你要有自己的判斷",
+          "思考下一步往哪走，只要等到時間到，契機發生之後，再去做相對應的布局",
+          "人生最快樂的時候，是從沒有錢，然後開始到有錢的那個階段"
+        ],
+        "portfolio_advice": "嘉澤CPU題材持續，繼續持有。被動元件等2017敘事觸發點，國巨觀察。聯發科預期打滿不追高。軟體股PLTR、NET、CRWD等一軍回檔後布局。0050和VOO放著不動。零壹繼續等反彈訊號。"
+      }
+    },
+    {
+      "id": 1777873973389,
+      "title": "股癌 EP658",
+      "created_at": "2026-05-04T05:52:53.389Z",
+      "analysis": {
+        "episode": "EP658",
+        "date": "2026-05-01",
+        "source": "股癌",
+        "summary": [
+          "四月漲勢太瘋狂，回檔可能五月或六月，枕戈待旦準備度過難關",
+          "SaaS軟體股可能是下一波輪動族群，NET、CRWD、PLTR是抄底首選",
+          "聯發科英特爾EMIB封裝進展，TPU V8/V9分工確認，發哥是相對安全避風港",
+          "老黃校正回歸：AI不會讓工程師消失，而是加速過程，工程師仍需扛責任",
+          "操作日記：無，放著飛"
+        ],
+        "tickers": [
+          {
+            "name": "NET Cloudflare",
+            "context": "抄底首選之一，SaaS下一波輪動",
+            "stance": "bullish"
+          },
+          {
+            "name": "CRWD CrowdStrike",
+            "context": "抄底首選之一，SaaS下一波輪動",
+            "stance": "bullish"
+          },
+          {
+            "name": "PLTR Palantir",
+            "context": "抄底首選之一，SaaS下一波輪動",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "EMIB封裝進展，TPU V8/V9受惠，相對安全避風港，EPS共識八折約320",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "噴到看不懂，不加碼，有機會可能丟出來",
+            "stance": "neutral"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "放著飛，TPU V9前段繼續受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "Adobe",
+            "context": "初階應用被AI搶走，估值下修合理",
+            "stance": "bearish"
+          },
+          {
+            "name": "Salesforce CRM",
+            "context": "中立，創辦人導入Agentforce有機會",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "四月瘋狂行情回檔預警",
+          "SaaS輪動",
+          "EMIB封裝進展",
+          "工程師復甦",
+          "軟體股下一波",
+          "枕戈待旦"
+        ],
+        "market_view": "四月漲勢太瘋狂難以維持，五到六月可能出現回檔。SaaS軟體股可能是下一波輪動方向。聯發科是相對安全的避風港。枕戈待旦，準備好現金等待機會。",
+        "sentiment": "neutral",
+        "sentiment_reason": "操作日記無動作，放著飛，但對後市保持謹慎，預期回檔，整體中性偏保守",
+        "quotes": [
+          "價格跟味道是輔助，重點是在對的時間跟對的人喝",
+          "歌本身就是非常好的載體，甚至會到某一些地方刻意去放一些歌，然後去把回憶寫在那一邊",
+          "不要用零和的思維去看事情，AI創造了以前不曾有的工作缺"
+        ],
+        "portfolio_advice": "放著飛是現在最好的策略。手上保留現金等回檔，五六月可能有機會。SaaS族群NET、CRWD、PLTR等回檔再考慮。0050和VOO繼續放不動。零壹繼續等反彈訊號。"
+      }
+    },
+    {
+      "id": 1777873618112,
+      "title": "股癌 EP657",
+      "created_at": "2026-05-04T05:46:58.112Z",
+      "analysis": {
+        "episode": "EP657",
+        "date": "2026-04-29",
+        "source": "股癌",
+        "summary": [
+          "拉積盤劇本進行中但台積電沒有續攻，資金在台積電還是中小股不確定",
+          "旺宏老闆表態超級利多，記憶體產品線全面漲價",
+          "被動元件台股落後海外很久，建議直接買日美股被動元件",
+          "EMIB封裝良率達90%可量產，愛普、欣興、鈦昇是概念股",
+          "Meta簽AWS Graviton5大單，CPU題材持續，嘉澤買一點、群聯站回季線買入"
+        ],
+        "tickers": [
+          {
+            "name": "嘉澤",
+            "context": "CPU socket，買一點",
+            "stance": "bullish"
+          },
+          {
+            "name": "群聯",
+            "context": "站回季線買入，跌破季線停損",
+            "stance": "bullish"
+          },
+          {
+            "name": "旺宏",
+            "context": "老闆表態超級利多，記憶體全面漲價",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "台股落後海外太久，建議直接買日美股",
+            "stance": "bullish"
+          },
+          {
+            "name": "欣興",
+            "context": "EMIB封裝概念股，CPU都佔有一席之地",
+            "stance": "bullish"
+          },
+          {
+            "name": "鈦昇",
+            "context": "EMIB封裝概念股",
+            "stance": "bullish"
+          },
+          {
+            "name": "愛普",
+            "context": "供應IPD埋電容，EMIB概念股",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "EMIB良率改善，相當強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "投信買但外資賣壓制，拉積盤劇本未明確續攻",
+            "stance": "neutral"
+          },
+          {
+            "name": "光通族群",
+            "context": "拉積盤時資金被抽走，一堆出現跌停",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "拉積盤劇本進行中",
+          "記憶體漲價",
+          "EMIB封裝良率",
+          "CPU持續",
+          "Meta AWS Graviton5",
+          "資金流向判斷"
+        ],
+        "market_view": "盤面膠著，資金流向難判斷。台積電拉積盤劇本未明確，記憶體和被動元件又動起來。基本面好的標的很多，關鍵是資金要去哪裡。",
+        "sentiment": "neutral",
+        "sentiment_reason": "拉積盤劇本不明確，資金在台積電還是中小股之間游移，整體謹慎中性",
+        "quotes": [
+          "我覺得人比鬼可怕",
+          "若有一個產品會顛覆大家的想像，高機會就是會受到迎頭痛擊的",
+          "有錢人家的小孩為什麼做什麼都比較會，因為人家沒有後顧之憂"
+        ],
+        "portfolio_advice": "嘉澤小部位買入，群聯站回季線可考慮。被動元件台股太慢可考慮日美股ETF。台積電拉積盤劇本觀察中，0050繼續放著。零壹繼續等反彈。"
+      }
+    },
+    {
+      "id": 1777254365308,
+      "title": "股癌EP656",
+      "created_at": "2026-04-27T01:46:05.308Z",
+      "analysis": {
+        "episode": "EP656",
+        "date": "2026-04-26",
+        "source": "股癌",
+        "summary": [
+          "金管會放寬投信持股上限到25%，大量資金可能湧入台積電，形成拉積盤劇本",
+          "台積電若成飆股：投信FOMO買滿→外資跟進→台股市值變大→全球外資被動配置進來",
+          "CPU族群全面噴出，但小作文過剩，短期可能受傷，長期剛啟動可以走很遠",
+          "TPU第八代亮相，認知修正：Training是發哥的，inference才是AVGO的",
+          "停損點：抓4/25大量紅K低點作停損"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "投信放寬到25%，拉積盤劇本，目標2800以上可能更高，加碼",
+            "stance": "bullish"
+          },
+          {
+            "name": "嘉澤",
+            "context": "CPU socket，加碼",
+            "stance": "bullish"
+          },
+          {
+            "name": "CPU族群",
+            "context": "全面噴出，剛啟動可以走很遠，但小作文短期可能受傷",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "TPU Training受惠，三根漲停，但資金轉去台積電",
+            "stance": "bullish"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "TPU inference受惠，重新認知Training vs inference分工",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "大規模拉積盤時資金會從其他股票流出補台積電，注意",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "台積電拉積盤",
+          "投信FOMO",
+          "金管會放寬25%",
+          "CPU噴出",
+          "TPU第八代",
+          "停損點設定"
+        ],
+        "market_view": "台積電拉積盤劇本成形，投信放寬持股上限是最大催化劑。CPU族群剛啟動但小作文過多短期注意。大規模資金進台積電會排擠其他股票。停損點抓4/25大量紅K低點。",
+        "sentiment": "bullish",
+        "sentiment_reason": "台積電拉積盤劇本加碼嘉澤，CPU族群噴出，整體非常樂觀",
+        "quotes": [
+          "人是需要一點想像的，需要一些願景，甚至是一輩子不一定可以得到的東西，想像哪天可以得到這個東西，那是很好的",
+          "剪刀石頭布，我出剪刀因為你是我的拳布",
+          "也有非常圓融的職人，那個人心裡一定承受了很多，遇到這樣的人要好好珍惜"
+        ],
+        "portfolio_advice": "台積電拉積盤劇本成形，你的0050已有台積電曝險，繼續持有不動就對了。不需要額外買台積電個股，0050就是最好的載體。CPU族群嘉澤可加入觀察。VOO繼續定期定額。零壹繼續等反彈。"
+      }
+    },
+    {
+      "id": 1777254348521,
+      "title": "股癌EP655",
+      "created_at": "2026-04-27T01:45:48.521Z",
+      "analysis": {
+        "episode": "EP655",
+        "date": "2026-04-24",
+        "source": "股癌",
+        "summary": [
+          "盤勢太好導致心態受影響，小資金薛到翻掉，不要看別人賺多少影響自己判斷",
+          "被動元件台股走得比較慢，股癌直接去買日股，台股動太慢不要了",
+          "Vera Rubin傳出遞延狀況，但過往經驗都會解決，錯殺反而是加碼機會",
+          "MRVL公布MPU代號Carmel，量不大，Google餅太大三家都無法滿足需求",
+          "有問題的從來不是公司，而是你的成本"
+        ],
+        "tickers": [
+          {
+            "name": "MRVL",
+            "context": "Google MPU Carmel公布，量不大但餅夠大，持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "Google三家無法滿足需求，評價不變",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "MTK潛在威脅，Humu Fish走EMIB，但餅夠大不影響評價",
+            "stance": "neutral"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "日韓美走得很好，台股相對慢，股癌直接去買日股",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "放著噴，長投部位不動",
+            "stance": "bullish"
+          },
+          {
+            "name": "新唐 4919",
+            "context": "BMC打進CSP是兩年前就知道的事，現在才噴，成本才是關鍵",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "心態管理",
+          "Vera Rubin遞延",
+          "Google御三家",
+          "被動元件台慢日快",
+          "成本決定一切"
+        ],
+        "market_view": "盤勢很好但要注意心態，不要被別人的高報酬影響判斷。長投部位不動繼續放，動能部分找強勢標的。Vera Rubin遞延不用擔心，錯殺是機會。",
+        "sentiment": "bullish",
+        "sentiment_reason": "放著噴，長投不動，持續找強勢標的，整體樂觀",
+        "quotes": [
+          "以前的汰弱留強是汰掉破底或橫盤不會動的，而現在的汰弱留強是汰掉過去漲沒有這麼多的",
+          "有問題的從來不是公司，而是你的成本",
+          "報酬豐碩的是市場在犯錯的時候，但是有資格去判斷市場犯錯，需要大量的經驗累積"
+        ],
+        "portfolio_advice": "長投0050和VOO不動繼續放。被動元件台股動太慢可考慮觀察日股ETF。Vera Rubin遞延是雜訊不是風險，不要因此出場。零壹繼續等反彈。新唐成本才是關鍵，現在追高要小心。"
+      }
+    },
+    {
+      "id": 1776731548890,
+      "title": "股癌 EP654",
+      "created_at": "2026-04-21T00:32:28.890Z",
+      "analysis": {
+        "episode": "EP654",
+        "date": "2026-04-21",
+        "source": "股癌",
+        "summary": [
+          "美股一根針往上頂，台積電若沒被砍單指數可到四萬點以上，拉回是買點",
+          "台積電資本支出給到上緣信心表態，漢唐廠務股趁法說會表態很屌",
+          "被動元件全世界噴射，連電阻都漲價，國巨稼動率瞬間跳上去缺貨漲價可能性高",
+          "CPU缺貨可能比記憶體更嚴重，Vera Rubin的BOM表出爐，零組件稼動率已達90%",
+          "記憶體資金可能撤退找下一個缺貨漲價題材，被動元件、ABF載板、Q布是候選"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "資本支出給到上緣信心表態，廠務股跟著受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "漢唐 2404",
+            "context": "趁台積電法說會時間表態，廠務股訊號強",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "被動元件全面噴射，電阻也開始漲價，稼動率跳升",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "全世界噴射，日本無腦噴，連電阻都漲，缺貨漲價確立",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU缺貨比記憶體更嚴重，漲幅20%以下但後面有機會往上",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU缺貨題材，買入",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "致茂",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "萬潤",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "Vishay VSH",
+            "context": "美股被動元件噴出",
+            "stance": "bullish"
+          },
+          {
+            "name": "記憶體族群",
+            "context": "台股記憶體比較軟，資金可能撤退找下一個題材",
+            "stance": "neutral"
+          },
+          {
+            "name": "TQQQ",
+            "context": "賣出",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "美股多頭",
+          "台積電法說",
+          "被動元件全面漲價",
+          "CPU缺貨嚴重",
+          "Vera Rubin BOM表",
+          "記憶體資金撤退",
+          "廠務股"
+        ],
+        "market_view": "美股強勢往上，拉回是買點。被動元件全面缺貨漲價確立，是最強的題材。CPU缺貨可能比記憶體更嚴重，Vera Rubin BOM表是重要催化劑。記憶體資金開始尋找下一個題材。",
+        "sentiment": "bullish",
+        "sentiment_reason": "買入英特爾，賣出TQQQ，被動元件全面噴射，CPU缺貨題材擴大，整體積極樂觀",
+        "quotes": [
+          "願意把錢分享給別人的人，代表說這是成年人的一種愛",
+          "你老婆跟你吵這個代表他愛你"
+        ],
+        "portfolio_advice": "被動元件是現在最強題材，國巨值得重點關注。CPU缺貨題材持續，AMD英特爾觀察。漢唐廠務股訊號強但已漲一段，等回檔。VOO繼續定期定額，拉回是加碼機會。零壹繼續觀察。"
+      }
+    },
+    {
+      "id": 1776731458541,
+      "title": "石英元件供應鏈",
+      "created_at": "2026-04-21T00:30:58.541Z",
+      "analysis": {
+        "episode": "石英元件供應鏈_20260419",
+        "date": "2026-04-19",
+        "source": "定錨產業筆記",
+        "summary": [
+          "石英元件供應鏈完整梳理，台灣中游廠商受惠AI伺服器、LEO衛星、CPU需求",
+          "品技全台最大石英元件廠，受惠NVIDIA Rubin、AI交換器、光模組",
+          "泰藝OCXO純度最高，AI伺服器主板受惠",
+          "加高CPU缺貨中能提供穩定貨源，二線供應商優勢",
+          "石英元件進入門檻極高，供應鏈集中台灣護城河深"
+        ],
+        "tickers": [
+          {
+            "name": "品技 3024",
+            "context": "全台最大石英元件廠，NVIDIA Rubin、AI交換器、1.6T光模組受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "泰藝 8289",
+            "context": "OCXO純度最高，AI伺服器主板，NVIDIA Rubin受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "加高 8182",
+            "context": "CPU缺貨中穩定供貨，二線供應商，競爭少",
+            "stance": "bullish"
+          },
+          {
+            "name": "希華 2484",
+            "context": "TCXO、LEO衛星、AI Servers，與日本大真空結盟",
+            "stance": "bullish"
+          },
+          {
+            "name": "台嘉碩 3221",
+            "context": "Wifi 7、V2X、ADAS，石英+SAW濾波器",
+            "stance": "neutral"
+          },
+          {
+            "name": "安慕 6174",
+            "context": "TCXO第二供應來源，競爭小毛利高",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "石英元件",
+          "AI伺服器",
+          "LEO衛星",
+          "CPU需求",
+          "NVIDIA Rubin"
+        ],
+        "market_view": "石英元件供應鏈集中台灣，進入門檻高，受惠AI伺服器、LEO衛星、CPU多重需求，護城河深。",
+        "sentiment": "bullish",
+        "sentiment_reason": "多重需求驅動，供應鏈集中台灣，護城河深，題材剛開始發酵",
+        "quotes": [],
+        "portfolio_advice": "品技和泰藝是最純的AI伺服器受惠標的，加入觀察清單。但這些標的股本小、波動大，主動15萬小部位觀察，等回檔再進。"
+      }
+    },
+    {
+      "id": 1776731445865,
+      "title": "產業快報 4/13-4/19",
+      "created_at": "2026-04-21T00:30:45.865Z",
+      "analysis": {
+        "episode": "產業快報_20260419",
+        "date": "2026-04-19",
+        "source": "定錨產業筆記",
+        "summary": [
+          "被動元件太陽誘電5月起全面漲價，銅鋁銀成本壓力往下游傳導",
+          "CCL銅箔基板Panasonic漲價15~30%，台光電5月再度調漲",
+          "晶圓代工聯電下半年調漲報價，AI需求回溫加上成本上升",
+          "工具機需求回溫，日本訂單年增28%，PMI由緊縮轉擴張"
+        ],
+        "tickers": [
+          {
+            "name": "被動元件族群",
+            "context": "太陽誘電5月起全面漲價，催化劑出現",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "被動元件漲價受惠，法說會預期正面",
+            "stance": "bullish"
+          },
+          {
+            "name": "台光電",
+            "context": "CCL漲價15~30%，5月再調漲",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯電",
+            "context": "下半年調漲晶圓代工報價",
+            "stance": "bullish"
+          },
+          {
+            "name": "工具機族群",
+            "context": "日本訂單年增28%，景氣初步復甦",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "被動元件漲價",
+          "CCL漲價",
+          "晶圓代工漲價",
+          "工具機復甦"
+        ],
+        "market_view": "多個產業同步漲價，成本壓力往下游傳導，受惠廠商獲利空間擴大。被動元件催化劑正式出現。",
+        "sentiment": "bullish",
+        "sentiment_reason": "多產業漲價訊號同步出現，供需吃緊，廠商議價權提升",
+        "quotes": [],
+        "portfolio_advice": "被動元件催化劑已出現，國巨可重點關注。台光電CCL漲價受惠。聯電漲價消息偏正面但非主流。"
+      }
+    },
+    {
+      "id": 1776309867399,
+      "title": "股癌EP653",
+      "created_at": "2026-04-16T03:24:27.399Z",
+      "analysis": {
+        "episode": "EP653",
+        "date": "2026-04-15",
+        "source": "股癌",
+        "summary": [
+          "市場走勢極好，多頭行情把握，台積電估值合理，股價2800不誇張",
+          "聯發科值得關注：Google合作V8/V9晶片，AI純度高，潛在投片量超百萬顆",
+          "MRVL加入Google家族，藍海市場，但離貢獻營收獲利還遠，觀察股價表態",
+          "被動元件太陽誘電全面漲價，等催化劑，CPU可能是關鍵",
+          "操作日記：買入INTC和MRVL"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "今年EPS 90元明年140元，20倍本益比股價2800不貴，多頭核心",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "Google V8/V9合作，AI純度高，3~4年貢獻超過一半EPS",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "Google引進為晶片設計夥伴，藍海市場，買入但觀察股價表態",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU族群持續，買入",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU族群持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "ARM",
+            "context": "CPU族群持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "LITE、COHR持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "太陽誘電漲價，等催化劑，右側交易跟上",
+            "stance": "neutral"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "還在持股但態度保守",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "多頭行情",
+          "台積電估值",
+          "聯發科Google題材",
+          "MRVL Google家族",
+          "被動元件漲價",
+          "CPU持續"
+        ],
+        "market_view": "市場走勢極好，多頭行情把握。台積電估值合理支撐指數。聯發科Google合作是新亮點。被動元件漲價趨勢確立但需催化劑。整體偏樂觀積極。",
+        "sentiment": "bullish",
+        "sentiment_reason": "市場走勢極好，買入INTC和MRVL，聯發科新題材出現，整體積極樂觀",
+        "quotes": [
+          "其實你整天看到那一種人設完美，什麼都不會犯錯的人，你不覺得這種人真的可怕嗎？代表他一定卡唬爛啦",
+          "會傷到你的人，都是你最相信跟你最愛的人",
+          "要送年輕人送錢啦，一堆長輩就是整天我送你三句話，我們不需要話，我們需要錢啦"
+        ],
+        "portfolio_advice": "多頭行情確立，VOO/VTI現在買時機不差。台積電估值合理可持續定期定額。被動元件等右側訊號再進。零壹繼續等反彈。聯發科是新觀察標的但估值需確認。"
+      }
+    },
+    {
+      "id": 1776217323799,
+      "title": "股癌EP652",
+      "created_at": "2026-04-15T01:42:03.799Z",
+      "analysis": {
+        "episode": "EP652",
+        "date": "2026-04-10",
+        "source": "股癌",
+        "summary": [
+          "台股毫無懸念多頭創高，美股撐住季線修正視為結束，新族群開始走出來",
+          "CPU題材延伸：輝達入股RISC-V公司SiFive，AWS Graviton供不應求，CPU需求持續擴大",
+          "Anthropic新模型Mythos算力不足不敢開放，軍火商台積電等繼續強勢",
+          "被動元件再次介入，等待事件催化，國巨法說會預期正面",
+          "特斯拉減碼，確認是錢坑"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "算力軍火商，需求無底洞，繼續強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "再次介入，國巨法說預期正面，等事件催化",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "法說會預期正面，lead time往上拉",
+            "stance": "bullish"
+          },
+          {
+            "name": "CPU族群",
+            "context": "輝達入股SiFive，AWS需求旺，新族群走出來",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通元件廠",
+            "context": "借廠房模式四間廠商，難以預判，優先順序低",
+            "stance": "neutral"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "確認減碼，錢坑",
+            "stance": "bearish"
+          },
+          {
+            "name": "手機股",
+            "context": "砍單潮持續，不碰",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "台股多頭",
+          "美股新族群",
+          "CPU RISC-V",
+          "Anthropic算力",
+          "被動元件催化",
+          "特斯拉錢坑"
+        ],
+        "market_view": "台股創高多頭無懸念，美股季線撐住修正結束，新族群開始走出來。CPU需求持續擴大，算力軍火商繼續強勢。選擇比努力重要，要選對標的。",
+        "sentiment": "bullish",
+        "sentiment_reason": "台股創高，美股修正結束，新族群走出來，整體偏樂觀積極",
+        "quotes": [
+          "選擇比努力重要，在那些很垃圾的標的努力了半年，就算抓了很好的買賣點，還是無法避免的讓淨值掉下去",
+          "AI不會讓世界毀滅，會讓世界毀滅的是人類阿，人類去做白癡的事情，不用AI也是可以讓世界毀滅",
+          "你發現說有一些不舒服的點，不用問為什麼，不用解決阿，不舒服就離開現場"
+        ],
+        "portfolio_advice": "台股多頭確立，VOO/VTI繼續定期定額不停止。被動元件有機會但需等觸發點，小部位觀察。特斯拉訊號持續偏空不碰。零壹繼續等反彈訊號。光通估值貴繼續等回檔。選好標的比努力更重要。"
+      }
+    },
+    {
+      "id": 1776217303143,
+      "title": "股癌EP651",
+      "created_at": "2026-04-15T01:41:43.143Z",
+      "analysis": {
+        "episode": "EP651",
+        "date": "2026-04-08",
+        "source": "股癌",
+        "summary": [
+          "台股多頭修正格局，美股死貓跳但跳得很高過季線，短底已到，關注油價是關鍵",
+          "英特爾和三星幫馬斯克Terafab代工，利多英特爾和三星，廠務設備股值得注意",
+          "手機訂單砍單潮，手機股不賭底，蘋果趁機搶市佔，兩年後才會復甦",
+          "CPU漲價幅度不如預期，但趨勢持續，找純度高的標的不容易",
+          "記憶體缺料持續，被動元件鋁電容鉭電容仍缺貨緊俏"
+        ],
+        "tickers": [
+          {
+            "name": "英特爾 INTC",
+            "context": "幫馬斯克Terafab代工，高毛利授權費，CPU雙題材",
+            "stance": "bullish"
+          },
+          {
+            "name": "廠務設備股",
+            "context": "Terafab計畫持續受惠，值得注意",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "磊晶雷射晶片、CPO設備均華、基板AXTI持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "AAPL 蘋果",
+            "context": "手機砍單潮中趁機搶市佔，犧牲毛利換份額",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "鋁電容鉭電容缺貨緊俏持續",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "CPO製程設備，光通持倉",
+            "stance": "bullish"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "錢進馬斯克軍火庫，股東中性偏負面",
+            "stance": "bearish"
+          },
+          {
+            "name": "手機股",
+            "context": "砍單潮，不賭底，兩年後才復甦",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "台股多頭",
+          "美股季線關鍵",
+          "英特爾Terafab題材",
+          "手機砍單",
+          "CPU持續",
+          "缺料持續",
+          "油價觀察"
+        ],
+        "market_view": "台股轉為多頭修正格局，短底已到。美股撐住季線是關鍵，若站穩不理基本面雜訊。油價是最重要的觀察指標，太高會破壞需求。英特爾因Terafab和CPU雙題材值得關注。",
+        "sentiment": "bullish",
+        "sentiment_reason": "台股創高多頭確立，短底已到，拉回視為加碼機會，整體偏樂觀",
+        "quotes": [
+          "很多東西你用不到不代表說你就要去嘴他",
+          "如果遠離社群的話，你會發現現實中的世界沒有那麼討人厭",
+          "今天講出來的很多東西，你去刺傷別人，其實某程度上就是反映了你的內心有多破碎阿"
+        ],
+        "portfolio_advice": "台股多頭確立，VOO/VTI繼續定期定額。英特爾有雙題材可加入觀察清單。光通族群持續看好但估值貴，等回檔。零壹持續觀察反彈訊號。手機股不碰。被動元件有題材但缺觸發點，觀察就好。"
+      }
+    },
+    {
+      "id": 1775543295336,
+      "title": "股癌EP650",
+      "created_at": "2026-04-07T06:28:15.336Z",
+      "analysis": {
+        "episode": "EP650",
+        "date": "2026-04-03",
+        "source": "股癌",
+        "summary": [
+          "CPU族群成新主題：Agentic AI讓CPU成瓶頸，佔總延遲50~90%，ARM/AMD/英特爾是核心標的",
+          "被動元件題材升溫：鋁漲價+Vera Rubin需求，鋁電鉭電可能缺貨",
+          "重點不在預判，而是事件發生後怎麼應對，大跌恐慌時抄底，反彈時減碼",
+          "MRVL後段台股相關：6257，近期像頎邦一樣被綁在一起",
+          "買一點輝達，CPU純度相對不高但整體AI趨勢受惠"
+        ],
+        "tickers": [
+          {
+            "name": "AMD",
+            "context": "CPU族群首選，吃掉英特爾份額，成長比英特爾好",
+            "stance": "bullish"
+          },
+          {
+            "name": "ARM",
+            "context": "CPU市占率逐年提高，估值難算但趨勢強",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU族群，型態強勢，x86份額被AMD吃但一起成長",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "買一點，CPU純度不高但整體AI受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "嘉澤",
+            "context": "CPU socket台股相關，型態強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "鋁漲價+Vera Rubin需求，鋁電鉭電有缺貨機會",
+            "stance": "bullish"
+          },
+          {
+            "name": "6257",
+            "context": "光通MRVL後段，近期強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "後段台股6257被綁在一起",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "CPU族群",
+          "Agentic AI",
+          "被動元件漲價",
+          "鋁漲價",
+          "事後應對策略",
+          "ARM"
+        ],
+        "market_view": "盤面很難做，重點是應對而非預判。CPU族群是這集最大新題材，Agentic AI帶動需求。被動元件有鋁漲價+Vera Rubin雙重題材。大跌恐慌才是抄底時機，反彈就減碼。",
+        "sentiment": "bullish",
+        "sentiment_reason": "CPU新題材出現，被動元件題材升溫，買入輝達，整體對AI趨勢偏樂觀",
+        "quotes": [
+          "重點不在預判，而是事件發生之後怎麼應對",
+          "羨慕跟嫉妒是快樂之賊，如果說你產生這樣情緒的話，就破壞了自己的遊戲體驗",
+          "幸福的美好其實很多時候是在很單純的東西裡面，你出去外面走一圈回來才知道，幸福一直在你身邊"
+        ],
+        "portfolio_advice": "CPU族群是新觀察方向，美股AMD/ARM可加入觀察清單，但現在市場震盪不追高。被動元件題材有趣但個股研究門檻高，新手不建議直接追。VOO/VTI繼續分批，大跌才是加碼時機。零壹繼續等反彈訊號。"
+      }
+    },
+    {
+      "id": 1775543279348,
+      "title": "股癌EP649",
+      "created_at": "2026-04-07T06:27:59.348Z",
+      "analysis": {
+        "episode": "EP649",
+        "date": "2026-04-01",
+        "source": "股癌",
+        "summary": [
+          "台股強於美股，踩均線後反彈，多頭回檔格局；美股像死貓跳，走空風險仍在",
+          "輝達投資MRVL偏宣示意味，不是極大利多，MRVL股性偏渣，分批獲利了結較安全",
+          "玻璃基板一年半到兩年才放量，設備股半年後看營收，現在股價可能已反映",
+          "利空鈍化：油價不突破新高、戰事不擴大，市場會慢慢消化",
+          "趁反彈賣正2降部位，清明連假保守為主"
+        ],
+        "tickers": [
+          {
+            "name": "MRVL",
+            "context": "輝達投資宣示意味多，股性偏渣，分批獲利了結",
+            "stance": "neutral"
+          },
+          {
+            "name": "ALAB",
+            "context": "仍有持股",
+            "stance": "neutral"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "MRVL劍指博通，但藍海大家一起成長",
+            "stance": "neutral"
+          },
+          {
+            "name": "玻璃基板族群",
+            "context": "放量要一年半到兩年，設備股半年後開獎",
+            "stance": "neutral"
+          },
+          {
+            "name": "光通族群",
+            "context": "主流不變，等回檔",
+            "stance": "bullish"
+          },
+          {
+            "name": "正2",
+            "context": "趁反彈賣出降部位，清明連假保守",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "台強美弱",
+          "死貓跳",
+          "MRVL題材",
+          "玻璃基板放量時間",
+          "利空鈍化",
+          "清明連假保守"
+        ],
+        "market_view": "台股相對強勢但美股走空風險仍在，市場對和談半信半疑，油價是關鍵指標。清明連假前降低部位保守應對，等VIX波動率死絕再積極。",
+        "sentiment": "neutral",
+        "sentiment_reason": "台股強但美股走空，操作上兩頭調節，不積極做多也不全面看空，整體謹慎中性",
+        "quotes": [
+          "工作再怎麼做其實對生活影響也不是到很大，可是健康如果沒有顧好的話，那對你生活影響才是真的很大"
+        ],
+        "portfolio_advice": "清明連假期間保守，VOO/VTI繼續分批不停止。台股主動部位不追高，等連假後確認方向。零壹持續觀察有無反彈至MA5機會。MRVL宣示意味多，不是進場訊號。"
+      }
+    },
+    {
+      "id": 1774863305508,
+      "title": "股癌EP648",
+      "created_at": "2026-03-30T09:35:05.508Z",
+      "analysis": {
+        "episode": "EP648",
+        "date": "2026-03-28",
+        "source": "股癌",
+        "summary": [
+          "市場像去年三四月，夜盤跌2.66%，周一可能挑戰千點，策略是汰弱留強等大事出現",
+          "蘋果開放Siri串接其他模型，類似Cloudflare收過路費角色，相對七巨頭更強敘事",
+          "玻璃基板新題材：GCS和TGV預計2027~2028放量，英特爾走在前面，先看技術線圖",
+          "減碼AVGO、NVDA，加碼強勢的MRVL，美股破底就提款",
+          "特斯拉股價像大便，類似Meta當年搞元宇宙，但縮掉不做後可能井噴"
+        ],
+        "tickers": [
+          {
+            "name": "AAPL 蘋果",
+            "context": "Siri開放串接模型，收過路費角色，資本支出少，加大持倉理由",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "汰弱留強後加碼的強勢標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "蘋果模式類似Cloudflare收過路費，間接確認邏輯",
+            "stance": "bullish"
+          },
+          {
+            "name": "玻璃基板族群",
+            "context": "新題材，GCS/TGV 2027~2028放量，英特爾EMIB走在前面",
+            "stance": "neutral"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "盤整後破底減碼",
+            "stance": "bearish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "破底減碼，騰出餘裕",
+            "stance": "bearish"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "股價像大便，類似Meta元宇宙燒錢，但縮掉後可能井噴",
+            "stance": "bearish"
+          },
+          {
+            "name": "廠務設備股",
+            "context": "玻璃基板題材相關，需找與英特爾合作廠商",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "市場震盪",
+          "汰弱留強",
+          "蘋果AI策略",
+          "玻璃基板新題材",
+          "七巨頭資本支出疑慮",
+          "MRVL強勢"
+        ],
+        "market_view": "市場氣氛像去年三四月，震盪向下風險高。策略是汰弱留強，破底就減碼，等大事出現才積極加碼。蘋果相對強勢，玻璃基板是下一個觀察題材但時間還早。美股全面破底風險需防範。",
+        "sentiment": "bearish",
+        "sentiment_reason": "夜盤持續跌，市場像去年大逃殺前兆，主動減碼AVGO和NVDA，整體偏防守",
+        "quotes": [
+          "因為我想看你長大，所以我必須要好好照顧我自己，不然我本來有時候覺得真的死掉也沒差，現在就是說人生有一些目標在，所以就會更加去把自己修正到一個比較好的軌道上",
+          "會賺最多錢的是那些信仰仔，會賠最多的也是那些信仰仔",
+          "很多時候你有能力了就會被人家嫉妒，被人家講的人才是真正有料的人啦，沒有人會去嫉妒庸才"
+        ],
+        "portfolio_advice": "市場震盪期間繼續分批買VOO/VTI最安全，這正是定期定額最有利的時機。光通繼續觀察等回檔，不要追高。玻璃基板先放進觀察清單，2027~2028才是重點。主動15萬這段時間保守為主，不要在震盪期追新題材。AVGO和NVDA訊號轉空，不碰。"
+      }
+    },
+    {
+      "id": 1774518945862,
+      "title": "股癌EP647",
+      "created_at": "2026-03-26T09:55:45.862Z",
+      "analysis": {
+        "episode": "EP647",
+        "date": "2026-03-26",
+        "source": "股癌",
+        "summary": [
+          "台股進入區間盤，光通CPO是主流，直到中東狀況和緩才會轉變",
+          "馬斯克Terafab垂直整合晶圓廠計畫，廠務設備美股韓股最受惠，特斯拉反而可能受傷",
+          "Sora被喊停，OpenAI聚焦效率工具、Coding、工作流整合，影片生成商業化有版權問題",
+          "CPU因推論需求備受關注，AMD已包產線，產能卡住",
+          "AI工具升級邏輯：大家都用AI後，取代的是不懂使用新工具的人"
+        ],
+        "tickers": [
+          {
+            "name": "光通族群",
+            "context": "主流地位不變，台美股都往光通靠，但現在太高追高危險",
+            "stance": "bullish"
+          },
+          {
+            "name": "廠務設備股",
+            "context": "Terafab計畫受惠，美股韓股為主，台股排擠效應待觀察",
+            "stance": "bullish"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "Terafab計畫可能對特斯拉股東造成傷害，考慮降低持倉",
+            "stance": "bearish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "AI agent實質受惠，AI爬蟲都要過收費牆，但估值貴",
+            "stance": "bullish"
+          },
+          {
+            "name": "PLTR Palantir",
+            "context": "To B政府標案持續，未來不錯，但估值貴",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU推論需求，已包台積電產能",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "CPO設備建廠相關，今天漲停",
+            "stance": "bullish"
+          },
+          {
+            "name": "SpaceX",
+            "context": "上市後考慮買1~2%小部位",
+            "stance": "bullish"
+          },
+          {
+            "name": "正2",
+            "context": "加碼操作工具",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "馬斯克Terafab",
+          "廠務設備",
+          "AI工具化",
+          "區間盤操作",
+          "CPU推論",
+          "AI agent",
+          "Sora停止"
+        ],
+        "market_view": "台股進入區間盤格局，中東局勢未明朗前維持震盪。光通CPO是當前主流，但追高風險高。馬斯克Terafab帶來廠務設備新題材，受惠在美韓股。油價預期慢慢往100靠，區間盤策略是黑K補貨、反彈不站回就砍。",
+        "sentiment": "neutral",
+        "sentiment_reason": "光通看好但不追高，區間盤格局下保守操作，等中東局勢明朗才積極，整體偏謹慎中性",
+        "quotes": [
+          "AI可以讓人產出更大的報酬，但每個人拿著AI進來搶的話，就很難搶得到巨大的報酬",
+          "AI像是工具升級，拿熱兵器可以打爆冷兵器的，但大家都拿熱兵器就不相上下，所以取代的是不懂使用新工具的人"
+        ],
+        "portfolio_advice": "光通繼續觀察等回檔，現在追高風險高，崩盤才是買點。廠務設備題材以美股為主，台股排擠效應待觀察。NET和PLTR估值貴但趨勢好，放著不追高。VOO/VTI繼續分批，區間盤正是定期定額最有利的時機。特斯拉訊號偏空，主動部位避開。"
+      }
+    },
+    {
+      "id": 1774425461613,
+      "title": "股癌EP646",
+      "created_at": "2026-03-25T07:57:41.613Z",
+      "analysis": {
+        "episode": "EP646",
+        "summary": [
+          "光通族群是本集核心主題，CPO、光設備趨勢明確，高估值但大回檔才是買點",
+          "美伊戰爭導致不確定性高，油價是關鍵指標，VIX突破40才積極進場美股",
+          "記憶體基本面好但股價已提前反應，美光利多不漲，偏保守觀望",
+          "台系供應鏈贏家是敢衝的廠商，但需注意類似2021-2022缺貨循環的反轉風險",
+          "AI趨勢不變，地緣政治只是短期資金縮手，長期做多勝率仍高"
+        ],
+        "tickers": [
+          {
+            "name": "訊芯",
+            "context": "鴻家軍旗下，與CPO光通最相關",
+            "stance": "bullish"
+          },
+          {
+            "name": "臻鼎",
+            "context": "CoWoP題材，市場關注度高",
+            "stance": "neutral"
+          },
+          {
+            "name": "MU 美光",
+            "context": "記憶體龍頭，利多不漲，預期過高",
+            "stance": "bearish"
+          },
+          {
+            "name": "NVDA",
+            "context": "晶片股，前段表現不佳，調整中",
+            "stance": "neutral"
+          },
+          {
+            "name": "AVGO",
+            "context": "晶片/傳輸類，調整中",
+            "stance": "neutral"
+          },
+          {
+            "name": "ALAB",
+            "context": "傳輸類股，調整中觀察",
+            "stance": "neutral"
+          },
+          {
+            "name": "CRDO",
+            "context": "傳輸類股，調整中觀察",
+            "stance": "neutral"
+          },
+          {
+            "name": "TSLA",
+            "context": "電動車，前段表現不佳",
+            "stance": "neutral"
+          },
+          {
+            "name": "光通族群",
+            "context": "CPO、光設備，AI 2.0核心，高PE但趨勢明確",
+            "stance": "bullish"
+          },
+          {
+            "name": "廠務股",
+            "context": "未具名，股癌認為便宜且今年就會上修",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "AI基礎建設",
+          "記憶體漲價",
+          "美伊戰爭",
+          "台系供應鏈",
+          "散熱液冷",
+          "電網舖設"
+        ],
+        "market_view": "市場受美伊戰爭影響短期不確定性高，油價是關鍵觀察指標。AI長期趨勢不變，光通族群為下一波核心。記憶體雖基本面好但股價已反應，資金可能轉向其他漲價題材。整體偏向短期震盪、長期做多格局。",
+        "sentiment": "neutral",
+        "sentiment_reason": "AI趨勢樂觀但地緣政治風險壓制資金，整體呈觀望偏多格局，非明確多空方向",
+        "quotes": [
+          "有些東西當下研究看似浪費生命，但不要放棄，要留著觀察就好，等到下一個東風來了再回去注意就好",
+          "很多機會都會出現在大家都不信的時候，也就是買在大家半信半疑，保持彈性是很重要的",
+          "情緒極端時會做出讓自己後悔的事情，其中一個很有用的方式是離開現場"
+        ],
+        "portfolio_advice": "你的0050核心不動策略正確，光通個股估值過高不適合新手追高。50萬可用資金建議繼續分批布局VOO/VTI，等VIX突破40再加碼。主動部分（15-20萬）可小部位觀察訊芯等光通標的，但務必設好停損，光通族群任何不如預期就會大跌。每月1萬持續定期定額，不要因戰爭停止投資。"
+      }
+    },
+    {
+      "id": 1774425448181,
+      "title": "股癌EP645",
+      "created_at": "2026-03-25T07:57:28.181Z",
+      "analysis": {
+        "episode": "EP645",
+        "summary": [
+          "GTC展出CPO解決方案與LPU，光通2027-2028才會絕地放量，目前偏題材等修正再接",
+          "SRAM題材是美麗誤會，華邦電與愛普屬歪打正著，華邦電客戶疑似AMD",
+          "ASIC陣營：Meta砍單發展不順，微軟Maia搶不到台積電N2產能，Google疑似拉MRVL加入",
+          "Meta裁員被視為利多，代表AI實際有用、成本管控有效",
+          "LPU目前一年估計15萬顆尚未放量，CPX與LPU先放觀察清單等爆發契機"
+        ],
+        "tickers": [
+          {
+            "name": "NVDA 輝達",
+            "context": "GTC展出CPO與LPU方案，定位為整體解決方案供應商",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "2027-2028放量，目前等修正再進場",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "LPU V4後才換台積電，微軟N2產能搶不到",
+            "stance": "bullish"
+          },
+          {
+            "name": "三星",
+            "context": "LPU第三代以前由三星生產",
+            "stance": "neutral"
+          },
+          {
+            "name": "華邦電",
+            "context": "SRAM題材歪打正著，Cube可當L3 Cache，客戶疑似AMD",
+            "stance": "neutral"
+          },
+          {
+            "name": "愛普",
+            "context": "VHM挑戰HBM，偏客製化，應用範圍不確定",
+            "stance": "neutral"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "Google ASIC開發主力之一",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "疑似加入Google ASIC開發，但歷史上利多不動",
+            "stance": "neutral"
+          },
+          {
+            "name": "Meta",
+            "context": "ASIC砍單、裁員，視為利多但AI晶片需求下降",
+            "stance": "bearish"
+          },
+          {
+            "name": "微軟",
+            "context": "Maia ASIC搶不到台積電N2產能，進度受阻",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "LPU",
+          "SRAM題材",
+          "ASIC陣營",
+          "AI基礎建設",
+          "GTC展覽",
+          "邊緣運算"
+        ],
+        "market_view": "本集聚焦技術面與產業動態，無明顯總經討論。光通長線看好但時間點在2027-2028，現階段偏題材。SRAM炒作被點名是誤解，但華邦電與愛普有歪打正著的機會。ASIC陣營分化，Meta退縮但Google持續布局。",
+        "sentiment": "bullish",
+        "sentiment_reason": "AI長線趨勢明確，GTC確認CPO與LPU方向，光通2027-2028放量具體化，整體對AI基礎建設偏樂觀",
+        "quotes": [
+          "很多美好的發展，在當下都是看不到的",
+          "走了一遭之後才會真正明白自己要的東西到底是什麼",
+          "現在會鼓勵每個人想到什麼就去做，因為絕大多數的發展應該都是想不到的"
+        ],
+        "portfolio_advice": "光通2027-2028才放量，現在不急，等大幅修正再接。你的50萬可用資金目前最穩的還是分批買VOO/VTI，AI趨勢受益最直接。SRAM題材風險高不適合新手。若想參與台股AI，可小部位觀察台積電，但0050本身就已間接持有。"
+      }
+    },
+    {
+      "id": 1774425415831,
+      "title": "股癌EP644",
+      "created_at": "2026-03-25T07:56:55.831Z",
+      "analysis": {
+        "episode": "EP644",
+        "summary": [
+          "美股有破底味道，程式單觸發連鎖反應，破底會加速下跌",
+          "GTC光通若無法繼續往上噴，可能快速下跌，關鍵事件前調節",
+          "記憶體舞台換人，旺宏因產能排擠受惠，美光毛利傳言上看8X%",
+          "特斯拉估值貴但基本面不錯，掉下來就買的策略",
+          "規劃破底後撿的東西：廠務設備股、光通設備股、衛星股、特斯拉"
+        ],
+        "tickers": [
+          {
+            "name": "旺宏",
+            "context": "EMMC/MLC，產能排擠受惠，非AI直接需求",
+            "stance": "bullish"
+          },
+          {
+            "name": "美光 MU",
+            "context": "毛利傳言上看8X%，但期望值高",
+            "stance": "neutral"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "估值貴但基本面尚可，唱壞時買進策略",
+            "stance": "neutral"
+          },
+          {
+            "name": "MSFT 微軟",
+            "context": "已抄底但沒很強不加碼",
+            "stance": "neutral"
+          },
+          {
+            "name": "均華",
+            "context": "做Sorter用在輝達CPO，少量買進",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "GTC後可能利多出盡，需謹慎",
+            "stance": "neutral"
+          },
+          {
+            "name": "廠務設備股",
+            "context": "破底後的撿貨清單",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "記憶體換人",
+          "特斯拉估值",
+          "GTC大會",
+          "美股破底風險",
+          "廠務設備"
+        ],
+        "market_view": "美股有破底風險，程式單觸發連鎖反應需警戒。GTC是關鍵事件，光通若未超預期可能快速回落。記憶體舞台換人，旺宏因產能排擠受惠。整體偏謹慎，規劃破底後的撿貨清單比追高更重要。",
+        "sentiment": "bearish",
+        "sentiment_reason": "美股破底風險升高，GTC事件存在利多出盡疑慮，整體偏防守等候破底後機會",
+        "quotes": [
+          "就算沒有伊朗事情，也會有別的東西把部位炸下去",
+          "世界上所有的好事或很珍貴的東西，幾乎都不是唾手可得的東西"
+        ],
+        "portfolio_advice": "你的被動ETF策略這集最適用，市場破底風險高時分批買VOO/VTI反而是機會。主動15萬先按兵不動，等破底訊號確認再考慮光通設備股。特斯拉對新手太難估值，不建議碰。"
+      }
+    },
+    {
+      "id": 1774425400156,
+      "title": "股癌EP643",
+      "created_at": "2026-03-25T07:56:40.156Z",
+      "analysis": {
+        "episode": "EP643",
+        "summary": [
+          "以3/2為分水嶺挑強勢股，近新高加碼、軟掉減碼，見招拆招",
+          "VIX40以上是買點，但油價未降不敢積極抄底，油價是第一指標",
+          "記憶體漲價持續但需警覺囤貨overbooking風險",
+          "輝達LPU V4傳言給台積電N3+CoWoS-R，對供應鏈影響大",
+          "砍掉華邦電、減碼大成鋼，買正2和敲指數"
+        ],
+        "tickers": [
+          {
+            "name": "NVDA 輝達 LPU",
+            "context": "V4傳給台積電N3，CoWoS-R，台系封裝受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "LPU V4潛在受惠，CoWoS-R需求",
+            "stance": "bullish"
+          },
+          {
+            "name": "美光 MU",
+            "context": "毛利傳言70-80%，漲價持續但需警覺overbooking",
+            "stance": "neutral"
+          },
+          {
+            "name": "華邦電",
+            "context": "已砍掉出場",
+            "stance": "bearish"
+          },
+          {
+            "name": "大成鋼",
+            "context": "減碼",
+            "stance": "bearish"
+          },
+          {
+            "name": "光通設備",
+            "context": "撿了一點往上創高",
+            "stance": "bullish"
+          },
+          {
+            "name": "蘋果 AAPL",
+            "context": "摺疊機謠傳先於數字機推出",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "強勢股策略",
+          "VIX指標",
+          "記憶體漲價",
+          "LPU題材",
+          "油價觀察",
+          "伊朗戰爭"
+        ],
+        "market_view": "市場進入巨大震幅，見招拆招是核心策略。油價是第一觀察指標，VIX40以上才積極進場。記憶體基本面好但需注意overbooking。LPU題材待觀察，對台積電等供應鏈有潛在正面影響。",
+        "sentiment": "neutral",
+        "sentiment_reason": "多空交戰，強勢股策略應對震盪，未見明確方向，油價與VIX為關鍵觀察點",
+        "quotes": [
+          "注意到身邊比較成功的人士，其實沒有人喜歡當預言家，絕大多數無法預測未來，所以只能見招拆招",
+          "對什麼都有興趣，每個東西可以做到六、七十分的人，反而在AI時代很可以很適應"
+        ],
+        "portfolio_advice": "震盪期間持續分批買VOO/VTI最適合你，不需要跟隨主動操作的砍倉買正2策略。你的被動部位這種震盪中完全不需動作，主動15萬繼續觀察，等VIX真的到40再考慮加碼。"
+      }
+    },
+    {
+      "id": 1774425388431,
+      "title": "股癌EP642",
+      "created_at": "2026-03-25T07:56:28.431Z",
+      "analysis": {
+        "episode": "EP642",
+        "summary": [
+          "光通2027-2028放量共識確立，銅與光並行，光享有更高估值",
+          "蘋果積極布局：iPhone 17E搶安卓市佔，硬體便宜賣、賺服務費",
+          "均華做Sorter用在輝達CPO，有估值上修機會",
+          "市場恐慌殺盤時是布局光通的機會，但跌還不夠多",
+          "AI製造FUD情緒，上漲吹捧下跌幹話，需保持獨立判斷"
+        ],
+        "tickers": [
+          {
+            "name": "光通族群",
+            "context": "2027-2028放量，現在等更大回檔補票",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "做Sorter用在輝達CPO，估值可能上修",
+            "stance": "bullish"
+          },
+          {
+            "name": "AAPL 蘋果",
+            "context": "iPhone 17E搶安卓市佔，服務營收成長，考慮最大持倉",
+            "stance": "bullish"
+          },
+          {
+            "name": "貿聯",
+            "context": "CPO設備商故事，shuffle box",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "純度最高的光通題材，供設備業者也值得關注",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "已賣出",
+            "stance": "neutral"
+          },
+          {
+            "name": "新唐",
+            "context": "已賣出",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "蘋果服務",
+          "AI基礎建設",
+          "銅光並行",
+          "市場FUD情緒"
+        ],
+        "market_view": "台股回檔美股探底，市場恐慌是布局光通的機會。蘋果積極搶市佔率，服務營收在AI加持下成長性強。銅通訊可能殺過頭，光通等籌碼洗乾淨後車就開走。整體偏多但需等更好的進場點。",
+        "sentiment": "bullish",
+        "sentiment_reason": "產業趨勢明確，光通2027-2028放量共識，蘋果布局完整，恐慌殺盤視為買點",
+        "quotes": [
+          "只要你物慾沒有hold住的話，錢永遠不夠用的",
+          "當我牽兒子手散步的時候，覺得是世界上最富足的人"
+        ],
+        "portfolio_advice": "蘋果是適合你這種被動投資者的標的，波動小、基本面強，但現在位階高。光通等更大回檔再考慮。你的VOO/VTI計畫完全正確，AAPL在VOO裡佔比很高，買VOO就間接持有蘋果了，不需要另外買。"
+      }
+    },
+    {
+      "id": 1774425375455,
+      "title": "股癌EP641",
+      "created_at": "2026-03-25T07:56:15.455Z",
+      "analysis": {
+        "episode": "EP641",
+        "summary": [
+          "伊朗戰爭開打後抄底，但不確定性比預期久，海峽封鎖是最大變數",
+          "漲價題材市場已麻木，國巨漲價信無效，技術面判斷為主",
+          "光通是下一波資金匯聚點，台積電是純度最高的光通題材",
+          "美股光通布局：lumentum、coherent、AXTI磷化銦基板",
+          "輝達財報亮眼但股價不動，等大修正洗籌碼才會噴"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "最純度的光通題材，估值乘數應以光通而非資本支出計算",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "財報亮眼但股價不動，等大修正",
+            "stance": "neutral"
+          },
+          {
+            "name": "lumentum",
+            "context": "美股光通布局標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "coherent",
+            "context": "美股光通布局標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "AXTI",
+            "context": "磷化銦基板，美股光通",
+            "stance": "bullish"
+          },
+          {
+            "name": "貿聯",
+            "context": "shuffle box，光通設備",
+            "stance": "bullish"
+          },
+          {
+            "name": "昇達科",
+            "context": "衛星最純標的",
+            "stance": "bullish"
+          },
+          {
+            "name": "ASTS",
+            "context": "手機連衛星，美股",
+            "stance": "bullish"
+          },
+          {
+            "name": "TQQQ",
+            "context": "抄底操作，高風險",
+            "stance": "neutral"
+          },
+          {
+            "name": "國巨",
+            "context": "漲價信無效，漲價題材告段落訊號",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "伊朗戰爭",
+          "漲價題材退潮",
+          "衛星通訊",
+          "輝達財報",
+          "區間盤操作"
+        ],
+        "market_view": "伊朗戰爭不確定性超出預期，海峽封鎖影響深遠。漲價題材市場麻木，資金開始轉向光通。輝達財報好但股價不動是重要訊號，可能需要更大修正才能噴出。整體維持區間盤操作思路。",
+        "sentiment": "neutral",
+        "sentiment_reason": "地緣政治不確定性高，漲價題材退潮，資金轉向光通但時機未到，整體觀望",
+        "quotes": [
+          "有時候被教訓之後，要知道這是上一課的機會，千萬不要受到一次打擊之後就說下次不玩了，你一定會經過很多打擊，然後慢慢變強，只要確定你不會死掉就好",
+          "現在資訊超級多，雜訊也超級多，重點是把雜訊過濾掉"
+        ],
+        "portfolio_advice": "漲價題材退潮對你影響不大，你沒持有這類股票。光通美股標的lumentum、coherent可列為主動15萬的觀察清單，但現在先觀察。VOO/VTI繼續分批，輝達財報好但股價不動代表市場在消化，長期持有ETF不受影響。"
+      }
+    },
+    {
+      "id": 1774425361897,
+      "title": "股癌EP640",
+      "created_at": "2026-03-25T07:56:01.897Z",
+      "analysis": {
+        "episode": "EP640",
+        "summary": [
+          "被動元件漲價浪起：日本巨頭調漲鉭電容15-30%、MLCC 20%，K型分化",
+          "太陽能去中化受惠，末端電池模組直接拿補貼，但業內仍保守",
+          "光銅並行策略：光通估值高持續加，銅通訊等大反彈再介入",
+          "Block裁員四千人，AI重塑工程師職缺結構，FDE工程師需求暴增1000%",
+          "伊朗戰爭風險升溫，川普關稅被最高法院擋下，不確定性高"
+        ],
+        "tickers": [
+          {
+            "name": "AAOI",
+            "context": "光通洗盤後狂噴56%，光通族群強勢代表",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "市場最強勢，光銅並行持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件",
+            "context": "日系漲價潮，中低階有機會吃日系大廠不要的訂單",
+            "stance": "bullish"
+          },
+          {
+            "name": "太陽能電池模組",
+            "context": "美國補貼受惠，去中化供應鏈機會",
+            "stance": "bullish"
+          },
+          {
+            "name": "Block SQ",
+            "context": "裁員四千人，Jack Dorsey財務紀律問題",
+            "stance": "bearish"
+          },
+          {
+            "name": "銅通訊族群",
+            "context": "等大反彈後再介入，光比銅享有更高估值",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "被動元件漲價",
+          "太陽能去中化",
+          "光銅並行",
+          "AI工程師職缺",
+          "伊朗戰爭",
+          "川普關稅"
+        ],
+        "market_view": "不確定性持續升高，光通是最強勢族群。被動元件漲價浪起，借鏡記憶體中低階供需失衡邏輯。AI重塑就業結構但不會造成大失業，FDE等新職缺爆發性成長。持續觀望等長黑K出現再調整。",
+        "sentiment": "neutral",
+        "sentiment_reason": "光通強勢但整體市場不確定性高，被動元件有機會但仍觀察中，地緣政治壓制積極做多意願",
+        "quotes": [
+          "你行你上，當你覺得那地方都是暴利，真的覺得這很好賺，就去開看看",
+          "過去遇到很多不順的事情，現在回頭看，就會發現到那些不順的事情都變成你的養分"
+        ],
+        "portfolio_advice": "被動元件漲價題材需要研究個股，新手不建議追。太陽能去中化概念有趣但太複雜。你的VOO/VTI策略在這種不確定市場最適合，光通等修正出現再用主動15萬小部位參與，不要現在追高。"
+      }
+    },
+    {
+      "id": 1774425343681,
+      "title": "股癌EP639",
+      "created_at": "2026-03-25T07:55:43.681Z",
+      "analysis": {
+        "episode": "EP639",
+        "summary": [
+          "台股萬箭齊發，設備廠務重新建倉，ABF/BT載板全面起飛",
+          "太陽能去中化轉機，non-China供應鏈受益IRA補助，但四大瓶頸仍存在",
+          "GTC大會謠言：CPO scale up/out題材，瑞軒等雷射相關股已先反應",
+          "輝達財報數字預計好但市場反應不確定，SRAM整合伺服器Rack為驚喜版本",
+          "特斯拉端到端純視覺解方仍是業界最強，機器人受中國威脅但non-China架構下無礙"
+        ],
+        "tickers": [
+          {
+            "name": "ABF/BT載板",
+            "context": "缺貨漲價，全面起飛",
+            "stance": "bullish"
+          },
+          {
+            "name": "設備廠務股",
+            "context": "重新建倉，美股設備動起來台股跟進",
+            "stance": "bullish"
+          },
+          {
+            "name": "瑞軒",
+            "context": "疑似瑞穗鮮乳，GTC CPO雷射題材已先反應鎖漲停",
+            "stance": "bullish"
+          },
+          {
+            "name": "太陽能 元晶",
+            "context": "non-China受惠IRA，去中化轉機",
+            "stance": "neutral"
+          },
+          {
+            "name": "華城",
+            "context": "變壓器瓶頸，下單三年才拿到貨",
+            "stance": "bullish"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "端到端純視覺仍業界最強，機器人受中國威脅",
+            "stance": "bullish"
+          },
+          {
+            "name": "新唐",
+            "context": "買進，成熟製程稼動率不錯",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "財報預期好但市場反應不確定",
+            "stance": "neutral"
+          },
+          {
+            "name": "華新科 國巨",
+            "context": "被動元件強的就那幾支，喜好度不高",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "台股噴射行情",
+          "太陽能去中化",
+          "GTC大會",
+          "設備廠務",
+          "ABF載板",
+          "non-China供應鏈",
+          "電網瓶頸"
+        ],
+        "market_view": "台股進入萬箭齊發階段，設備廠務與載板全面起飛。太陽能去中化是長期題材但需等四大瓶頸解除。GTC大會是近期最大催化劑，CPO題材已提前反應。整體市場情緒偏樂觀但需注意GTC後可能的利多出盡。",
+        "sentiment": "bullish",
+        "sentiment_reason": "台股行情強勁，設備廠務ABF全面起飛，GTC大會催化劑在即，整體偏多格局明確",
+        "quotes": [
+          "每次下跌時都是汰弱留強的機會，再上去的一定是強者，待在下面的就是時代的眼淚",
+          "要有一點見風轉舵的氣質在，但也不要全部在見風轉舵那邊，要在兩極之間保持一點彈性",
+          "重點是評論，怎麼評論這件事，要有自己的想法而不是人云亦云"
+        ],
+        "portfolio_advice": "台股噴射行情你的0050完整受惠，不需要追個股。太陽能去中化概念有趣但個股研究門檻高，新手不建議直接操作。主動15萬可繼續觀察設備廠務股，等GTC後確認題材再決定是否進場。VOO/VTI繼續分批不受影響。"
+      }
+    },
+    {
+      "id": 1774425321117,
+      "title": "股癌EP638",
+      "created_at": "2026-03-25T07:55:21.117Z",
+      "analysis": {
+        "episode": "EP638",
+        "summary": [
+          "伊朗戰爭風險升溫，各國撤僑，小心為重但不大舉賣出",
+          "美國關稅IEEPA被最高法院否決，股癌認為是利空而非利多，不確定性升高",
+          "資安股因Claude Code Security下跌，但NET和CRWD故事不衝突，是補部位機會",
+          "光通族群大漲：LITE、COHR、ASTI暴漲，衛星也賺錢",
+          "加碼PLTR、NET，減碼輝達和GOOG"
+        ],
+        "tickers": [
+          {
+            "name": "NET Cloudflare",
+            "context": "加碼，擋暴力流量故事與Claude SST不衝突",
+            "stance": "bullish"
+          },
+          {
+            "name": "CRWD CrowdStrike",
+            "context": "資安下跌是補部位機會，快速封鎖防護故事不被取代",
+            "stance": "bullish"
+          },
+          {
+            "name": "PLTR Palantir",
+            "context": "加碼，美股軟體股漲爛",
+            "stance": "bullish"
+          },
+          {
+            "name": "LITE lumentum",
+            "context": "光通暴漲受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "COHR coherent",
+            "context": "光通暴漲受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "ASTI",
+            "context": "光通上游磷化銦基板暴漲",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "減碼",
+            "stance": "neutral"
+          },
+          {
+            "name": "GOOG Google",
+            "context": "減碼",
+            "stance": "neutral"
+          },
+          {
+            "name": "MU 美光",
+            "context": "LoveGG買了，股癌暗示想跑",
+            "stance": "bearish"
+          },
+          {
+            "name": "資安族群",
+            "context": "Claude Code Security衝擊後是補部位機會",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "伊朗戰爭",
+          "美國關稅",
+          "資安股",
+          "光通暴漲",
+          "軟體股",
+          "不確定性"
+        ],
+        "market_view": "地緣政治與關稅雙重不確定性升溫，小心為重。資安股受AI工具衝擊下跌但是機會而非危機。光通族群強勢暴漲，軟體股美股表現遠優於台股。整體保持警戒，精選強勢標的。",
+        "sentiment": "neutral",
+        "sentiment_reason": "光通軟體股強勢偏多，但伊朗戰爭與關稅不確定性對沖，整體中性偏謹慎",
+        "quotes": [
+          "市場不喜歡不確定性",
+          "努力到一個極限之後，人生有太多東西是不可控的，重點是下檔風險是可控的",
+          "這時代賺錢好像不是特別難的事情"
+        ],
+        "portfolio_advice": "資安股NET/CRWD對你主動15萬來說是值得觀察的標的，長期趨勢不被AI取代。光通在EP638已經大漲，追高風險高。伊朗戰爭不確定性反而支持你持續分批買VOO/VTI的策略，市場恐慌時定期定額最有利。輝達減碼訊號代表短期高位，但你的VOO長期持有不受影響。"
+      }
+    },
+    {
+      "id": 1774407752372,
+      "url": null,
+      "title": "izaax_2026年初分享會",
+      "isManual": true,
+      "episode_date": null,
+      "created_at": "2026-03-25T03:02:32.372Z",
+      "analysis": {
+        "episode": "izaax_2026年初分享會",
+        "summary": [
+          "我們已身處榮景期，預計還有1-2年，但越到後面能漲的東西越少，要懂得少賺一點保住獲利",
+          "美國底層50%家庭財富6年成長2.2倍，財富效應支撐消費，是榮景期最大動能",
+          "聯準會今年預計降息2-3碼，應對AI造成的結構性失業，降息有利資產市場",
+          "美國再工業化+AI投資革命，製造業與IT投資呈現90年代翻版榮景",
+          "榮景期結束訊號：庫存數據持續上升賣不出去、初領失業金惡化，目前兩者皆尚未出現"
+        ],
+        "tickers": [
+          {
+            "name": "美股科技巨頭",
+            "context": "有機會撐到榮景期最後，逢低可布局",
+            "stance": "bullish"
+          },
+          {
+            "name": "羅素2000 中小型股",
+            "context": "目前估值不貴，可關注",
+            "stance": "bullish"
+          },
+          {
+            "name": "美國房地產",
+            "context": "降息帶動新屋需求，榮景期第一波大行情啟動",
+            "stance": "bullish"
+          },
+          {
+            "name": "新興市場",
+            "context": "榮景期後段會開始跟不上，甚至可能不過前高",
+            "stance": "bearish"
+          },
+          {
+            "name": "台股科技股",
+            "context": "受惠美國新一輪商品循環，ISM製造業新高是重要啟示",
+            "stance": "bullish"
+          },
+          {
+            "name": "電子零組件",
+            "context": "訂單年增率7.7%，預期重演90年代榮景噴出",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "榮景期",
+          "美國再工業化",
+          "AI生產力革命",
+          "聯準會降息",
+          "財富效應",
+          "通膨回落",
+          "結構性失業",
+          "美國房地產"
+        ],
+        "market_view": "愛大認為美國正處於類90年代榮景期，還有1-2年但越晚越難做。財富效應、再工業化、AI投資三引擎驅動，通膨受控、降息可期。新興市場將跑輸美國，科技巨頭逢低可布局，不要追高。榮景期結束前關注庫存與初領失業金兩大指標。",
+        "sentiment": "bullish",
+        "sentiment_reason": "總體數據全面支撐榮景期持續，財富效應強勁、通膨受控、就業穩定，降息空間仍在，整體偏多但需注意後期風險",
+        "quotes": [
+          "不在乎贏在每個短線波段，只在乎贏在每個長線波段",
+          "不要想賺到最多以及最後一分錢，要小心一點，要接受會少賺一點",
+          "我們支出的情況並不在於我們現在收入多少，而在於我們掌握了多少財富"
+        ],
+        "portfolio_advice": "愛大的分析完全支持你繼續分批買VOO/VTI的策略，榮景期還有1-2年，現在進場不晚。新興市場（越南/印度）比例不要太高，後段跑輸機率大。主動部位可關注估值較低的台股科技股，等修正再進場，不追高。每月定期定額是最符合榮景期邏輯的做法。"
+      }
+    }
+  ]
+}

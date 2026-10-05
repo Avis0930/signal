@@ -1,7 +1,6 @@
 // Signal 資料存取層：讀寫 data/*.json、歸檔輪轉、JSON 驗證
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -172,20 +171,7 @@ export function normalizeAnalysis(raw, opts = {}) {
   return { analysis: a, warnings };
 }
 
-// ── 執行報告（給 send-mail.mjs 讀）────────────────────────────────────────────
-export function reportPath() {
-  return path.join(process.env.RUNNER_TEMP || os.tmpdir(), 'signal-report.json');
-}
-
-export function writeReport(report) {
-  fs.writeFileSync(reportPath(), JSON.stringify(report, null, 2), 'utf8');
-}
-
-export function readReport() {
-  try { return JSON.parse(fs.readFileSync(reportPath(), 'utf8')); }
-  catch { return null; }
-}
-
+// ── GitHub Actions 輸出 ──────────────────────────────────────────────────────
 /** 寫入 GitHub Actions step output */
 export function setOutput(name, value) {
   const file = process.env.GITHUB_OUTPUT;

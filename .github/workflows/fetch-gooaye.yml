@@ -64,15 +64,6 @@ jobs:
           git commit -m "chore(data): 自動抓取 ${ADDED:-股癌新集數}"
           git push
 
-      - name: 寄送執行通知
-        if: always()
-        env:
-          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          MAIL_TO: ${{ secrets.MAIL_TO }}
-          MAIL_ONLY_ON_ERROR: ${{ vars.MAIL_ONLY_ON_ERROR }}
-        run: node scripts/send-mail.mjs
-
       - name: 若抓取失敗則標記 workflow 失敗
         if: always() && steps.fetch.outputs.status == 'error'
         run: |

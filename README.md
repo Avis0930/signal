@@ -12,7 +12,6 @@ data/industry-research/notes.json  產業研究筆記（不歸檔）
 data/archive/legacy-notes-2026-05.json  舊版 data/notes.json 原樣保留（內容已含在主檔內）
 scripts/fetch-gooaye.mjs       每日抓取 + Claude 分析
 scripts/import-note.mjs        手動匯入／刪除（由網頁表單觸發）
-scripts/send-mail.mjs          執行結果寄信
 scripts/check.mjs              本機自檢（不需網路）
 scripts/serve.mjs              本機預覽（零依賴）
 ```
@@ -27,7 +26,8 @@ scripts/serve.mjs              本機預覽（零依賴）
 
 **自動抓取**：`fetch-gooaye.yml` → 讀主檔＋歸檔算出最新集數 → 走
 索引頁 → 區間頁（`ep-700-to-800`）→ 單集頁三層找新集數 → cheerio 擷取正文 →
-Claude（`claude-sonnet-5`, max_tokens 4000, thinking 關閉）→ 驗證 → 寫檔 → commit → 寄信。
+Claude（`claude-sonnet-5`, max_tokens 4000, thinking 關閉）→ 驗證 → 寫檔 → commit。
+執行結果看 Actions 的 log 與 run 頁面上方的 Summary，不另外發通知。
 索引頁解析失敗時會自動改用「直接探測網址」的後備方式。
 
 ## 首次設定
@@ -36,16 +36,11 @@ Claude（`claude-sonnet-5`, max_tokens 4000, thinking 關閉）→ 驗證 → �
 2. **Settings → Pages** → Source 選 `Deploy from a branch`，分支 `main`、資料夾 `/ (root)`
 3. **Settings → Actions → General → Workflow permissions** 改成 **Read and write permissions**
    （否則 Actions 無法 commit）
-4. **Settings → Secrets and variables → Actions → New repository secret**，建 4 個：
+4. **Settings → Secrets and variables → Actions → New repository secret**，建 1 個：
 
    | Secret | 內容 |
    |---|---|
    | `ANTHROPIC_API_KEY` | Claude API key |
-   | `MAIL_USERNAME` | 你的 Gmail 位址 |
-   | `MAIL_PASSWORD` | Google **應用程式密碼**（16 碼；帳戶 → 安全性 → 兩步驟驗證 → 應用程式密碼）不是登入密碼 |
-   | `MAIL_TO` | 收通知的信箱 |
-
-   想「只有失敗才寄信」的話，在同一頁的 **Variables** 加 `MAIL_ONLY_ON_ERROR = true`。
 
 5. 手機存檔用的 token：**Settings（個人）→ Developer settings → Personal access tokens →
    Fine-grained tokens** → Repository access 只勾這個 repo → Permissions 只給

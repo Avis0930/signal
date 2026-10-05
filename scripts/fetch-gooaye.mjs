@@ -12,7 +12,7 @@ import * as cheerio from 'cheerio';
 import Anthropic from '@anthropic-ai/sdk';
 import {
   PATHS, readStore, writeStore, byNewest, rotateArchive, latestEpisode, knownEpisodes,
-  parseJsonLoose, normalizeAnalysis, writeReport, setOutput, addSummary, ROOT,
+  parseJsonLoose, normalizeAnalysis, setOutput, addSummary,
 } from './lib/store.mjs';
 
 const require = createRequire(import.meta.url);
@@ -295,30 +295,23 @@ async function main() {
                : added.length                   ? 'ok'
                : 'none';
 
-  const report = {
-    startedAt, finishedAt: new Date().toISOString(),
-    job: 'fetch', status, model: DRY_RUN ? 'dry-run' : MODEL,
-    latestBefore: latest, pending, targets, skipped,
-    added, failed, warnings, rotated,
-    runUrl: process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY
-      ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
-      : '',
-  };
-  writeReport(report);
-
   const changed = !DRY_RUN && added.length > 0;
   setOutput('status', status);
   setOutput('changed', changed);
   setOutput('added', added.map(a => 'EP' + a.episode).join(','));
 
+  // 執行結果只留在 Actions log 與 run 頁面的 Summary（不另外通知）
   addSummary([
     `### Signal 抓取結果：${status}`,
     '',
+    `- 開始時間：${startedAt}`,
+    `- 模式：${DRY_RUN ? 'dry-run（未呼叫 API）' : MODEL}`,
     `- 原本最新：EP${latest}`,
     `- 新增：${added.length ? added.map(a => 'EP' + a.episode).join(', ') : '無'}`,
     failed.length ? `- 失敗：${failed.map(f => `EP${f.episode}（${f.error}）`).join('；')}` : '',
     skipped.length ? `- 本次未處理（超過上限）：${skipped.map(n => 'EP' + n).join(', ')}` : '',
     warnings.length ? `- 提醒：${warnings.join('；')}` : '',
+    rotated.moved ? `- 歸檔：搬了 ${rotated.moved} 集到 archive` : '',
   ].filter(Boolean).join('\n'));
 
   log(`\n完成：status=${status}，新增 ${added.length} 集，失敗 ${failed.length} 集`);
@@ -326,13 +319,7 @@ async function main() {
 
 main().catch(err => {
   console.error('✗ 執行中斷：', err?.stack || err);
-  writeReport({
-    job: 'fetch', status: 'error', fatal: String(err?.message || err),
-    finishedAt: new Date().toISOString(),
-    runUrl: process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY
-      ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
-      : '',
-  });
+  addSummary(['### Signal 抓取失敗', '', '```', String(err?.message || err), '```'].join('\n'));
   setOutput('status', 'error');
   // 不覆寫 changed：若崩潰前已寫入部分集數，workflow 會用 git diff 自行判斷要不要 commit
   process.exitCode = 1;

@@ -9,7 +9,7 @@
 //   RECORD_ID  要刪除的 record id（delete 用）
 import {
   PATHS, readStore, writeStore, byNewest, rotateArchive, epNum,
-  parseJsonLoose, normalizeAnalysis, writeReport, setOutput, addSummary,
+  parseJsonLoose, normalizeAnalysis, setOutput, addSummary,
 } from './lib/store.mjs';
 
 const ACTION    = (process.env.ACTION || '').trim();
@@ -78,19 +78,11 @@ try {
 
   const result = ACTION === 'save' ? save() : remove();
 
-  writeReport({ job: 'import', status: 'ok', action: ACTION, ...result, finishedAt: new Date().toISOString() });
   setOutput('status', 'ok');
   addSummary(`### 筆記${result.mode === 'deleted' ? '刪除' : '匯入'}成功\n\n- ${result.title}\n- 類型：${result.type}`);
 } catch (err) {
   const msg = err?.message || String(err);
   console.error(`✗ ${msg}`);
-  writeReport({
-    job: 'import', status: 'error', action: ACTION, title: TITLE, error: msg,
-    finishedAt: new Date().toISOString(),
-    runUrl: process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY
-      ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
-      : '',
-  });
   setOutput('status', 'error');
   addSummary(`### 筆記處理失敗\n\n\`\`\`\n${msg}\n\`\`\``);
   process.exitCode = 1;

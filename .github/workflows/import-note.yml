@@ -43,9 +43,6 @@ jobs:
         with:
           node-version: '22'
 
-      - name: 安裝依賴（寄信用）
-        run: npm install --no-audit --no-fund
-
       - name: 驗證並寫入
         id: import
         env:
@@ -72,11 +69,3 @@ jobs:
           git add data
           git commit -m "chore(data): ${ACT} ${LABEL}"
           git push
-
-      - name: 失敗時寄信通知
-        if: failure()
-        env:
-          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          MAIL_TO: ${{ secrets.MAIL_TO }}
-        run: node scripts/send-mail.mjs

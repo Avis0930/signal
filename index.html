@@ -859,7 +859,11 @@ async function delRec(e, id) {
     await ghWrite({ action: 'delete', record_id: String(id) }, '刪除',
       list => !list.some(r => Number(r.id) === Number(id)));
     setStatus('✓ 已刪除', 'ok');
-  } catch (err) { setStatus(err.message, 'err'); }
+  } catch (err) {
+    // 可能是在儀表板或手機抽屜裡按刪除，#status 看不到，所以一併用 alert
+    setStatus(err.message, 'err');
+    alert('刪除失敗：' + err.message);
+  }
 }
 
 // ── Render result ─────────────────────────────────────────────────────────────

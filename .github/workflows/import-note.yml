@@ -58,6 +58,10 @@ jobs:
 
       - name: Commit 變更
         if: steps.import.outputs.status == 'ok'
+        env:
+          # title 是使用者從表單輸入的，絕不能直接內插進 shell
+          ACT: ${{ inputs.action }}
+          LABEL: ${{ inputs.title }}${{ inputs.record_id }}
         run: |
           if [ -z "$(git status --porcelain data)" ]; then
             echo "資料沒有變化，略過 commit"
@@ -66,7 +70,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data
-          git commit -m "chore(data): ${{ inputs.action }} ${{ inputs.title || inputs.record_id }}"
+          git commit -m "chore(data): ${ACT} ${LABEL}"
           git push
 
       - name: 失敗時寄信通知

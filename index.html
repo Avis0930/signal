@@ -368,8 +368,8 @@
   <div class="brand"><span class="brand-icon">🎙</span><span class="brand-name">Signal</span></div>
   <button class="mob-hist-btn" onclick="openDrawer()">歷史 ☰</button>
   <nav class="htabs">
-    <button class="htab on"  onclick="gotoView('input',this)">輸入筆記</button>
-    <button class="htab"     onclick="gotoView('dash',this)">統計儀表板</button>
+    <button class="htab"     onclick="gotoView('input',this)">輸入筆記</button>
+    <button class="htab on"  onclick="gotoView('dash',this)">統計儀表板</button>
     <button class="gear" id="gearbtn" onclick="openSettings()" title="GitHub 連線設定">⚙</button>
   </nav>
 </header>
@@ -419,7 +419,7 @@
   </aside>
 
   <!-- input view -->
-  <div class="view on" id="view-input">
+  <div class="view" id="view-input">
     <div class="iview">
       <div class="ro-banner" id="ro-banner" style="display:none">
         目前是唯讀模式：尚未設定 GitHub 連線，無法儲存或刪除筆記。
@@ -471,7 +471,7 @@
   </div>
 
   <!-- dashboard view -->
-  <div class="view" id="view-dash">
+  <div class="view on" id="view-dash">
     <div class="dash-wrap">
       <div class="dtabs-bar">
         <button class="dtab on"  onclick="switchDashFilter('all',this)">全部</button>
@@ -608,10 +608,12 @@ let dashFilter = 'all';
 let chartLine = null;
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('prompt-box').textContent = PROMPT_PODCAST;
   refreshGhState();
-  loadHistory();
+  await loadHistory();
+  // 預設停在統計儀表板（股癌筆記已自動抓，輸入頁不常用）
+  if (document.getElementById('view-dash').classList.contains('on')) buildDash();
 });
 
 function refreshGhState() {
@@ -917,7 +919,7 @@ function renderResult(rec) {
 
 // ── 儀表板顯示門檻（想調鬆緊改這裡就好）──────────────────────────────────────
 const MT_WINDOW_DAYS     = 30;   // 中期趨勢視窗
-const MT_MIN_MENTIONS    = 3;    // 視窗內至少被提到幾次才納入
+const MT_MIN_MENTIONS    = 2;    // 視窗內至少被提到幾次才納入
 const MT_MIN_DIRECTIONAL = 2;    // 至少要有幾次多／空表態才判方向（neutral 不算）
 const MT_STRONG_RATIO    = 0.7;  // 持續看好／持續壓制門檻
 const MT_TURN_LO         = 0.4;  // 開始轉向區間下限

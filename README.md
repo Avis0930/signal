@@ -19,7 +19,7 @@ scripts/serve.mjs              本機預覽（零依賴）
 ## 運作方式
 
 **讀取**：頁面直接 `fetch` 上面那幾個 JSON（帶 `?t=` 時間戳避開 CDN 快取）。
-首次只載主檔；點「統計儀表板」或「查看歷史」時才載歸檔，所以統計一律是全量資料。
+預設開在統計儀表板，所以開頁就會把主檔與歸檔都載進來；「查看歷史」只是把歸檔項目顯示出來。
 
 **寫入**：GitHub Pages 是靜態的，所以儲存／刪除會用你的 PAT 觸發
 `import-note.yml`，由 Actions 驗證 JSON 後 commit。網頁會等 run 跑完（約 40 秒）再自動重新載入。
@@ -57,7 +57,7 @@ Claude（`claude-sonnet-5`, max_tokens 4000, thinking 關閉）→ 驗證 → �
 | 常數 | 預設 | 意義 |
 |---|---|---|
 | `MT_WINDOW_DAYS` | 30 | 中期趨勢視窗天數 |
-| `MT_MIN_MENTIONS` | 3 | 視窗內至少被提到幾次 |
+| `MT_MIN_MENTIONS` | 2 | 視窗內至少被提到幾次 |
 | `MT_MIN_DIRECTIONAL` | 2 | 至少幾次多／空表態才判方向（neutral 不算） |
 | `MT_STRONG_RATIO` | 0.7 | 持續看好／持續壓制的比例門檻 |
 | `MT_TURN_LO` / `MT_TURN_HI` | 0.4 / 0.6 | 開始轉向的比例區間 |

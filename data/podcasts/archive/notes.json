@@ -1,6 +1,75 @@
 {
   "records": [
     {
+      "id": 1774425400156,
+      "title": "股癌EP643",
+      "created_at": "2026-03-25T07:56:40.156Z",
+      "analysis": {
+        "episode": "EP643",
+        "summary": [
+          "以3/2為分水嶺挑強勢股，近新高加碼、軟掉減碼，見招拆招",
+          "VIX40以上是買點，但油價未降不敢積極抄底，油價是第一指標",
+          "記憶體漲價持續但需警覺囤貨overbooking風險",
+          "輝達LPU V4傳言給台積電N3+CoWoS-R，對供應鏈影響大",
+          "砍掉華邦電、減碼大成鋼，買正2和敲指數"
+        ],
+        "tickers": [
+          {
+            "name": "NVDA 輝達 LPU",
+            "context": "V4傳給台積電N3，CoWoS-R，台系封裝受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "LPU V4潛在受惠，CoWoS-R需求",
+            "stance": "bullish"
+          },
+          {
+            "name": "美光 MU",
+            "context": "毛利傳言70-80%，漲價持續但需警覺overbooking",
+            "stance": "neutral"
+          },
+          {
+            "name": "華邦電",
+            "context": "已砍掉出場",
+            "stance": "bearish"
+          },
+          {
+            "name": "大成鋼",
+            "context": "減碼",
+            "stance": "bearish"
+          },
+          {
+            "name": "光通設備",
+            "context": "撿了一點往上創高",
+            "stance": "bullish"
+          },
+          {
+            "name": "蘋果 AAPL",
+            "context": "摺疊機謠傳先於數字機推出",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "強勢股策略",
+          "VIX指標",
+          "記憶體漲價",
+          "LPU題材",
+          "油價觀察",
+          "伊朗戰爭"
+        ],
+        "market_view": "市場進入巨大震幅，見招拆招是核心策略。油價是第一觀察指標，VIX40以上才積極進場。記憶體基本面好但需注意overbooking。LPU題材待觀察，對台積電等供應鏈有潛在正面影響。",
+        "sentiment": "neutral",
+        "sentiment_reason": "多空交戰，強勢股策略應對震盪，未見明確方向，油價與VIX為關鍵觀察點",
+        "quotes": [
+          "注意到身邊比較成功的人士，其實沒有人喜歡當預言家，絕大多數無法預測未來，所以只能見招拆招",
+          "對什麼都有興趣，每個東西可以做到六、七十分的人，反而在AI時代很可以很適應"
+        ],
+        "portfolio_advice": "震盪期間持續分批買VOO/VTI最適合你，不需要跟隨主動操作的砍倉買正2策略。你的被動部位這種震盪中完全不需動作，主動15萬繼續觀察，等VIX真的到40再考慮加碼。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1774425388431,
       "title": "股癌EP642",
       "created_at": "2026-03-25T07:56:28.431Z",

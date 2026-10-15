@@ -1,6 +1,92 @@
 {
   "records": [
     {
+      "id": 1774425448181,
+      "title": "股癌EP645",
+      "created_at": "2026-03-25T07:57:28.181Z",
+      "analysis": {
+        "episode": "EP645",
+        "summary": [
+          "GTC展出CPO解決方案與LPU，光通2027-2028才會絕地放量，目前偏題材等修正再接",
+          "SRAM題材是美麗誤會，華邦電與愛普屬歪打正著，華邦電客戶疑似AMD",
+          "ASIC陣營：Meta砍單發展不順，微軟Maia搶不到台積電N2產能，Google疑似拉MRVL加入",
+          "Meta裁員被視為利多，代表AI實際有用、成本管控有效",
+          "LPU目前一年估計15萬顆尚未放量，CPX與LPU先放觀察清單等爆發契機"
+        ],
+        "tickers": [
+          {
+            "name": "NVDA 輝達",
+            "context": "GTC展出CPO與LPU方案，定位為整體解決方案供應商",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "2027-2028放量，目前等修正再進場",
+            "stance": "bullish"
+          },
+          {
+            "name": "台積電 TSM",
+            "context": "LPU V4後才換台積電，微軟N2產能搶不到",
+            "stance": "bullish"
+          },
+          {
+            "name": "三星",
+            "context": "LPU第三代以前由三星生產",
+            "stance": "neutral"
+          },
+          {
+            "name": "華邦電",
+            "context": "SRAM題材歪打正著，Cube可當L3 Cache，客戶疑似AMD",
+            "stance": "neutral"
+          },
+          {
+            "name": "愛普",
+            "context": "VHM挑戰HBM，偏客製化，應用範圍不確定",
+            "stance": "neutral"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "Google ASIC開發主力之一",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "疑似加入Google ASIC開發，但歷史上利多不動",
+            "stance": "neutral"
+          },
+          {
+            "name": "Meta",
+            "context": "ASIC砍單、裁員，視為利多但AI晶片需求下降",
+            "stance": "bearish"
+          },
+          {
+            "name": "微軟",
+            "context": "Maia ASIC搶不到台積電N2產能，進度受阻",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "LPU",
+          "SRAM題材",
+          "ASIC陣營",
+          "AI基礎建設",
+          "GTC展覽",
+          "邊緣運算"
+        ],
+        "market_view": "本集聚焦技術面與產業動態，無明顯總經討論。光通長線看好但時間點在2027-2028，現階段偏題材。SRAM炒作被點名是誤解，但華邦電與愛普有歪打正著的機會。ASIC陣營分化，Meta退縮但Google持續布局。",
+        "sentiment": "bullish",
+        "sentiment_reason": "AI長線趨勢明確，GTC確認CPO與LPU方向，光通2027-2028放量具體化，整體對AI基礎建設偏樂觀",
+        "quotes": [
+          "很多美好的發展，在當下都是看不到的",
+          "走了一遭之後才會真正明白自己要的東西到底是什麼",
+          "現在會鼓勵每個人想到什麼就去做，因為絕大多數的發展應該都是想不到的"
+        ],
+        "portfolio_advice": "光通2027-2028才放量，現在不急，等大幅修正再接。你的50萬可用資金目前最穩的還是分批買VOO/VTI，AI趨勢受益最直接。SRAM題材風險高不適合新手。若想參與台股AI，可小部位觀察台積電，但0050本身就已間接持有。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1774425415831,
       "title": "股癌EP644",
       "created_at": "2026-03-25T07:56:55.831Z",

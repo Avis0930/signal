@@ -1,6 +1,89 @@
 {
   "records": [
     {
+      "id": 1774518945862,
+      "title": "股癌EP647",
+      "created_at": "2026-03-26T09:55:45.862Z",
+      "analysis": {
+        "episode": "EP647",
+        "date": "2026-03-26",
+        "source": "股癌",
+        "summary": [
+          "台股進入區間盤，光通CPO是主流，直到中東狀況和緩才會轉變",
+          "馬斯克Terafab垂直整合晶圓廠計畫，廠務設備美股韓股最受惠，特斯拉反而可能受傷",
+          "Sora被喊停，OpenAI聚焦效率工具、Coding、工作流整合，影片生成商業化有版權問題",
+          "CPU因推論需求備受關注，AMD已包產線，產能卡住",
+          "AI工具升級邏輯：大家都用AI後，取代的是不懂使用新工具的人"
+        ],
+        "tickers": [
+          {
+            "name": "光通族群",
+            "context": "主流地位不變，台美股都往光通靠，但現在太高追高危險",
+            "stance": "bullish"
+          },
+          {
+            "name": "廠務設備股",
+            "context": "Terafab計畫受惠，美股韓股為主，台股排擠效應待觀察",
+            "stance": "bullish"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "Terafab計畫可能對特斯拉股東造成傷害，考慮降低持倉",
+            "stance": "bearish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "AI agent實質受惠，AI爬蟲都要過收費牆，但估值貴",
+            "stance": "bullish"
+          },
+          {
+            "name": "PLTR Palantir",
+            "context": "To B政府標案持續，未來不錯，但估值貴",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU推論需求，已包台積電產能",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "CPO設備建廠相關，今天漲停",
+            "stance": "bullish"
+          },
+          {
+            "name": "SpaceX",
+            "context": "上市後考慮買1~2%小部位",
+            "stance": "bullish"
+          },
+          {
+            "name": "正2",
+            "context": "加碼操作工具",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "光通CPO",
+          "馬斯克Terafab",
+          "廠務設備",
+          "AI工具化",
+          "區間盤操作",
+          "CPU推論",
+          "AI agent",
+          "Sora停止"
+        ],
+        "market_view": "台股進入區間盤格局，中東局勢未明朗前維持震盪。光通CPO是當前主流，但追高風險高。馬斯克Terafab帶來廠務設備新題材，受惠在美韓股。油價預期慢慢往100靠，區間盤策略是黑K補貨、反彈不站回就砍。",
+        "sentiment": "neutral",
+        "sentiment_reason": "光通看好但不追高，區間盤格局下保守操作，等中東局勢明朗才積極，整體偏謹慎中性",
+        "quotes": [
+          "AI可以讓人產出更大的報酬，但每個人拿著AI進來搶的話，就很難搶得到巨大的報酬",
+          "AI像是工具升級，拿熱兵器可以打爆冷兵器的，但大家都拿熱兵器就不相上下，所以取代的是不懂使用新工具的人"
+        ],
+        "portfolio_advice": "光通繼續觀察等回檔，現在追高風險高，崩盤才是買點。廠務設備題材以美股為主，台股排擠效應待觀察。NET和PLTR估值貴但趨勢好，放著不追高。VOO/VTI繼續分批，區間盤正是定期定額最有利的時機。特斯拉訊號偏空，主動部位避開。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1774425461613,
       "title": "股癌EP646",
       "created_at": "2026-03-25T07:57:41.613Z",

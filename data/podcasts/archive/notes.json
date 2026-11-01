@@ -1,6 +1,83 @@
 {
   "records": [
     {
+      "id": 1775543295336,
+      "title": "股癌EP650",
+      "created_at": "2026-04-07T06:28:15.336Z",
+      "analysis": {
+        "episode": "EP650",
+        "date": "2026-04-03",
+        "source": "股癌",
+        "summary": [
+          "CPU族群成新主題：Agentic AI讓CPU成瓶頸，佔總延遲50~90%，ARM/AMD/英特爾是核心標的",
+          "被動元件題材升溫：鋁漲價+Vera Rubin需求，鋁電鉭電可能缺貨",
+          "重點不在預判，而是事件發生後怎麼應對，大跌恐慌時抄底，反彈時減碼",
+          "MRVL後段台股相關：6257，近期像頎邦一樣被綁在一起",
+          "買一點輝達，CPU純度相對不高但整體AI趨勢受惠"
+        ],
+        "tickers": [
+          {
+            "name": "AMD",
+            "context": "CPU族群首選，吃掉英特爾份額，成長比英特爾好",
+            "stance": "bullish"
+          },
+          {
+            "name": "ARM",
+            "context": "CPU市占率逐年提高，估值難算但趨勢強",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU族群，型態強勢，x86份額被AMD吃但一起成長",
+            "stance": "bullish"
+          },
+          {
+            "name": "NVDA 輝達",
+            "context": "買一點，CPU純度不高但整體AI受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "嘉澤",
+            "context": "CPU socket台股相關，型態強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "鋁漲價+Vera Rubin需求，鋁電鉭電有缺貨機會",
+            "stance": "bullish"
+          },
+          {
+            "name": "6257",
+            "context": "光通MRVL後段，近期強勢",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "後段台股6257被綁在一起",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "CPU族群",
+          "Agentic AI",
+          "被動元件漲價",
+          "鋁漲價",
+          "事後應對策略",
+          "ARM"
+        ],
+        "market_view": "盤面很難做，重點是應對而非預判。CPU族群是這集最大新題材，Agentic AI帶動需求。被動元件有鋁漲價+Vera Rubin雙重題材。大跌恐慌才是抄底時機，反彈就減碼。",
+        "sentiment": "bullish",
+        "sentiment_reason": "CPU新題材出現，被動元件題材升溫，買入輝達，整體對AI趨勢偏樂觀",
+        "quotes": [
+          "重點不在預判，而是事件發生之後怎麼應對",
+          "羨慕跟嫉妒是快樂之賊，如果說你產生這樣情緒的話，就破壞了自己的遊戲體驗",
+          "幸福的美好其實很多時候是在很單純的東西裡面，你出去外面走一圈回來才知道，幸福一直在你身邊"
+        ],
+        "portfolio_advice": "CPU族群是新觀察方向，美股AMD/ARM可加入觀察清單，但現在市場震盪不追高。被動元件題材有趣但個股研究門檻高，新手不建議直接追。VOO/VTI繼續分批，大跌才是加碼時機。零壹繼續等反彈訊號。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1775543279348,
       "title": "股癌EP649",
       "created_at": "2026-04-07T06:27:59.348Z",

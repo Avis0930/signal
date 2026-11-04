@@ -183,7 +183,13 @@
   }
   .slabel::before { content:''; display:block; width:3px; height:13px; background:var(--accent); border-radius:2px; }
   .sumlist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .sumlist li { padding: 11px 15px; background: var(--surf2); border-radius: 8px; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; }
+  .sumlist li {
+    display: flex; gap: 11px; align-items: flex-start;
+    padding: 13px 16px; background: var(--surf2); border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    font-size: 14px; line-height: 1.95; letter-spacing: .015em;
+  }
+  .sum-mk { color: var(--accent); font-weight: 800; flex-shrink: 0; }
   .twrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .tchip { background: var(--surf2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; position: relative; cursor: default; }
   .tname { font-size: 14px; font-weight: 700; color: var(--accent); }
@@ -206,6 +212,45 @@
   .sb-ir   { background: #ede9fe; color: var(--purple);border: 1px solid #c4b5fd; }
   .risk-list { display: flex; flex-direction: column; gap: 6px; }
   .risk-item { padding: 9px 14px; background: #fff1f2; border-radius: 8px; border-left: 3px solid var(--red); font-size: 13px; line-height: 1.6; }
+
+  /* 情緒依據：左側色條 + icon 的卡片 */
+  .sent-card {
+    display: flex; gap: 13px; align-items: flex-start;
+    padding: 14px 17px; border-radius: 10px;
+    background: var(--surf2); border-left: 4px solid var(--faint);
+  }
+  .sc-bull { background: #f0fdf4; border-left-color: var(--green);  }
+  .sc-bear { background: #fff1f2; border-left-color: var(--red);    }
+  .sc-neu  { background: #fffbeb; border-left-color: var(--yellow); }
+  .sc-ir   { background: #f5f3ff; border-left-color: var(--purple); }
+  .sent-ico { font-size: 22px; line-height: 1.2; flex-shrink: 0; }
+  .sent-tag { font-size: 12px; font-weight: 800; letter-spacing: .05em; margin-bottom: 5px; }
+  .sc-bull .sent-tag { color: var(--green);  }
+  .sc-bear .sent-tag { color: var(--red);    }
+  .sc-neu  .sent-tag { color: var(--yellow); }
+  .sc-ir   .sent-tag { color: var(--purple); }
+  .sent-txt { font-size: 13.5px; line-height: 1.9; letter-spacing: .015em; color: var(--muted); }
+
+  /* 市場觀點：雜誌式引用塊 */
+  .pullquote {
+    padding: 15px 20px; background: var(--surf2);
+    border-left: 4px solid var(--border); border-radius: 0 9px 9px 0;
+    font-size: 14.5px; font-style: italic; line-height: 1.95;
+    letter-spacing: .015em; color: var(--muted);
+  }
+
+  /* 行動建議：每列之間加分隔線 */
+  .advice-rows { display: flex; flex-direction: column; }
+  .advice-rows .arow { padding: 11px 0; }
+  .advice-rows .arow:first-child { padding-top: 2px; }
+  .advice-rows .arow:last-child  { padding-bottom: 2px; }
+  .advice-rows .arow + .arow { border-top: 1px solid var(--border); }
+  .advice-box {
+    padding: 6px 17px; background: #eef3ff;
+    border: 1px solid #c7d7fc; border-radius: 10px;
+  }
+  .advice-box .arow + .arow { border-top-color: #c7d7fc; }
+  .advice-rows .atxt { font-size: 13.5px; line-height: 1.85; letter-spacing: .015em; }
 
   /* ── Dashboard ── */
   .dash-wrap { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
@@ -492,6 +537,9 @@
 const SENT_LABEL  = { bullish:'可以考慮 📈', bearish:'小心觀望 📉', neutral:'繼續觀察 ➡️' };
 const SENT_BADGE  = { bullish:'bb', bearish:'br', neutral:'by' };
 const SENT_SBCLS  = { bullish:'sb-bull', bearish:'sb-bear', neutral:'sb-neu' };
+const SENT_ICON   = { bullish:'📈', bearish:'📉', neutral:'➡️' };
+const SENT_WORD   = { bullish:'可以考慮', bearish:'小心觀望', neutral:'繼續觀察' };
+const SENT_CARD   = { bullish:'sc-bull', bearish:'sc-bear', neutral:'sc-neu' };
 
 // Prompts 定義見 prompts.js（前端與 Actions 共用）
 
@@ -884,7 +932,19 @@ function renderResult(rec) {
   const sbCls = isIR ? 'sb-ir' : (SENT_SBCLS[s] || 'sb-neu');
   const sbLbl = isIR ? `產業研究${a.industry ? ' · ' + a.industry : ''}` : (SENT_LABEL[s] || s);
 
-  const sumH = (a.summary||[]).map(x => `<li>${h(x)}</li>`).join('');
+  const sumH = (a.summary||[]).map(x =>
+    `<li><span class="sum-mk">▸</span><span>${h(x)}</span></li>`).join('');
+
+  // 情緒依據卡：左色條顏色 + icon 跟著 sentiment 走
+  const scCls = isIR ? 'sc-ir' : (SENT_CARD[s] || 'sc-neu');
+  const scIco = isIR ? '📋'    : (SENT_ICON[s] || '➡️');
+  const scWord = isIR ? `產業研究${a.industry ? ' · ' + a.industry : ''}` : (SENT_WORD[s] || s);
+
+  // 行動建議：有拆得出動作就用標籤列，否則原樣保留整段文字（不讓任何內容消失）
+  const advH = a.portfolio_advice
+    ? (adviceRowsHtml(a.portfolio_advice, { boxed: true })
+       || `<div class="advice">${h(a.portfolio_advice).replace(/\n/g,'<br>')}</div>`)
+    : '';
 
   const tkH = (a.tickers||[]).map(t => {
     const catHtml = t.category ? `<div class="tcat">${h(t.category)}</div>` : '';
@@ -904,13 +964,20 @@ function renderResult(rec) {
         <span class="sb ${sbCls}">${sbLbl}</span>
       </div>
       <div class="rbody">
-        ${a.sentiment_reason ? `<div><div class="slabel">情緒依據</div><div class="prose" style="font-size:13px;color:var(--muted)">${h(a.sentiment_reason)}</div></div>` : ''}
+        ${a.sentiment_reason ? `<div><div class="slabel">情緒依據</div>
+          <div class="sent-card ${scCls}">
+            <span class="sent-ico">${scIco}</span>
+            <div>
+              <div class="sent-tag">${h(scWord)}</div>
+              <div class="sent-txt">${h(a.sentiment_reason)}</div>
+            </div>
+          </div></div>` : ''}
         ${sumH  ? `<div><div class="slabel">重點摘要</div><ul class="sumlist">${sumH}</ul></div>` : ''}
         ${tkH   ? `<div><div class="slabel">標的 ／ 族群</div><div class="twrap">${tkH}</div></div>` : ''}
         ${riskH ? `<div><div class="slabel">風險提醒</div><div class="risk-list">${riskH}</div></div>` : ''}
-        ${a.market_view ? `<div><div class="slabel">${isIR ? '產業觀點' : '市場觀點'}</div><div class="prose">${h(a.market_view)}</div></div>` : ''}
+        ${a.market_view ? `<div><div class="slabel">${isIR ? '產業觀點' : '市場觀點'}</div><div class="pullquote">${h(a.market_view)}</div></div>` : ''}
         ${qtH   ? `<div><div class="slabel">金句</div><div style="display:flex;flex-direction:column;gap:8px">${qtH}</div></div>` : ''}
-        ${a.portfolio_advice ? `<div><div class="slabel">針對你的資產配置建議</div><div class="advice">${h(a.portfolio_advice).replace(/\n/g,'<br>')}</div></div>` : ''}
+        ${advH ? `<div><div class="slabel">針對你的資產配置建議</div>${advH}</div>` : ''}
         ${a.raw ? `<div><div class="slabel">原始回覆</div><div class="prose" style="white-space:pre-wrap;font-size:13px">${h(a.raw)}</div></div>` : ''}
         <div style="font-size:12px;color:var(--faint);text-align:right">${new Date(rec.created_at).toLocaleString('zh-TW')}</div>
       </div>
@@ -1437,25 +1504,36 @@ function mtTagHtml(cls, kind) {
   };
 }
 
+// portfolio_advice 拆成一行一個動作並上色標籤。
+// minLen=4 是儀表板沿用的門檻（濾掉斷句碎片）；詳情頁用 1，確保原文一個字都不少。
+const ADVICE_RULES = [
+  { re: /繼續|持有|加碼|分批|定投|買入/,   cls: 'atag-now',   lbl: '現在做' },
+  { re: /不追|避開|減碼|出場|停利/,        cls: 'atag-avoid', lbl: '不追'   },
+  { re: /警示|風險|注意|謹慎|小心/,        cls: 'atag-warn',  lbl: '警示'   },
+];
+
+function adviceRowsHtml(text, { boxed = false, minLen = 1 } = {}) {
+  const lines = String(text || '').split(/[\n。；;]+/).map(l => l.trim()).filter(l => l.length >= minLen);
+  if (!lines.length) return '';
+  const rows = lines.map(line => {
+    const hit = ADVICE_RULES.find(r => r.re.test(line));
+    return '<div class="arow"><span class="atag ' + (hit ? hit.cls : 'atag-watch') + '">'
+         + (hit ? hit.lbl : '觀察') + '</span><span class="atxt">' + h(line) + '</span></div>';
+  }).join('');
+  return '<div class="advice-rows' + (boxed ? ' advice-box' : '') + '">' + rows + '</div>';
+}
+
 function recentAdviceHtml(recs) {
   const recentAdvice = recs.slice(0, 1).filter(r => r.analysis?.portfolio_advice);
   if (!recentAdvice.length) return '';
-  const buyKw = /繼續|持有|加碼|分批|定投|買入/;
   return `<div class="ccrd">
     <h3>近期行動建議</h3>
     <div class="csub">來自最新一筆的 portfolio_advice</div>
     <div class="action-rows">
       ${recentAdvice.map(r => {
-        const lines = (r.analysis.portfolio_advice || '').split(/[\n。；;]+/).map(l=>l.trim()).filter(l=>l.length>3);
         const dt = r.analysis?.date || fmtDate(r.created_at);
         return `<div style="font-size:12px;color:var(--faint);margin-bottom:6px">${h(r.title)} · ${dt}</div>
-          ${lines.map(line => {
-            let cls='atag-watch', lbl='觀察';
-            if (buyKw.test(line))                     { cls='atag-now';   lbl='現在做'; }
-            else if (/不追|避開|減碼|出場|停利/.test(line)) { cls='atag-avoid'; lbl='不追';   }
-            else if (/警示|風險|注意|謹慎|小心/.test(line)) { cls='atag-warn';  lbl='警示';   }
-            return `<div class="arow"><span class="atag ${cls}">${lbl}</span><span class="atxt">${h(line)}</span></div>`;
-          }).join('')}`;
+          ${adviceRowsHtml(r.analysis.portfolio_advice, { minLen: 4 })}`;
       }).join('')}
     </div>
   </div>`;

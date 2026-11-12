@@ -1,6 +1,93 @@
 {
   "records": [
     {
+      "id": 1776309867399,
+      "title": "股癌EP653",
+      "created_at": "2026-04-16T03:24:27.399Z",
+      "analysis": {
+        "episode": "EP653",
+        "date": "2026-04-15",
+        "source": "股癌",
+        "summary": [
+          "市場走勢極好，多頭行情把握，台積電估值合理，股價2800不誇張",
+          "聯發科值得關注：Google合作V8/V9晶片，AI純度高，潛在投片量超百萬顆",
+          "MRVL加入Google家族，藍海市場，但離貢獻營收獲利還遠，觀察股價表態",
+          "被動元件太陽誘電全面漲價，等催化劑，CPU可能是關鍵",
+          "操作日記：買入INTC和MRVL"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "今年EPS 90元明年140元，20倍本益比股價2800不貴，多頭核心",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "Google V8/V9合作，AI純度高，3~4年貢獻超過一半EPS",
+            "stance": "bullish"
+          },
+          {
+            "name": "MRVL",
+            "context": "Google引進為晶片設計夥伴，藍海市場，買入但觀察股價表態",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU族群持續，買入",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU族群持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "ARM",
+            "context": "CPU族群持續看好",
+            "stance": "bullish"
+          },
+          {
+            "name": "NET Cloudflare",
+            "context": "持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "LITE、COHR持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "太陽誘電漲價，等催化劑，右側交易跟上",
+            "stance": "neutral"
+          },
+          {
+            "name": "TSLA 特斯拉",
+            "context": "還在持股但態度保守",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "多頭行情",
+          "台積電估值",
+          "聯發科Google題材",
+          "MRVL Google家族",
+          "被動元件漲價",
+          "CPU持續"
+        ],
+        "market_view": "市場走勢極好，多頭行情把握。台積電估值合理支撐指數。聯發科Google合作是新亮點。被動元件漲價趨勢確立但需催化劑。整體偏樂觀積極。",
+        "sentiment": "bullish",
+        "sentiment_reason": "市場走勢極好，買入INTC和MRVL，聯發科新題材出現，整體積極樂觀",
+        "quotes": [
+          "其實你整天看到那一種人設完美，什麼都不會犯錯的人，你不覺得這種人真的可怕嗎？代表他一定卡唬爛啦",
+          "會傷到你的人，都是你最相信跟你最愛的人",
+          "要送年輕人送錢啦，一堆長輩就是整天我送你三句話，我們不需要話，我們需要錢啦"
+        ],
+        "portfolio_advice": "多頭行情確立，VOO/VTI現在買時機不差。台積電估值合理可持續定期定額。被動元件等右側訊號再進。零壹繼續等反彈。聯發科是新觀察標的但估值需確認。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1776217323799,
       "title": "股癌EP652",
       "created_at": "2026-04-15T01:42:03.799Z",

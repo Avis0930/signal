@@ -1,6 +1,68 @@
 {
   "records": [
     {
+      "id": 1776731458541,
+      "title": "石英元件供應鏈",
+      "created_at": "2026-04-21T00:30:58.541Z",
+      "analysis": {
+        "episode": "石英元件供應鏈_20260419",
+        "date": "2026-04-19",
+        "source": "定錨產業筆記",
+        "summary": [
+          "石英元件供應鏈完整梳理，台灣中游廠商受惠AI伺服器、LEO衛星、CPU需求",
+          "品技全台最大石英元件廠，受惠NVIDIA Rubin、AI交換器、光模組",
+          "泰藝OCXO純度最高，AI伺服器主板受惠",
+          "加高CPU缺貨中能提供穩定貨源，二線供應商優勢",
+          "石英元件進入門檻極高，供應鏈集中台灣護城河深"
+        ],
+        "tickers": [
+          {
+            "name": "品技 3024",
+            "context": "全台最大石英元件廠，NVIDIA Rubin、AI交換器、1.6T光模組受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "泰藝 8289",
+            "context": "OCXO純度最高，AI伺服器主板，NVIDIA Rubin受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "加高 8182",
+            "context": "CPU缺貨中穩定供貨，二線供應商，競爭少",
+            "stance": "bullish"
+          },
+          {
+            "name": "希華 2484",
+            "context": "TCXO、LEO衛星、AI Servers，與日本大真空結盟",
+            "stance": "bullish"
+          },
+          {
+            "name": "台嘉碩 3221",
+            "context": "Wifi 7、V2X、ADAS，石英+SAW濾波器",
+            "stance": "neutral"
+          },
+          {
+            "name": "安慕 6174",
+            "context": "TCXO第二供應來源，競爭小毛利高",
+            "stance": "bullish"
+          }
+        ],
+        "themes": [
+          "石英元件",
+          "AI伺服器",
+          "LEO衛星",
+          "CPU需求",
+          "NVIDIA Rubin"
+        ],
+        "market_view": "石英元件供應鏈集中台灣，進入門檻高，受惠AI伺服器、LEO衛星、CPU多重需求，護城河深。",
+        "sentiment": "bullish",
+        "sentiment_reason": "多重需求驅動，供應鏈集中台灣，護城河深，題材剛開始發酵",
+        "quotes": [],
+        "portfolio_advice": "品技和泰藝是最純的AI伺服器受惠標的，加入觀察清單。但這些標的股本小、波動大，主動15萬小部位觀察，等回檔再進。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1776731445865,
       "title": "產業快報 4/13-4/19",
       "created_at": "2026-04-21T00:30:45.865Z",

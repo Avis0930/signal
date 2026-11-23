@@ -1,6 +1,103 @@
 {
   "records": [
     {
+      "id": 1776731548890,
+      "title": "股癌 EP654",
+      "created_at": "2026-04-21T00:32:28.890Z",
+      "analysis": {
+        "episode": "EP654",
+        "date": "2026-04-21",
+        "source": "股癌",
+        "summary": [
+          "美股一根針往上頂，台積電若沒被砍單指數可到四萬點以上，拉回是買點",
+          "台積電資本支出給到上緣信心表態，漢唐廠務股趁法說會表態很屌",
+          "被動元件全世界噴射，連電阻都漲價，國巨稼動率瞬間跳上去缺貨漲價可能性高",
+          "CPU缺貨可能比記憶體更嚴重，Vera Rubin的BOM表出爐，零組件稼動率已達90%",
+          "記憶體資金可能撤退找下一個缺貨漲價題材，被動元件、ABF載板、Q布是候選"
+        ],
+        "tickers": [
+          {
+            "name": "台積電 TSM",
+            "context": "資本支出給到上緣信心表態，廠務股跟著受惠",
+            "stance": "bullish"
+          },
+          {
+            "name": "漢唐 2404",
+            "context": "趁台積電法說會時間表態，廠務股訊號強",
+            "stance": "bullish"
+          },
+          {
+            "name": "國巨",
+            "context": "被動元件全面噴射，電阻也開始漲價，稼動率跳升",
+            "stance": "bullish"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "全世界噴射，日本無腦噴，連電阻都漲，缺貨漲價確立",
+            "stance": "bullish"
+          },
+          {
+            "name": "AMD",
+            "context": "CPU缺貨比記憶體更嚴重，漲幅20%以下但後面有機會往上",
+            "stance": "bullish"
+          },
+          {
+            "name": "英特爾 INTC",
+            "context": "CPU缺貨題材，買入",
+            "stance": "bullish"
+          },
+          {
+            "name": "均華",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "致茂",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "萬潤",
+            "context": "光通設備商持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "Vishay VSH",
+            "context": "美股被動元件噴出",
+            "stance": "bullish"
+          },
+          {
+            "name": "記憶體族群",
+            "context": "台股記憶體比較軟，資金可能撤退找下一個題材",
+            "stance": "neutral"
+          },
+          {
+            "name": "TQQQ",
+            "context": "賣出",
+            "stance": "bearish"
+          }
+        ],
+        "themes": [
+          "美股多頭",
+          "台積電法說",
+          "被動元件全面漲價",
+          "CPU缺貨嚴重",
+          "Vera Rubin BOM表",
+          "記憶體資金撤退",
+          "廠務股"
+        ],
+        "market_view": "美股強勢往上，拉回是買點。被動元件全面缺貨漲價確立，是最強的題材。CPU缺貨可能比記憶體更嚴重，Vera Rubin BOM表是重要催化劑。記憶體資金開始尋找下一個題材。",
+        "sentiment": "bullish",
+        "sentiment_reason": "買入英特爾，賣出TQQQ，被動元件全面噴射，CPU缺貨題材擴大，整體積極樂觀",
+        "quotes": [
+          "願意把錢分享給別人的人，代表說這是成年人的一種愛",
+          "你老婆跟你吵這個代表他愛你"
+        ],
+        "portfolio_advice": "被動元件是現在最強題材，國巨值得重點關注。CPU缺貨題材持續，AMD英特爾觀察。漢唐廠務股訊號強但已漲一段，等回檔。VOO繼續定期定額，拉回是加碼機會。零壹繼續觀察。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1776731458541,
       "title": "石英元件供應鏈",
       "created_at": "2026-04-21T00:30:58.541Z",

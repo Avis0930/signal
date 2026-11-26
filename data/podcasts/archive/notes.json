@@ -1,6 +1,72 @@
 {
   "records": [
     {
+      "id": 1777254348521,
+      "title": "股癌EP655",
+      "created_at": "2026-04-27T01:45:48.521Z",
+      "analysis": {
+        "episode": "EP655",
+        "date": "2026-04-24",
+        "source": "股癌",
+        "summary": [
+          "盤勢太好導致心態受影響，小資金薛到翻掉，不要看別人賺多少影響自己判斷",
+          "被動元件台股走得比較慢，股癌直接去買日股，台股動太慢不要了",
+          "Vera Rubin傳出遞延狀況，但過往經驗都會解決，錯殺反而是加碼機會",
+          "MRVL公布MPU代號Carmel，量不大，Google餅太大三家都無法滿足需求",
+          "有問題的從來不是公司，而是你的成本"
+        ],
+        "tickers": [
+          {
+            "name": "MRVL",
+            "context": "Google MPU Carmel公布，量不大但餅夠大，持續持有",
+            "stance": "bullish"
+          },
+          {
+            "name": "AVGO 博通",
+            "context": "Google三家無法滿足需求，評價不變",
+            "stance": "bullish"
+          },
+          {
+            "name": "聯發科",
+            "context": "MTK潛在威脅，Humu Fish走EMIB，但餅夠大不影響評價",
+            "stance": "neutral"
+          },
+          {
+            "name": "被動元件族群",
+            "context": "日韓美走得很好，台股相對慢，股癌直接去買日股",
+            "stance": "bullish"
+          },
+          {
+            "name": "光通族群",
+            "context": "放著噴，長投部位不動",
+            "stance": "bullish"
+          },
+          {
+            "name": "新唐 4919",
+            "context": "BMC打進CSP是兩年前就知道的事，現在才噴，成本才是關鍵",
+            "stance": "neutral"
+          }
+        ],
+        "themes": [
+          "心態管理",
+          "Vera Rubin遞延",
+          "Google御三家",
+          "被動元件台慢日快",
+          "成本決定一切"
+        ],
+        "market_view": "盤勢很好但要注意心態，不要被別人的高報酬影響判斷。長投部位不動繼續放，動能部分找強勢標的。Vera Rubin遞延不用擔心，錯殺是機會。",
+        "sentiment": "bullish",
+        "sentiment_reason": "放著噴，長投不動，持續找強勢標的，整體樂觀",
+        "quotes": [
+          "以前的汰弱留強是汰掉破底或橫盤不會動的，而現在的汰弱留強是汰掉過去漲沒有這麼多的",
+          "有問題的從來不是公司，而是你的成本",
+          "報酬豐碩的是市場在犯錯的時候，但是有資格去判斷市場犯錯，需要大量的經驗累積"
+        ],
+        "portfolio_advice": "長投0050和VOO不動繼續放。被動元件台股動太慢可考慮觀察日股ETF。Vera Rubin遞延是雜訊不是風險，不要因此出場。零壹繼續等反彈。新唐成本才是關鍵，現在追高要小心。",
+        "type": "podcast"
+      }
+    },
+    {
       "id": 1776731548890,
       "title": "股癌 EP654",
       "created_at": "2026-04-21T00:32:28.890Z",
